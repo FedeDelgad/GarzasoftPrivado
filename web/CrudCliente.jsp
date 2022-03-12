@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>JSP Page</title>
-        <link href="../css/CrudTrabajador.css" rel="stylesheet" type="text/css"/>
+        <link href="css/CrudTrabajador.css" rel="stylesheet" type="text/css"/>
 
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -52,7 +52,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content col-sm-11 p-0">
                                                 <div class="modal-header mod-h p-3 ">
-                                                    <h4 class="modal-title  text-white ml-3  " id="exampleModalLabel"><i class="fas fa-user"></i> Actualizar Cliente</h4>
+                                                    <h4 class="modal-title text-white mt-4 mb-2 ml-3  " id="exampleModalLabel"><i class="fas fa-user"></i> Actualizar Cliente</h4>
                                                     <div style="border: none" class="close  text-white mr-2" data-dismiss="modal" aria-label="Close">
                                                         &times;
                                                     </div>

@@ -32,7 +32,7 @@ public class controladoradministrador extends HttpServlet {
 
                 int idadministrador = Integer.parseInt(request.getParameter("idadministrador"));
                 request.setAttribute("unadministrador", ladm.administrador(idadministrador));
-                request.getRequestDispatcher("Perfiles/PerfilAdministrador.jsp").forward(request, response);
+                request.getRequestDispatcher("PerfilAdministrador.jsp").forward(request, response);
                 break;
             case "actualizar":
                 String claveantigua = request.getParameter("claveantigua");

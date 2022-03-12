@@ -41,10 +41,10 @@
                         </section>    
                     </div>
                     <div>
-                        <a href="Cruds/CrudCliente.jsp" target="myFrame"><i class="las la-users"></i><span>Clientes</span></a> 
+                        <a href="CrudCliente.jsp" target="myFrame"><i class="las la-users"></i><span>Clientes</span></a> 
                     </div>
                     <div>
-                        <a href="Cruds/CrudTrabajador.jsp" target="myFrame"><i class="las la-users"></i><span>Trabajadores</span></a> 
+                        <a href="CrudTrabajador.jsp" target="myFrame"><i class="las la-users"></i><span>Trabajadores</span></a> 
                     </div>
                     <div>
                         <a href="validaradministrador?accion=cerrar"><i class="las la-door-open"></i><span>Salir</span></a> 
@@ -71,7 +71,7 @@
                     </nav>
                 </div>
                 <div style="height: 555px">
-                    <iframe src="Vistas/VistaInicioAdmin.jsp" name="myFrame" style="height: 100%; width: 100%; border:none; margin-bottom: 15px"></iframe>
+                    <iframe src="VistaInicioAdmin.jsp" name="myFrame" style="height: 100%; width: 100%; border:none; margin-bottom: 15px"></iframe>
                 </div>
             </section>
         </div>
