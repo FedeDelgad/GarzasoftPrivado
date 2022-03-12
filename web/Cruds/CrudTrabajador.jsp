@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.css">
     </head>
      <body>     
-         <div class=" cuerpo pl-3 pr-3 pt-4 pb-2 " >
+         <div class=" cuerpo pl-4 pr-4 pt-4 pb-2 " >
              <div class=" d-inline h4 ma-1 pl-2 "><i class="fas fa-user"></i> Lista de Trabajador 
              </div>     
             <button type="button" class="btn text-white float-right btn-1 " data-toggle="modal" data-target="#nuevo">
