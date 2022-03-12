@@ -111,6 +111,7 @@
 
             
          </div>
+         <!--crudCliente-->
           <div class=" cuerpo  pl-4 pr-4 pt-4 pb-2 ">
                <div class=" d-inline h4 ma-1 pl-2 "><i class="fas fa-user"></i> Lista de Clientes 
              </div>     
@@ -413,6 +414,7 @@
              
            <!--Modal Registrar-->     
          </div>
+         <!--crudCliente-->
          </section>
     </div>    
     </body>

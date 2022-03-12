@@ -53,12 +53,12 @@
                   <section class="dentro1-1">
                    
                      <div>
-                      <a href="#" > Estoy dentro</a>   
+                      <a href="#" >Desarrollo</a>   
                        
                      </div>
                  
                       <div>
-                      <a  href="a"> Estoy dentro</a>   
+                      <a  href="#"> Soporte </a>   
                        
                      </div>
                  </section>    

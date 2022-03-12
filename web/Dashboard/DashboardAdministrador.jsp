@@ -109,6 +109,7 @@
 
             
          </div>
+         <!--vistas proyectos-->
           <div class=" cuerpo ">
           <div class="cuerpo2 d-flex"> 
             <div class="cards1">
@@ -241,6 +242,7 @@
             </div>
          </div>
     </div>
+    <!--vistas proyectos-->
          </section>
     </div>
     <input type="hidden" id="msj" value="${rpta1}">

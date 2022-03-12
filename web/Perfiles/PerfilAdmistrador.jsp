@@ -111,6 +111,7 @@
 
             
          </div>
+         <!--Inicio perfil--> 
           <div class=" cuerpo pl-4 pr-4 pt-4 pb-2 ">
               <div class="ma-1 h4 pt-1 pb-3 ml- mr-"><i class="fas fa-user"></i> Perfil  del Usuario</div>
               <section class="d-flex cards" style="justify-content: center">
@@ -186,6 +187,7 @@
              
              </section>
          </div>
+       <!--Inicio perfil--> 
          </section>
     </div>    
     </body>
