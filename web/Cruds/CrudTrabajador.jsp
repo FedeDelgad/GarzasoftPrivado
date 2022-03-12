@@ -24,7 +24,7 @@
              </button>
              <hr class="mt-4" style="background: #1F618D">
         <div >
-            <div class="card " style="">
+            <div class="card " style="border: none ">
               <div class="card-body p-3">
                 <table id="datatable" class="table ">
                       <thead class="thead-light">
