@@ -24,7 +24,7 @@
                 </section>
                 <section class="s-menu">
                     <div>
-                        <a href="Vistas/VistaInicioAdmin.jsp" target="myFrame"><i class="las la-home"></i> <span>Inicio</span></a> 
+                        <a href="VistaInicioAdmin.jsp" target="myFrame"><i class="las la-home"></i> <span>Inicio</span></a> 
                     </div>
                     <div>
                         <a href="controladoradministrador?accion=perfil&idadministrador=${administrador.getIdadministrador()}" target="myFrame"><i class="las la-user"></i><span>Perfil</span></a> 
