@@ -7,7 +7,6 @@ package controlador;
 
 import bean.beanadministrador;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +28,10 @@ public class controladoradministrador extends HttpServlet {
            switch(accion){
               
              case "perfil":
-                    int idadministrador=Integer.parseInt(request.getParameter("idadministrador"));
-                    request.setAttribute("unadministrador", ladm.administrador(idadministrador));
-                    request.getRequestDispatcher("admi-perfil.jsp").forward(request, response);
+                    
+                 /*int idadministrador=Integer.parseInt(request.getParameter("idadministrador"));
+                    request.setAttribute("unadministrador", ladm.administrador(idadministrador));*/
+                    request.getRequestDispatcher("../Perfiles/PerfilAdministrador.jsp").forward(request, response);
              break;
              case "actualizar":
                     String claveantigua=request.getParameter("claveantigua");

@@ -25,13 +25,13 @@
                 </section>
                 <section class="s-menu">
                     <div>
-                        <a href="admi-principal.jsp">
+                        <a href="../Vistas/VistaInicioAdmin.jsp" target="myFrame">
                             <i class="las la-home"></i> 
                             <span>Inicio</span> 
                         </a> 
                     </div>
                     <div>
-                        <a href="controladoradministrador?accion=perfil&idadministrador=${administrador.getIdadministrador()}">
+                        <a href="../controladoradministrador?accion=perfil">
                             <i class="las la-user"></i>
                             <span>Perfil</span> 
                         </a> 

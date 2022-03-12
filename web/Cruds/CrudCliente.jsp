@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     </head>
-    <body>
+    <body style="background-color: #E5E7E9 ">
 
         <!--crudCliente-->
         <div class=" cuerpo  pl-4 pr-4 pt-4 pb-2 ">
