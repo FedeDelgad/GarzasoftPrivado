@@ -1,6 +1,6 @@
 <%-- 
     Document   : CrudTrabajador
-    Created on : mar 11, 2022, 9:22:00 p.m.
+    Created on : mar 11, 2022, 10:02:09 p.m.
     Author     : cleiv
 --%>
 
