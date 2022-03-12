@@ -1,10 +1,3 @@
-<%-- 
-    Document   : admi-perfil
-    Created on : 24/02/2022, 07:17:22 PM
-    Author     : hp
---%>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,10 +8,9 @@
         <link href="../css/admi-perfil.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     </head>
-    <body>
+    <body style="background-color: #E5E7E9; overflow-x: hidden ">
         <input type="hidden" id="msj2" value="${rpta}">
         <div class="d-flex" >
-
             <!--Inicio perfil--> 
             <div class=" cuerpo pl-4 pr-4 pt-4 pb-2 ">
                 <div class="ma-1 h4 pt-1 pb-3 ml- mr-"><i class="fas fa-user"></i> Perfil  del Usuario</div>
@@ -71,32 +63,23 @@
                                         <input type="password" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1" id="idclavenuevar" name="rclavenueva" placeholder="Repita Contraseña Nueva">
                                         <div class="invalid-feedback  ml-2 text-danger pl-2 mt-2" id="no_valido2"><i class="fa-solid fa-circle-exclamation"></i> Ambas contraseñas deben ser igual </div>
                                     </div>
-
                                 </div>
-
-
-
                                 <button type="submit " name="accion" value="actualizar" class="btn btn-primary float-right mt-5  mb-2 pl-5 pr-5 pb-2 pt-2 "><i class="fa-regular fa-floppy-disk mr-1 ml-1" style="font-size: 22px"></i>  ACTUALIZAR</button>
                             </form>
                         </div>
                     </div>
                     <div class="card" style="width: 20rem; height:350px">
                         <div class="card-body perfil text-center" style="height: 200px ">
-                            <img  class=" bg-white rounded-circle mt-4" src="../imagenes/icon2.png" width="90px" height="90px"/>
+                            <img  class=" bg-white rounded-circle mt-4" src="imagenes/icon2.png" width="90px" height="90px"/>
                             <h5 class="pt-4 text-white">Administrador</h5>
                             <p class="text-white mb-3">${unadministrador.getCorreoadmi()}</p>
-
                         </div>
                         <div class="card-body" >
-
                         </div>
                     </div> 
-
-
                 </section>
             </div>
-
-        </div>    
+        </div> 
     </body>
     <script src="https://kit.fontawesome.com/ef7654b222.js" crossorigin="anonymous"></script>   
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -106,7 +89,6 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script >
         var lista = document.getElementById('dentro1');
-
         var lis = function (e) {
             lista.classList.toggle('listo1');/*agrega clase*/
             var height = 0;
@@ -116,12 +98,9 @@
                 height = menu.scrollHeight;
             }
             ;
-
             menu.style.height = height + "px";
         };
-
         lista.addEventListener('click', lis);
-
         var mensaje = document.getElementById("msj2").value;
         if (mensaje == "correcto") {
 
@@ -135,7 +114,6 @@
             });
         }
         if (mensaje == "incorrecto") {
-
             Swal.fire({
                 icon: 'error',
                 title: 'error',
@@ -145,11 +123,5 @@
                 width: '30%'
             });
         }
-
-
-
-
     </script>
-
-
 </html>

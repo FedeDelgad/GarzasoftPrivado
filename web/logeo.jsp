@@ -1,9 +1,3 @@
-<%-- 
-    Document   : logeo
-    Created on : 18/02/2022, 07:03:28 AM
-    Author     : hp
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,19 +13,15 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-
         <nav class="navbar navbar-expand-lg navbar-dark navbar-light sticky-top">
-            <h1>
-                <i class="fab fa-glide-g m-2"></i> Garzasoft
-            </h1>
+            <h1><i class="fab fa-glide-g m-2"></i>Garzasoft</h1>
             <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span  style="font-size: 25px" class="  fas fa-align-justify "></span>
             </button>
             <div class="collapse navbar-collapse" style="margin-right: 160px" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto ">   
                     <li class="nav-item">
-                        <a class="h5" href="index.html" style="font-size:20px; text-decoration: none"><i class="fas fa-sign-out-alt"></i>
-                            Salir</a>
+                        <a class="h5" href="index.html" style="font-size:20px; text-decoration: none"><i class="fas fa-sign-out-alt"></i>Salir</a>
                     </li>
                 </ul>
             </div>
@@ -45,7 +35,7 @@
             </div>   
         </section>
         <section class="bienvenida">
-            <h3> Bienvenido</h3>  
+            <h3>Bienvenido</h3>  
         </section>    
         <section class="logeo d-flex mb-1">
             <div class="cards" style="width: 18rem;">
@@ -54,7 +44,6 @@
                     <div class="text mt-1" > ADMINISTRADOR</div>
                 </div>
             </div>
-
             <div class="cards" style="width: 18rem;">
                 <div class="card-body " data-toggle="modal" data-target="#clienteModal">
                     <div class="icono"><i class=" border border-white fas fa-users  "></i> </div>
@@ -67,22 +56,17 @@
                     <div class="text mt-1">TRABAJADORES</div>   
                 </div>
             </div>
-
         </section>
         <%--MODAL DE ADMINISTRADOR--%>
         <div class="modal fade" tabindex="-1" role="dialog" id="adminModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-2 col-sm-8 ml-5" >
-
                     <div class="modal-body">
-                        <div style="border: none" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </div>
-                        <form class="form-sign" action="validaradministrador" method="">
+                        <form class="form-sign" action="validaradministrador?" method="post">
                             <div class="form-group text-center">
                                 <h3 style="font-size:20px; text-align: center ">ADMINISTRADOR</h3>
-                                <i style="font-size: 160px; color: #A1A7A7" class="fas fa-user-circle nav-link" ></i> 
-                                <label>Bienvenidos al sistema</label>
+                                <i style="font-size: 100px; color: #A1A7A7" class="fas fa-user-circle nav-link" ></i> 
+                                <label>Bienvenido al sistema</label>
                             </div>
                             <div class="form-group">
                                 <label for="inputtext">Usuario</label>
@@ -90,26 +74,21 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" name="usuario" placeholder="Usuario">
+                                    <input type="text" class="form-control" name="usuario" placeholder="Usuario" required="true">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputtext">Password</label>
+                                <label for="inputtext">Contraseña</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                                    <input type="password" class="form-control" name="password" placeholder="Contraseña" required="true">
                                 </div>
                             </div>
-
-
-                            <input type="submit" name="accion" value="ingresar" class="btn btn-primary btn-block mt-4" >
+                            <button type="submit" class="btn btn-primary btn-block mt4" name="accion" value="ingresar">Ingresar</button>
                         </form>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -117,16 +96,12 @@
         <div class="modal fade" tabindex="-1" role="dialog" id="clienteModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-2 col-sm-8 ml-5">
-
                     <div class="modal-body">
-                        <div style="border: none" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </div>
                         <form class="form-sign" action="validarcliente?" method="post">
                             <div class="form-group text-center">
                                 <h3 style="font-size:20px; text-align: center ">CLIENTE</h3>
-                                <i style="font-size: 160px;color: #A1A7A7" class="fas fa-user-circle nav-link" ></i>
-                                <label>Bienvenidos al sistema</label>
+                                <i style="font-size: 100px;color: #A1A7A7" class="fas fa-user-circle nav-link" ></i>
+                                <label>Bienvenido al sistema</label>
                             </div>
                             <div class="form-group">
                                 <label for="inputtext">Usuario</label>
@@ -138,7 +113,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputtext">Password</label>
+                                <label for="inputtext">Contraseña</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-key"></i></span>
@@ -146,14 +121,9 @@
                                     <input type="password" class="form-control" name="password" placeholder="Contraseña">
                                 </div>
                             </div>
-
-
-                            <input type="submit" name="accion" value="ingresarCliente" class="btn btn-primary btn-block mt-4" >
+                            <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block mt-4" >
                         </form>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -161,16 +131,12 @@
         <div class="modal fade" tabindex="-1" role="dialog" id="trabajadorModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-2 col-sm-8 ml-5">
-
                     <div class="modal-body">
-                        <div style="border: none" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </div>
                         <form class="form-sign" action="validartrabajador" method="post">
                             <div class="form-group text-center">
                                 <h3 style="font-size:20px; text-align: center ">TRABAJADOR</h3>
-                                <i style="font-size: 160px; color:#A1A7A7 " class="fas fa-user-circle nav-link" ></i>
-                                <label>Bienvenidos al sistema</label>
+                                <i style="font-size: 100px; color:#A1A7A7 " class="fas fa-user-circle nav-link" ></i>
+                                <label>Bienvenido al sistema</label>
                             </div>
                             <div class="form-group">
                                 <label for="inputtext">Usuario</label>
@@ -182,7 +148,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputtext">Password</label>
+                                <label for="inputtext">Contraseña</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-key"></i></span>
@@ -190,20 +156,13 @@
                                     <input type="password" class="form-control" name="password" placeholder="Contraseña">
                                 </div>
                             </div>
-
-
-                            <input type="submit" name="accion" value="ingresar" class="btn btn-primary btn-block mt-4" >
-
+                            <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block mt-4" >
                         </form>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
         <input type="hidden" id="mensaje" value="${rpta2}">
-
     </body>
     <script src="https://kit.fontawesome.com/ef7654b222.js" crossorigin="anonymous"></script>  
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

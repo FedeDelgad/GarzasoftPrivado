@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     </head>
     <body style="background-color: #E5E7E9 ">
-
         <!--crudCliente-->
         <div class=" cuerpo  pl-4 pr-4 pt-4 pb-2 ">
             <div class=" d-inline h4 ma-1 pl-2 "><i class="fas fa-user"></i> Lista de Clientes</div>     
@@ -53,7 +52,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content col-sm-11 p-0">
                                                 <div class="modal-header mod-h p-3 ">
-                                                    <h4 class="modal-title  text-white mt-4 mb-2 ml-3  " id="exampleModalLabel"><i class="fas fa-user"></i> Actualizar Cliente</h4>
+                                                    <h4 class="modal-title  text-white ml-3  " id="exampleModalLabel"><i class="fas fa-user"></i> Actualizar Cliente</h4>
                                                     <div style="border: none" class="close  text-white mr-2" data-dismiss="modal" aria-label="Close">
                                                         &times;
                                                     </div>

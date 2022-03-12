@@ -19,57 +19,55 @@ import logic.logicadministrador;
  */
 public class controladoradministrador extends HttpServlet {
 
-    logicadministrador ladm= new logicadministrador();
-    beanadministrador badm=new beanadministrador();
+    logicadministrador ladm = new logicadministrador();
+    beanadministrador badm = new beanadministrador();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         String accion =request.getParameter("accion");
-           switch(accion){
-              
-             case "perfil":
-                    
-                 /*int idadministrador=Integer.parseInt(request.getParameter("idadministrador"));
-                    request.setAttribute("unadministrador", ladm.administrador(idadministrador));*/
-                    request.getRequestDispatcher("../Perfiles/PerfilAdministrador.jsp").forward(request, response);
-             break;
-             case "actualizar":
-                    String claveantigua=request.getParameter("claveantigua");
-                    String clavenueva=request.getParameter("clavenueva");
-                    String rclavenueva=request.getParameter("rclavenueva");
-                    String clave= request.getParameter("clave");
-                    int id=Integer.parseInt(request.getParameter("idadministrador"));
-                        if(claveantigua.equalsIgnoreCase("")&&clavenueva.equalsIgnoreCase("")&&rclavenueva.equalsIgnoreCase(""))
-                        {
-                             badm.setTelefonoadmi(request.getParameter("telefono"));
-                             badm.setCorreoadmi(request.getParameter("correo"));
-                             badm.setIdadministrador(Integer.parseInt(request.getParameter("idadministrador")));
-                             ladm.actualizar(badm);
-                             request.setAttribute("rpta", "correcto");
-                        }else{
-                             if( clave.equals(claveantigua) && clavenueva.equalsIgnoreCase(rclavenueva)&& 
-                                 clavenueva!="" && rclavenueva!="")
-                             {
-                              badm.setTelefonoadmi(request.getParameter("telefono"));
-                              badm.setCorreoadmi(request.getParameter("correo"));
-                              badm.setIdadministrador(Integer.parseInt(request.getParameter("idadministrador")));
-                              ladm.actualizar(badm);
-                              badm.setClaveadmi(claveantigua);
-                              ladm.actualizarclave(badm, clavenueva);
-                              request.setAttribute("rpta", "correcto");    
-                             }else{
-                               request.setAttribute("rpta","incorrecto");
-                             }
+        String accion = request.getParameter("accion");
+        switch (accion) {
 
-                         }
-                    request.getRequestDispatcher("controladoradministrador?accion=perfil&idadministrador="+id).forward(request, response);     
+            case "perfil":
 
-             break;
-              default:
-                 throw new AssertionError();
-       
-          }
-         
+                int idadministrador = Integer.parseInt(request.getParameter("idadministrador"));
+                request.setAttribute("unadministrador", ladm.administrador(idadministrador));
+                request.getRequestDispatcher("Perfiles/PerfilAdministrador.jsp").forward(request, response);
+                break;
+            case "actualizar":
+                String claveantigua = request.getParameter("claveantigua");
+                String clavenueva = request.getParameter("clavenueva");
+                String rclavenueva = request.getParameter("rclavenueva");
+                String clave = request.getParameter("clave");
+                int id = Integer.parseInt(request.getParameter("idadministrador"));
+                if (claveantigua.equalsIgnoreCase("") && clavenueva.equalsIgnoreCase("") && rclavenueva.equalsIgnoreCase("")) {
+                    badm.setTelefonoadmi(request.getParameter("telefono"));
+                    badm.setCorreoadmi(request.getParameter("correo"));
+                    badm.setIdadministrador(Integer.parseInt(request.getParameter("idadministrador")));
+                    ladm.actualizar(badm);
+                    request.setAttribute("rpta", "correcto");
+                } else {
+                    if (clave.equals(claveantigua) && clavenueva.equalsIgnoreCase(rclavenueva)
+                            && clavenueva != "" && rclavenueva != "") {
+                        badm.setTelefonoadmi(request.getParameter("telefono"));
+                        badm.setCorreoadmi(request.getParameter("correo"));
+                        badm.setIdadministrador(Integer.parseInt(request.getParameter("idadministrador")));
+                        ladm.actualizar(badm);
+                        badm.setClaveadmi(claveantigua);
+                        ladm.actualizarclave(badm, clavenueva);
+                        request.setAttribute("rpta", "correcto");
+                    } else {
+                        request.setAttribute("rpta", "incorrecto");
+                    }
+
+                }
+                request.getRequestDispatcher("controladoradministrador?accion=perfil&idadministrador=" + id).forward(request, response);
+
+                break;
+            default:
+                throw new AssertionError();
+
+        }
 
     }
 

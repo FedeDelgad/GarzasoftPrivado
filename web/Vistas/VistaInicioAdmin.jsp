@@ -1,21 +1,13 @@
-<%-- 
-    Document   : vistalaternaadmin
-    Created on : mar 11, 2022, 11:06:46 p.m.
-    Author     : cleiv
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
         <link href="../css/admi-principal.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+        <title>Inicio/Administrador</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body style="background-color: #E5E7E9 ">
         <div class=" cuerpo ">
             <div class="cuerpo2 d-flex"> 
                 <div class="cards1">
@@ -72,9 +64,7 @@
                                         <td>19/02/2022</td>
                                         <td>04/04/2022</td>
                                         <td class="m-0 p-1">
-                                            <div class="card  text-white bg-danger p-1 text-center" style="width: 7rem; font-weight:600; border: none">
-                                                PENDIENTE
-                                            </div>
+                                            <div class="card  text-white bg-danger p-1 text-center" style="width: 7rem; font-weight:600; border: none">PENDIENTE</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -82,9 +72,7 @@
                                         <td>26/02/2022</td>
                                         <td>16/05/2022</td>
                                         <td class="m-0 p-1">
-                                            <div class="card  text-white bg-success p-1 text-center" style="width: 7rem; font-weight:600; border: none">
-                                                TERMINADO
-                                            </div>
+                                            <div class="card  text-white bg-success p-1 text-center" style="width: 7rem; font-weight:600; border: none">TERMINADO</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -92,39 +80,14 @@
                                         <td>30/02/2022</td>
                                         <td>12/08/2022</td>
                                         <td class="m-0 p-1">
-                                            <div class="card  text-white bg-warning p-1 text-center" style="width: 7rem; font-weight:600; border: none">
-                                                EN PROCESO
-                                            </div>
+                                            <div class="card  text-white bg-warning p-1 text-center" style="width: 7rem; font-weight:600; border: none">EN PROCESO</div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
-
-
                 <div class="card " style="width: 305px;">
                     <div class="card-body p-0">
                         <h5 class="card-title pt-3 pb-1 mt-2 text-center">Administrador</h5>
@@ -134,7 +97,6 @@
                                 <div class=" text-center ">Luis Angel</div>
                                 <div class=" ">Antiguo </div>
                             </div>
-
                         </div>
                         <div class="d-flex  p-2 mr-3 ml-3 trabajador">
                             <img  class=" rounded-circle  ml-2 mr-2" src="../imagenes/icon1.png" width="50px" height="50px" style="background: #566573" />
@@ -142,7 +104,6 @@
                                 <div class=" text-center ">Andrea</div>
                                 <div class=" ">Nueva</div>
                             </div>
-
                         </div>    
                     </div>
                 </div>

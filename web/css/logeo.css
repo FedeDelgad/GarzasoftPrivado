@@ -1,16 +1,16 @@
 body{
-   top:0;
+    top:0;
     left: 0;
 }
 .navbar{
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
 .navbar h1{
     margin-left: 85px;
     margin-top: 10px;
-     font-family:'Mochiy Pop P One', sans-serif ;
-     font-size: 33px;
+    font-family:'Mochiy Pop P One', sans-serif ;
+    font-size: 33px;
 }
 
 .padre{
@@ -33,7 +33,7 @@ body{
 .hijo-1{
     color: white;
     text-align: center;
-    
+
 }
 .hijo-1 h1{
     font-size:35px;
@@ -51,7 +51,7 @@ body{
 
 .logeo{
     justify-content: center;
-     flex-wrap: wrap;   
+    flex-wrap: wrap;   
 }
 .cards{
     border: none;
@@ -66,11 +66,11 @@ body{
 }
 .card-body .icono{
     font-size: 50px;
-  text-align: center;
+    text-align: center;
 }
 .card-body .text{
     text-align: center;
-    
+
 }
 .nav-item{
     color: black;
@@ -78,7 +78,7 @@ body{
 }
 
 .nav-item a {
-  text-decoration: none;
+    text-decoration: none;
 }
 .navbar-toggler span{
     color: black;
