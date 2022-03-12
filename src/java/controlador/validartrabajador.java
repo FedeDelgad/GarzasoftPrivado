@@ -35,32 +35,35 @@ beantrabajador btra=new beantrabajador();
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
          String accion=request.getParameter("accion");
-       
-       HttpSession obSesion = request.getSession();
-       /*ingresa al panel del trabajador*/
-          if(accion.equalsIgnoreCase("ingresar")){
-           String usuario=request.getParameter("usuario");
-           String clave=request.getParameter("password");
-           btra=ltrab.validar(usuario, clave);
-           if(btra.getDni()!=null){
-               obSesion.setAttribute("trabajador", btra);
-               request.setAttribute("rpta1","Bienvenido");
-               request.getRequestDispatcher("trab-principal.jsp").forward(request, response);
-           }else{
-               request.setAttribute("rpta2", "Credenciales Incorrectos");
-              request.getRequestDispatcher("logeo.jsp").forward(request, response);   
-           }
-          } 
-          
-         /*salir del panel del trabajador*/
+         HttpSession obSesion = request.getSession();
          
-         if(accion.equalsIgnoreCase("cerrar")){
-             obSesion.setAttribute("trabajador", null);
-              obSesion.invalidate();
-              request.getRequestDispatcher("logeo.jsp").forward(request, response); 
-         }
-          
-         
+            switch(accion){
+              
+                case "ingresar":
+                    /*ingresa a panel de trabajador*/
+                        String usuario=request.getParameter("usuario");
+                        String clave=request.getParameter("password");
+                        btra=ltrab.validar(usuario, clave);
+                        if(btra.getDni()!=null){
+                            obSesion.setAttribute("trabajador", btra);
+                            request.setAttribute("rpta1","Bienvenido");
+                            request.getRequestDispatcher("trab-principal.jsp").forward(request, response);
+                        }else{
+                            request.setAttribute("rpta2", "Credenciales Incorrectos");
+                           request.getRequestDispatcher("logeo.jsp").forward(request, response);   
+                        }   
+                      
+                 break;
+                case "cerrar":
+                        obSesion.setAttribute("trabajador", null);
+                        obSesion.invalidate();
+                        request.getRequestDispatcher("logeo.jsp").forward(request, response); 
+
+                break;
+                 default:
+                    throw new AssertionError();
+
+             }     
        
     }
 

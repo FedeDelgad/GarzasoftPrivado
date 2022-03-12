@@ -36,7 +36,7 @@ public class logictrabajador {
          daotrabajador dtrabajador=new daotrabajador();
          btrabajador.setClave(trab.getClave());
          btrabajador.setIdtrabajador(trab.getIdtrabajador());
-         return dtrabajador.actualizarclave(trab, clavenueva);
+         return dtrabajador.actualizarclave(btrabajador, clavenueva);
     }
     
 }

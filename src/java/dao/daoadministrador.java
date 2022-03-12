@@ -48,7 +48,7 @@ public class daoadministrador {
     
     /*capturar a administrador*/
       
-        public beanadministrador trabajador(int idadministrador){
+        public beanadministrador administrador(int idadministrador){
          beanadministrador badm =new beanadministrador();
          String sql="select *from administrador where idadministrador="+idadministrador;
          try{
@@ -69,6 +69,49 @@ public class daoadministrador {
                
            }
          return badm;
+     }  
+        
+      /*metodo de actualizar administrador*/
+      public String actualizar ( beanadministrador adm){
+         String out;
+         String sql="update administrador set telefono=? , correo=? where idadministrador=?";
+          try{
+              con=cn.getConnection();
+              ps=con.prepareStatement(sql);
+              ps.setString(1,adm.getTelefonoadmi());
+              ps.setString(2,adm.getCorreoadmi());
+              ps.setInt(3, adm.getIdadministrador());
+              ps.executeUpdate();
+             out = "Correcto...";
+                }catch(Exception e)
+             {
+                 out = "Error" + e.getMessage();
+             }
+
+              return out;
      }
-    
+        
+    /* metodo para actualizar clave*/
+     
+     public String actualizarclave(beanadministrador admi, String clavenueva){
+                String out;
+         String sql="Update administrador set clave=? where idadministrador=? and clave=?";
+          try{
+              con=cn.getConnection();
+              ps=con.prepareStatement(sql);
+              ps.setString(1, clavenueva);
+              ps.setInt(2, admi.getIdadministrador());
+              ps.setString(3,admi.getClaveadmi());
+              ps.executeUpdate();
+             out = "Correcto...";
+                }catch(Exception e)
+             {
+                 out = "Error" + e.getMessage();
+             }
+
+              return out;  
+     }    
+        
+        
+        
 }

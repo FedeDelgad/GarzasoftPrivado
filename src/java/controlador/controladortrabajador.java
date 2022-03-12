@@ -25,51 +25,51 @@ public class controladortrabajador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       String accion =request.getParameter("accion");
+        String accion =request.getParameter("accion");
        
-       if(accion.equalsIgnoreCase("perfil")){
-           int idtrabajador=Integer.parseInt(request.getParameter("idtrabajador"));
-           request.setAttribute("untrabajador", ltrab.trabajador(idtrabajador));
-           request.getRequestDispatcher("trab-perfil.jsp").forward(request, response);
-       }
-       
-       
-       if(accion.equalsIgnoreCase("actualizar")){
-           String claveantigua=request.getParameter("claveantigua");
-           String clavenueva=request.getParameter("clavenueva");
-           String rclavenueva=request.getParameter("rclavenueva");
-           String clave= request.getParameter("clave");
-          int id=Integer.parseInt(request.getParameter("idtrabajador"));
-          if(claveantigua.equalsIgnoreCase("")&&clavenueva.equalsIgnoreCase("")&&rclavenueva.equalsIgnoreCase(""))
-          {
-               btrab.setTelefono(request.getParameter("telefono"));
-               btrab.setCorreo(request.getParameter("correo"));
-               btrab.setIdtrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
-               ltrab.actualizar(btrab); 
-               request.setAttribute("rpta", "correcto");
-          }else{
-               if( clave.equals(claveantigua) && clavenueva.equalsIgnoreCase(rclavenueva)&& 
-                   clavenueva!="" && rclavenueva!="")
-               {
-               btrab.setTelefono(request.getParameter("telefono"));
-                btrab.setCorreo(request.getParameter("correo"));
-                btrab.setIdtrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
-                ltrab.actualizar(btrab);
-                btrab.setClave(claveantigua);
-                ltrab.actualizarclave(btrab, clavenueva);
-                request.setAttribute("rpta", "correcto");    
-               }else{
-                 request.setAttribute("rpta","incorrecto");
-               }
+         switch(accion){
               
-           }
-          request.getRequestDispatcher("controladortrabajador?accion=perfil&idtrabajador="+id).forward(request, response);
-       }
+             case "perfil":
+                    int idtrabajador=Integer.parseInt(request.getParameter("idtrabajador"));
+                    request.setAttribute("untrabajador", ltrab.trabajador(idtrabajador));
+                    request.getRequestDispatcher("trab-perfil.jsp").forward(request, response);
+             break;
+             case "actualizar":
+                    String claveantigua=request.getParameter("claveantigua");
+                    String clavenueva=request.getParameter("clavenueva");
+                    String rclavenueva=request.getParameter("rclavenueva");
+                    String clave= request.getParameter("clave");
+                    int id=Integer.parseInt(request.getParameter("idtrabajador"));
+                        if(claveantigua.equalsIgnoreCase("")&&clavenueva.equalsIgnoreCase("")&&rclavenueva.equalsIgnoreCase(""))
+                        {
+                             btrab.setTelefono(request.getParameter("telefono"));
+                             btrab.setCorreo(request.getParameter("correo"));
+                             btrab.setIdtrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
+                             ltrab.actualizar(btrab); 
+                             request.setAttribute("rpta", "correcto");
+                        }else{
+                             if( clave.equals(claveantigua) && clavenueva.equalsIgnoreCase(rclavenueva)&& 
+                                 clavenueva!="" && rclavenueva!="")
+                             {
+                             btrab.setTelefono(request.getParameter("telefono"));
+                              btrab.setCorreo(request.getParameter("correo"));
+                              btrab.setIdtrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
+                              ltrab.actualizar(btrab);
+                              btrab.setClave(claveantigua);
+                              ltrab.actualizarclave(btrab, clavenueva);
+                              request.setAttribute("rpta", "correcto");    
+                             }else{
+                               request.setAttribute("rpta","incorrecto");
+                             }
+
+                         }
+                    request.getRequestDispatcher("controladortrabajador?accion=perfil&idtrabajador="+id).forward(request, response);     
+
+             break;
+             default:
+                 throw new AssertionError();
        
-       
-       
-       
-       
+          }      
        }
     
 

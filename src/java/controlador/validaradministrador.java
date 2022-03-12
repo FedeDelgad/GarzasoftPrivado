@@ -31,27 +31,32 @@ public class validaradministrador extends HttpServlet {
          String accion=request.getParameter("accion");
          HttpSession obSesion = request.getSession();
          
-        
-        /*ingresa al panel del trabajador*/
-          if(accion.equalsIgnoreCase("ingresar")){
-           String usuario=request.getParameter("usuario");
-           String clave=request.getParameter("password");
-           badm=ladm.validar(usuario, clave);
-           if(badm.getDniadmi()!=null){
-               obSesion.setAttribute("administrador", badm);
-               request.setAttribute("rpta1","Bienvenido");
-               request.getRequestDispatcher("admi-principal.jsp").forward(request, response);
-           }else{
-               request.setAttribute("rpta2", "Credenciales Incorrectos");
-              request.getRequestDispatcher("logeo.jsp").forward(request, response);   
-           }
-          } 
-        
-         if(accion.equalsIgnoreCase("cerrar")){
-             obSesion.setAttribute("administrador", null);
-              obSesion.invalidate();
-              request.getRequestDispatcher("logeo.jsp").forward(request, response); 
-         }
+          switch(accion){
+              
+             case "ingresar":
+                 /*ingresa a panel de administrador*/
+                    String usuario=request.getParameter("usuario");
+                    String clave=request.getParameter("password");
+                    badm=ladm.validar(usuario, clave);
+                    if(badm.getDniadmi()!=null){
+                        obSesion.setAttribute("administrador", badm);
+                        request.setAttribute("rpta1","Bienvenido");
+                        request.getRequestDispatcher("Dashboard/DashboardAdministrador.jsp").forward(request, response);
+                    }else{
+                        request.setAttribute("rpta2", "Credenciales Incorrectos");
+                       request.getRequestDispatcher("logeo.jsp").forward(request, response);   
+                    }
+              break;
+             case "cerrar":
+                        obSesion.setAttribute("administrador", null);
+                        obSesion.invalidate();
+                        request.getRequestDispatcher("logeo.jsp").forward(request, response); 
+                 
+             break;
+              default:
+                 throw new AssertionError();
+       
+          }
         
     }
 

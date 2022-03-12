@@ -5,72 +5,75 @@
  */
 package controlador;
 
-import bean.beanadministrador;
+import bean.beancliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logic.logicadministrador;
+import logic.logiccliente;
 
 /**
  *
  * @author hp
  */
-public class controladoradministrador extends HttpServlet {
-
-    logicadministrador ladm= new logicadministrador();
-    beanadministrador badm=new beanadministrador();
+public class controladorcliente extends HttpServlet {
+    logiccliente lcli = new logiccliente();
+    beancliente bcli =new beancliente();
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
          String accion =request.getParameter("accion");
-           switch(accion){
+         switch(accion){
               
              case "perfil":
-                    int idadministrador=Integer.parseInt(request.getParameter("idadministrador"));
-                    request.setAttribute("unadministrador", ladm.administrador(idadministrador));
-                    request.getRequestDispatcher("admi-perfil.jsp").forward(request, response);
+                    int idcliente=Integer.parseInt(request.getParameter("idcliente"));
+                    request.setAttribute("uncliente", lcli.cliente(idcliente));
+                    request.getRequestDispatcher("cli-perfil.jsp").forward(request, response);
              break;
              case "actualizar":
                     String claveantigua=request.getParameter("claveantigua");
                     String clavenueva=request.getParameter("clavenueva");
                     String rclavenueva=request.getParameter("rclavenueva");
                     String clave= request.getParameter("clave");
-                    int id=Integer.parseInt(request.getParameter("idadministrador"));
+                    int id=Integer.parseInt(request.getParameter("idcliente"));
                         if(claveantigua.equalsIgnoreCase("")&&clavenueva.equalsIgnoreCase("")&&rclavenueva.equalsIgnoreCase(""))
                         {
-                             badm.setTelefonoadmi(request.getParameter("telefono"));
-                             badm.setCorreoadmi(request.getParameter("correo"));
-                             badm.setIdadministrador(Integer.parseInt(request.getParameter("idadministrador")));
-                             ladm.actualizar(badm);
+                             bcli.setTelefonocli(request.getParameter("telefono"));
+                             bcli.setCorreocli(request.getParameter("correo"));
+                             bcli.setIdcliente(Integer.parseInt(request.getParameter("idcliente")));
+                             lcli.actualizar(bcli); 
                              request.setAttribute("rpta", "correcto");
                         }else{
                              if( clave.equals(claveantigua) && clavenueva.equalsIgnoreCase(rclavenueva)&& 
                                  clavenueva!="" && rclavenueva!="")
                              {
-                              badm.setTelefonoadmi(request.getParameter("telefono"));
-                              badm.setCorreoadmi(request.getParameter("correo"));
-                              badm.setIdadministrador(Integer.parseInt(request.getParameter("idadministrador")));
-                              ladm.actualizar(badm);
-                              badm.setClaveadmi(claveantigua);
-                              ladm.actualizarclave(badm, clavenueva);
+                               bcli.setTelefonocli(request.getParameter("telefono"));
+                               bcli.setCorreocli(request.getParameter("correo"));
+                               bcli.setIdcliente(Integer.parseInt(request.getParameter("idcliente")));
+                               lcli.actualizar(bcli);
+                               bcli.setClavecli(claveantigua);
+                               lcli.actualizarclave(bcli, clavenueva);
                               request.setAttribute("rpta", "correcto");    
                              }else{
                                request.setAttribute("rpta","incorrecto");
                              }
 
                          }
-                    request.getRequestDispatcher("controladoradministrador?accion=perfil&idadministrador="+id).forward(request, response);     
+                    request.getRequestDispatcher("controladorcliente?accion=perfil&idcliente="+id).forward(request, response);     
 
              break;
-              default:
+             default:
                  throw new AssertionError();
        
-          }
-         
-
+          } 
+        
+        
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -21,9 +21,27 @@ public class logicadministrador {
     
    public beanadministrador administrador(int idadmnistrador){
       daoadministrador daadm =new daoadministrador();
-      return daadm.trabajador(idadmnistrador);
+      return daadm.administrador(idadmnistrador);
    } 
+   
+   
+   
+   
+   public String actualizar (beanadministrador adm){
+        beanadministrador badministrador=new beanadministrador();
+        daoadministrador dadministrador =new daoadministrador();
+        badministrador.setTelefonoadmi(adm.getTelefonoadmi());
+        badministrador.setCorreoadmi(adm.getCorreoadmi());
+        badministrador.setIdadministrador(adm.getIdadministrador());
+        return dadministrador.actualizar(badministrador);
+   }
     
-    
+   public String actualizarclave(beanadministrador adm, String clavenueva){
+        beanadministrador badministrador=new beanadministrador();
+        daoadministrador dadministrador =new daoadministrador();
+         badministrador.setClaveadmi(adm.getClaveadmi());
+         badministrador.setIdadministrador(adm.getIdadministrador());
+         return dadministrador.actualizarclave(badministrador, clavenueva);
+   } 
     
 }
