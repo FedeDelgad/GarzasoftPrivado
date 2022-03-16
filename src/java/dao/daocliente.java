@@ -60,9 +60,6 @@ public class daocliente {
         return bcli;
     }
 
-    /*metodo agregar cliente*/
-    
-    /*metodo listar cliente*/
     
     /*metodo actualizar cliente*/
     public String actualizar(beancliente cli) {
@@ -82,7 +79,6 @@ public class daocliente {
         return out;
     }
 
-    /*metodo eliminar cliente*/
     
     /*metodo para actualizar clave*/
     public String actualizarclave(beancliente cli, String clavenueva) {
