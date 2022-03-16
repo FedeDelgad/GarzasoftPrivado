@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +6,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>JSP Page</title>
         <link href="css/CrudTrabajador.css" rel="stylesheet" type="text/css"/>
-
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     </head>
@@ -19,7 +17,6 @@
                 <i class="fas fa-plus"></i> Nuevo Cliente
             </button>
             <hr class="mt-4" style="background: #1F618D">
-
             <div class="card " style="border: none " >
                 <div class="card-body p-3">
                     <table id="datatable" class="table ">
@@ -42,12 +39,9 @@
                                 <td >@mdo</td>
                                 <td >Mark</td>
                                 <td >Otto</td>
-                                <td  >
+                                <td>
                                     <!--boton actualizar-->
                                     <a class="btn btn-warning text-white " style="font-size: 17px" id="actualizar" data-toggle="modal" data-target="#nuevo2"><i class="fas fa-edit"></i></a>  
-                                    <!--boton actualizar--> 
-
-                                    <!--modal actualizar-->  
                                     <div class="modal fade" id="nuevo2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content col-sm-11 p-0">
@@ -56,7 +50,6 @@
                                                     <div style="border: none" class="close  text-white mr-2" data-dismiss="modal" aria-label="Close">
                                                         &times;
                                                     </div>
-
                                                 </div>
                                                 <form  action="controlador?menu=cliente" method="post" novalidate>
                                                     <div class="modal-body mr-2  mb-2 ml-2">
@@ -79,7 +72,6 @@
                                                                     <input type="text" class="form-control"  name="nombre" placeholder="Nombre" readonly>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
@@ -120,7 +112,6 @@
                                                                     <input type="text" class="form-control" name="fecha" placeholder="fecha" readonly >
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
@@ -132,7 +123,6 @@
                                                                     <input type="password" class="form-control"  name="contra" placeholder="Contraseña" readonly>
                                                                 </div>
                                                             </div> 
-
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputtext">Contraseña</label>
                                                                 <div class="input-group">
@@ -150,27 +140,16 @@
                                                             </div>
                                                             <input type="text" class="form-control"  name="correo" placeholder="Correo">
                                                         </div>
-
-
                                                         <button type="submit" name="accion" value="agregar" class="btn  btn-block mt-4 mb-4 btn-1 text-white" >Actualizar</button>
-
-
                                                     </div>
-
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <!--modal  actualizar-->  
-
-
                                     <a href="#" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
-
                                 </td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -184,7 +163,6 @@
                             <div style="border: none" class="close  text-white mr-2" data-dismiss="modal" aria-label="Close">
                                 &times;
                             </div>
-
                         </div>
                         <form  action="controlador?menu=cliente" method="post" novalidate>
                             <div class="modal-body mr-2  mb-2 ml-2">
@@ -207,7 +185,6 @@
                                             <input type="text" class="form-control"  name="nombre" placeholder="Nombre">
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -240,7 +217,6 @@
                                                 <option value="" >Seleccione...</option>
                                                 <option value="hombre">Hombre</option>
                                                 <option value="mujer" >Mujer</option>
-
                                             </select>
                                         </div>
                                     </div>                
@@ -253,7 +229,6 @@
                                             <input type="date" class="form-control" name="fecha" >
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -265,7 +240,6 @@
                                             <input type="password" class="form-control"  name="contra" placeholder="Contraseña">
                                         </div>
                                     </div> 
-
                                     <div class="form-group col-md-6">
                                         <label for="inputtext">Contraseña</label>
                                         <div class="input-group">
@@ -283,21 +257,13 @@
                                     </div>
                                     <input type="text" class="form-control"  name="correo" placeholder="Correo">
                                 </div>
-
-
                                 <button type="submit" name="accion" value="agregar" class="btn  btn-block mt-4 mb-4 btn-1 text-white" >Registrar</button>
-
-
                             </div>
-
                         </form>
                     </div>
                 </div>
             </div>
-
-            <!--Modal Registrar-->     
         </div>
-        <!--crudCliente-->
     </body>
     <script src="https://kit.fontawesome.com/ef7654b222.js" crossorigin="anonymous"></script>   
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -318,14 +284,12 @@
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-
                 }
             });
         });
     </script>
     <script >
         var lista = document.getElementById('dentro1');
-
         var lis = function (e) {
             lista.classList.toggle('listo1');/*agrega clase*/
             var height = 0;
@@ -335,12 +299,8 @@
                 height = menu.scrollHeight;
             }
             ;
-
             menu.style.height = height + "px";
         };
-
         lista.addEventListener('click', lis);
-
     </script>
-
 </html>

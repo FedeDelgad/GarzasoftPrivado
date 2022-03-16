@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bean;
 
-/**
- *
- * @author hp
- */
 public class beancliente {
+
     private int idcliente;
     private String nombrecli;
     private String apellidocli;
@@ -109,6 +101,4 @@ public class beancliente {
     public void setSexocli(String sexocli) {
         this.sexocli = sexocli;
     }
-       
-    
 }
