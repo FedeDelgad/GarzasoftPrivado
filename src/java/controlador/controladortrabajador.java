@@ -85,7 +85,7 @@ public class controladortrabajador extends HttpServlet {
             trabajador.setClave(request.getParameter("clave"));
             trabajador.setCorreo(request.getParameter("correo"));
             out.print(logic.agregar(trabajador));
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             out.print(e);
         }
         request.getRequestDispatcher("controladortrabajador?accion=listar").forward(request, response);
