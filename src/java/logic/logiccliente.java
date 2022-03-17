@@ -15,11 +15,11 @@ public class logiccliente {
         daocliente dacli = new daocliente();
         return (dacli.cliente(idcliente));
     }
-    
+
     public String actualizar(beancliente cli) {
         beancliente bcliente = new beancliente();
         daocliente dcliente = new daocliente();
-        
+
         bcliente.setIdcliente(cli.getIdcliente());
         bcliente.setDnicli(cli.getDnicli());
         bcliente.setNombrecli(cli.getNombrecli());
@@ -28,7 +28,7 @@ public class logiccliente {
         bcliente.setSexocli(cli.getSexocli());
         bcliente.setIngresocli(cli.getIngresocli());
         bcliente.setCorreocli(cli.getCorreocli());
-        
+
         return dcliente.actualizar(bcliente);
     }
 
@@ -44,31 +44,29 @@ public class logiccliente {
         beancliente bcliente = new beancliente();
         daocliente dcliente = new daocliente();
 
-        if(dcliente.buscar(bCli.getDnicli())){
+        if (dcliente.buscar(bCli.getDnicli())) {
             return "El cliente ya existe.";
-        }else{
-            bcliente.setNombrecli(bCli.getNombrecli());        
+        } else {
+            bcliente.setDnicli(bCli.getDnicli());
+            bcliente.setNombrecli(bCli.getNombrecli());
             bcliente.setApellidocli(bCli.getApellidocli());
             bcliente.setTelefonocli(bCli.getTelefonocli());
+            bcliente.setSexocli(bCli.getSexocli());
             bcliente.setCorreocli(bCli.getCorreocli());
             bcliente.setClavecli(bCli.getClavecli());
             bcliente.setIngresocli(bCli.getIngresocli());
-            bcliente.setCondicioncli("nuevo");
-            bcliente.setEliminacli("activo");
-            bcliente.setDnicli(bCli.getDnicli());
-            bcliente.setSexocli(bCli.getSexocli());
             return (dcliente.agregar(bcliente));
         }
     }
-        
+
     public String eliminarC(int idcliente) {
-        daocliente dcliente = new daocliente();      
+        daocliente dcliente = new daocliente();
         return dcliente.eliminar(idcliente);
     }
-    
+
     public List listarC() {
         daocliente dcliente = new daocliente();
         return dcliente.listar();
     }
-    
+
 }

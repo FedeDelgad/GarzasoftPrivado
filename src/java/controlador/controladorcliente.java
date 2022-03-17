@@ -83,7 +83,7 @@ public class controladorcliente extends HttpServlet {
                 request.getRequestDispatcher("controladorcliente?accion=listar").forward(request, response);*/
                 break;
             case "actualizar":
-                modificar(request,response);
+                modificar(request, response);
                 break;
             case "eliminar":
                 eliminar(request, response);
@@ -111,16 +111,15 @@ public class controladorcliente extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String res;
+            bcli.setDnicli(request.getParameter("dni"));
             bcli.setNombrecli(request.getParameter("nombre"));
             bcli.setApellidocli(request.getParameter("apellido"));
             bcli.setTelefonocli(request.getParameter("telefono"));
+            bcli.setSexocli(request.getParameter("genero"));
             bcli.setCorreocli(request.getParameter("correo"));
             bcli.setClavecli(request.getParameter("contra"));
             bcli.setIngresocli(request.getParameter("fecha"));
-            bcli.setCondicioncli("nuevo");
-            bcli.setEliminacli("activo");
-            bcli.setDnicli(request.getParameter("dni"));
-            bcli.setSexocli(request.getParameter("genero"));
+
             res = lcli.agregarC(bcli);
             out.print(res);
         } catch (Exception e) {

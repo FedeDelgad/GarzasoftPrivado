@@ -66,7 +66,7 @@ public class daocliente {
     /*metodo actualizar cliente*/
     public String actualizar(beancliente cliente) {
         String out;
-        String sql = "update cliente set dni=?,nombre=?,apellido=?,telefono=?,sexo=?,ingreso=?,correo=? where idcliente=?";
+        String sql = "update cliente set dni=?,nombre=?,apellido=?,telefono=?,genero=?,fechaIngreso=?,correo=? where idcliente=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -114,15 +114,15 @@ public class daocliente {
             while (rs.next()) {
                 beancliente cliB = new beancliente();
                 cliB.setIdcliente(rs.getInt("idcliente"));
+                cliB.setDnicli(rs.getString("dni"));
                 cliB.setNombrecli(rs.getString("nombre"));
                 cliB.setApellidocli(rs.getString("apellido"));
                 cliB.setTelefonocli(rs.getString("telefono"));
+                cliB.setSexocli(rs.getString("genero"));
+                cliB.setIngresocli(rs.getString("fechaIngreso"));
                 cliB.setCorreocli(rs.getString("correo"));
                 cliB.setClavecli(rs.getString("clave"));
-                cliB.setIngresocli(rs.getString("ingreso"));
-                cliB.setCondicioncli("condicion");
-                cliB.setDnicli(rs.getString("dni"));
-                cliB.setSexocli(rs.getString("sexo"));
+                cliB.setCondicioncli(rs.getString("condicion"));
                 listac.add(cliB);
             }
         } catch (SQLException e) {
@@ -131,16 +131,23 @@ public class daocliente {
         return listac;
     }
 
-    public String agregar(beancliente clienteB) {
+    public String agregar(beancliente cliente) {
         String out;
-        String sql = "INSERT INTO cliente (nombre, apellido, telefono, correo, clave, ingreso, condicion, elimina, dni, sexo)"
-                + "VALUES ('" + clienteB.getNombrecli() + "','" + clienteB.getApellidocli() + "', '" + clienteB.getTelefonocli()
-                + "','" + clienteB.getCorreocli() + "','" + clienteB.getClavecli() + "','" + clienteB.getIngresocli()
-                + "','" + clienteB.getCondicioncli() + "','" + clienteB.getEliminacli() + "','" + clienteB.getDnicli()
-                + "','" + clienteB.getSexocli() + "')";
+        String sql = "INSERT INTO cliente (dni,nombre,apellido,telefono,genero,fechaIngreso,correo,clave,condicion,elimina) values(?,?,?,?,?,?,?,?,?,?)";
+
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
+            ps.setString(1, cliente.getDnicli());
+            ps.setString(2, cliente.getNombrecli());
+            ps.setString(3, cliente.getApellidocli());
+            ps.setString(4, cliente.getTelefonocli());
+            ps.setString(5, cliente.getSexocli());
+            ps.setString(6, cliente.getIngresocli());
+            ps.setString(7, cliente.getCorreocli());
+            ps.setString(8, cliente.getClavecli());
+            ps.setString(9, "nuevo");
+            ps.setString(10, "activo");
             ps.executeUpdate();
             out = "Agregado correctamente...";
         } catch (SQLException e) {
