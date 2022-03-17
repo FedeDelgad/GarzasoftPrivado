@@ -9,8 +9,8 @@ public class beancliente {
     private String correocli;
     private String clavecli;
     private String ingresocli;
-    private String condicioncli;
-    private String eliminacli;
+    private String condicioncli = "nuevo";
+    private String eliminacli = "activo";
     private String dnicli;
     private String sexocli;
 
@@ -75,7 +75,7 @@ public class beancliente {
     }
 
     public void setCondicioncli(String condicioncli) {
-        this.condicioncli = condicioncli;
+        this.condicioncli = "nuevo";
     }
 
     public String getEliminacli() {
@@ -83,7 +83,7 @@ public class beancliente {
     }
 
     public void setEliminacli(String eliminacli) {
-        this.eliminacli = eliminacli;
+        this.eliminacli = "activo";
     }
 
     public String getDnicli() {

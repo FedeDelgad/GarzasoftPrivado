@@ -2,10 +2,13 @@ package dao;
 
 import bean.beancliente;
 import config.conexion;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class daocliente {
 
@@ -59,7 +62,6 @@ public class daocliente {
         }
         return bcli;
     }
-
     
     /*metodo actualizar cliente*/
     public String actualizar(beancliente cli) {
@@ -79,7 +81,6 @@ public class daocliente {
         return out;
     }
 
-    
     /*metodo para actualizar clave*/
     public String actualizarclave(beancliente cli, String clavenueva) {
         String out;
@@ -97,5 +98,77 @@ public class daocliente {
         }
         return out;
     }
+    
+    public List listar() {
+        ArrayList<beancliente> listac = new ArrayList<>();
+        String sql = "select * from cliente";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                beancliente cliB = new beancliente();
+                cliB.setNombrecli(rs.getString("nombre"));
+                cliB.setApellidocli(rs.getString("apellido"));
+                cliB.setTelefonocli(rs.getString("telefono"));
+                cliB.setCorreocli(rs.getString("correo"));
+                cliB.setClavecli(rs.getString("clave"));
+                cliB.setIngresocli(rs.getString("ingreso"));
+                cliB.setCondicioncli("nuevo");
+                cliB.setEliminacli("activo");
+                cliB.setDnicli(rs.getString("dni"));
+                cliB.setSexocli(rs.getString("sexo"));
+                
+                listac.add(cliB);
+            }
+        }  catch (SQLException e) {
+            out.print("ERROR" + e);
+        }
+        return listac;
+    }
 
+    public String agregar(beancliente clienteB) {
+        String out;
+        String sql = "INSERT INTO cliente (nombre, apellido, telefono, correo, clave, ingreso, condicion, elimina, dni, sexo)"
+                + "VALUES ('" +clienteB.getNombrecli()+ "','" +clienteB.getApellidocli()+ "', '" +clienteB.getTelefonocli()+ 
+                            "','"+clienteB.getCorreocli()+"','" +clienteB.getClavecli()+ "','" +clienteB.getIngresocli()+
+                            "','" +clienteB.getCondicioncli()+ "','" +clienteB.getEliminacli()+ "','" +clienteB.getDnicli()+ 
+                            "','" +clienteB.getSexocli()+"')";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            out="Agregado correctamente...";
+        } catch (Exception e) {
+            out="Error" + e.getMessage();
+        }
+        return out;
+    }
+       
+    public String eliminar(int idcliente) {
+        String out;
+        String sql = "DELETE from cliente where idcliente=" + idcliente;
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            out = "Eliminado Correctamente";
+
+        } catch (Exception e) {
+            out="Error" + e.getMessage();
+        }
+        return out;
+    }
+
+    public boolean buscar(String dni){
+        String sql = "SELECT * FROM cliente WHERE dni = " + dni;
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
 }

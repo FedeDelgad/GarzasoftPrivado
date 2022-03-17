@@ -78,7 +78,7 @@
               </div>
               
                <div>
-                  <a href="validaradministrador?accion=cerrar">
+                  <a href="validaradministrador?accion=cerrarCliente">
                         <i class="las la-door-open"></i>
                         <span>Salir</span> 
                   </a> 
@@ -102,7 +102,7 @@
                         <a class="dropdown-item text-center" href="controladoradministrador?accion=perfil&idadministrador=${administrador.getIdadministrador()}"><i class="las la-user" style="font-size:21px"></i> Perfil</a>
                        <div class="dropdown-divider"></div>
                        
-                      <a class="dropdown-item" href="validaradministrador?accion=cerrar"> <i class="las la-power-off" style="font-size:20px" ></i> salir</a>
+                      <a class="dropdown-item" href="validaradministrador?accion=cerrarCliente"> <i class="las la-power-off" style="font-size:20px" ></i> salir</a>
                     </div>
                   </li>
                 </div>
@@ -157,7 +157,7 @@
                                       </div>
 
                                     </div>
-                                  <form  action="controlador?menu=cliente" method="post" novalidate>
+                                  <form  action="controladorcliente?accion=acutualizar" method="post" novalidate>
                                     <div class="modal-body mr-2  mb-2 ml-2">
                                       <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -302,7 +302,7 @@
                       </div>
                     
                     </div>
-                  <form  action="controlador?menu=cliente" method="post" novalidate>
+                  <form  action="controladorcliente?accion=agregar" method="post" novalidate>
                     <div class="modal-body mr-2  mb-2 ml-2">
                       <div class="form-row">
                         <div class="form-group col-md-6">

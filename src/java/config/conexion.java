@@ -20,7 +20,7 @@ public class conexion {
             Class.forName("com.mysql.cj.jdbc.Driver");
          
     
-      con = DriverManager.getConnection("jdbc:mysql://localhost:3306/garzasoft", "root", "mysql");
+      con = DriverManager.getConnection("jdbc:mysql://localhost:3306/garzasoft", "root", "root");
         } catch (Exception e) {
             System.err.println("Error" + e);
         }

@@ -51,7 +51,7 @@
                                                         &times;
                                                     </div>
                                                 </div>
-                                                <form  action="controlador?menu=cliente" method="post" novalidate>
+                                                <form  action="controladorcliente?accion=actualizar" method="post" novalidate>
                                                     <div class="modal-body mr-2  mb-2 ml-2">
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
@@ -164,7 +164,7 @@
                                 &times;
                             </div>
                         </div>
-                        <form  action="controlador?menu=cliente" method="post" novalidate>
+                        <form  action="controladorcliente?accion=agregar" method="post" novalidate>
                             <div class="modal-body mr-2  mb-2 ml-2">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
