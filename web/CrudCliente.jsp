@@ -24,7 +24,7 @@
                                 &times;
                             </div>
                         </div>
-                        <form  action="controladorcliente?accion=agregar" method="post" novalidate>
+                        <form  action="controladorcliente?accion=agregar" method="post">
                             <div class="modal-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
