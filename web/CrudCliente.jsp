@@ -42,7 +42,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text"  ><i class="las la-user "></i></span>
                                             </div>
-                                            <input type="text" class="form-control"  name="nombre" placeholder="Nombre">
+                                            <input type="text" class="form-control"  name="nombre" placeholder="Nombre" autocomplete="off" required="true">
                                         </div>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-user "></i></span>
                                             </div>
-                                            <input type="text" class="form-control"  name="apellido" placeholder="Apellido">
+                                            <input type="text" class="form-control"  name="apellido" placeholder="Apellido" autocomplete="off" required="true">
                                         </div>
                                     </div>  
                                     <div class="form-group col-md-6">
@@ -62,7 +62,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-phone-alt"></i></span>
                                             </div>
-                                            <input type="text" class="form-control"  name="telefono" placeholder="Telefono">
+                                            <input type="text" class="form-control"  name="telefono" placeholder="Telefono" autocomplete="off" required="true">
                                         </div>
                                     </div> 
                                 </div>
@@ -86,7 +86,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-calendar"></i></span>
                                             </div>
-                                            <input type="date" class="form-control" name="fecha" >
+                                            <input type="date" class="form-control" name="fecha" autocomplete="off" required="true">
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text"  ><i class="las la-key"></i></span>
                                             </div>
-                                            <input type="password" class="form-control"  name="contra" placeholder="Contraseña">
+                                            <input type="password" class="form-control"  name="contra" placeholder="Contraseña" autocomplete="off" required="true">
                                         </div>
                                     </div> 
                                     <div class="form-group col-md-6">
@@ -106,7 +106,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text"  ><i class="las la-key"></i></span>
                                             </div>
-                                            <input type="password" class="form-control"  name="contra" placeholder="Contraseña">
+                                            <input type="password" class="form-control"  name="contra" placeholder="Contraseña" autocomplete="off" required="true">
                                         </div>
                                     </div> 
                                 </div>    
@@ -115,7 +115,7 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px"class="input-group-text"  ><i class="las la-at"></i></span>
                                     </div>
-                                    <input type="text" class="form-control"  name="correo" placeholder="Correo">
+                                    <input type="text" class="form-control"  name="correo" placeholder="Correo" autocomplete="off" required="true">
                                 </div>
                                 <button type="submit" name="accion" value="agregar" class="btn  btn-block mt-3 btn-1 text-white" >Registrar</button>
                             </div>
@@ -161,7 +161,7 @@
                                                     </div>
                                                     <form  action="controladorcliente?accion=actualizar" method="post" novalidate>
                                                         <div class="modal-body">
-                                                            <input type="hidden" name="id" value="${lista.getIdcliente()}">
+                                                            <input type="hidden" name="id" value="${lista.getIdcliente()}" autocomplete="off" required="true">
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6">
                                                                     <label for="inputtext">Dni</label>
@@ -169,7 +169,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-address-card"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="dni" placeholder="Dni" readonly value="${lista.getDnicli()}">
+                                                                        <input type="text" class="form-control"  name="dni" placeholder="Dni" readonly value="${lista.getDnicli()}" autocomplete="off" required="true">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
@@ -178,7 +178,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text"  ><i class="las la-user "></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="nombre" placeholder="Nombre" value="${lista.getNombrecli()}">
+                                                                        <input type="text" class="form-control"  name="nombre" placeholder="Nombre" value="${lista.getNombrecli()}" autocomplete="off" required="true">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -189,7 +189,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-user "></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="apellido" placeholder="Apellido" value="${lista.getApellidocli()}">
+                                                                        <input type="text" class="form-control"  name="apellido" placeholder="Apellido" value="${lista.getApellidocli()}" autocomplete="off" required="true">
                                                                     </div>
                                                                 </div>  
                                                                 <div class="form-group col-md-6">
@@ -198,7 +198,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-phone-alt"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="telefono" placeholder="Telefono" value="${lista.getTelefonocli()}">
+                                                                        <input type="text" class="form-control"  name="telefono" placeholder="Telefono" value="${lista.getTelefonocli()}" autocomplete="off" required="true">
                                                                     </div>
                                                                 </div> 
                                                             </div>
@@ -209,7 +209,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-transgender"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="genero" placeholder="Sexo" readonly value="${lista.getSexocli()}">
+                                                                        <input type="text" class="form-control"  name="genero" placeholder="Sexo" readonly value="${lista.getSexocli()}" autocomplete="off" required="true">
                                                                     </div>
                                                                 </div>                
                                                                 <div class="form-group col-md-6">
@@ -218,7 +218,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-calendar"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control" name="fecha" placeholder="fecha" value="${lista.getIngresocli()}">
+                                                                        <input type="text" class="form-control" name="fecha" placeholder="fecha" value="${lista.getIngresocli()}" autocomplete="off" required="true">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -230,7 +230,7 @@
                                                                 <div class="input-group-prepend">
                                                                     <span style="font-size: 20px"class="input-group-text"  ><i class="las la-key"></i></span>
                                                                 </div>
-                                                                <input type="password" class="form-control"  name="contra" placeholder="Contraseña" readonly>
+                                                                <input type="password" class="form-control"  name="contra" placeholder="Contraseña" readonly autocomplete="off" required="true">
                                                             </div>
                                                         </div> 
                                                         <div class="form-group col-md-6">
@@ -239,7 +239,7 @@
                                                                 <div class="input-group-prepend">
                                                                     <span style="font-size: 20px"class="input-group-text"  ><i class="las la-key"></i></span>
                                                                 </div>
-                                                                <input type="password" class="form-control"  name="contra" placeholder="Contraseña" readonly>
+                                                                <input type="password" class="form-control"  name="contra" placeholder="Contraseña" readonly autocomplete="off" required="true">
                                                             </div>
                                                         </div> 
                                                     </div>    
@@ -249,7 +249,7 @@
                                                                 <div class="input-group-prepend">
                                                                     <span style="font-size: 20px"class="input-group-text"  ><i class="las la-at"></i></span>
                                                                 </div>
-                                                                <input type="text" class="form-control"  name="correo" placeholder="Correo" value="${lista.getCorreocli()}">
+                                                                <input type="text" class="form-control"  name="correo" placeholder="Correo" value="${lista.getCorreocli()}" autocomplete="off" required="true">
                                                             </div>
                                                             <button type="submit" class="btn  btn-block mt-3 btn-1 text-white" >Actualizar</button>
                                                         </div>

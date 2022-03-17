@@ -33,7 +33,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-address-card"></i></span>
                                             </div>
-                                            <input type="text" class="form-control"  name="dni" placeholder="Dni">
+                                            <input type="text" class="form-control"  name="dni" placeholder="Dni" autocomplete="off" required="true">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -42,7 +42,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text"  ><i class="las la-user "></i></span>
                                             </div>
-                                            <input type="text" class="form-control"  name="nombre" placeholder="Nombre">
+                                            <input type="text" class="form-control"  name="nombre" placeholder="Nombre" autocomplete="off" required="true">
                                         </div>
                                     </div>
 
@@ -54,7 +54,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-user "></i></span>
                                             </div>
-                                            <input type="text" class="form-control"  name="apellido" placeholder="Apellido">
+                                            <input type="text" class="form-control"  name="apellido" placeholder="Apellido" autocomplete="off" required="true">
                                         </div>
                                     </div>  
                                     <div class="form-group col-md-6">
@@ -63,7 +63,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-phone-alt"></i></span>
                                             </div>
-                                            <input type="text" class="form-control"  name="telefono" placeholder="Telefono">
+                                            <input type="text" class="form-control"  name="telefono" placeholder="Telefono" autocomplete="off" required="true">
                                         </div>
                                     </div> 
                                 </div>
@@ -88,7 +88,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-calendar"></i></span>
                                             </div>
-                                            <input type="date" class="form-control" name="fecha" >
+                                            <input type="date" class="form-control" name="fecha" autocomplete="off" required="true">
                                         </div>
                                     </div>
 
@@ -100,7 +100,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text"  ><i class="las la-key"></i></span>
                                             </div>
-                                            <input type="password" class="form-control"  name="contra" placeholder="Contraseña">
+                                            <input type="password" class="form-control"  name="contra" placeholder="Contraseña" autocomplete="off" required="true">
                                         </div>
                                     </div> 
 
@@ -110,7 +110,7 @@
                                             <div class="input-group-prepend">
                                                 <span style="font-size: 20px"class="input-group-text"  ><i class="las la-key"></i></span>
                                             </div>
-                                            <input type="password" class="form-control"  name="contra" placeholder="Contraseña">
+                                            <input type="password" class="form-control"  name="contra" placeholder="Contraseña" autocomplete="off" required="true">
                                         </div>
                                     </div> 
                                 </div>    
@@ -119,7 +119,7 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px"class="input-group-text"  ><i class="las la-at"></i></span>
                                     </div>
-                                    <input type="text" class="form-control"  name="correo" placeholder="Correo">
+                                    <input type="text" class="form-control"  name="correo" placeholder="Correo" autocomplete="off" required="true">
                                 </div>
 
 
@@ -183,7 +183,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-address-card"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="dni" placeholder="Dni" readonly>
+                                                                        <input type="text" class="form-control"  name="dni" placeholder="Dni" readonly autocomplete="off" required="true"
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
@@ -192,7 +192,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text"  ><i class="las la-user "></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="nombre" placeholder="Nombre" readonly>
+                                                                        <input type="text" class="form-control"  name="nombre" placeholder="Nombre" readonly autocomplete="off" required="true">
                                                                     </div>
                                                                 </div>
 
@@ -204,7 +204,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-user "></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="apellido" placeholder="Apellido" readonly>
+                                                                        <input type="text" class="form-control"  name="apellido" placeholder="Apellido" readonly autocomplete="off" required="true">
                                                                     </div>
                                                                 </div>  
                                                                 <div class="form-group col-md-6">
@@ -213,7 +213,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-phone-alt"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="telefono" placeholder="Telefono">
+                                                                        <input type="text" class="form-control"  name="telefono" placeholder="Telefono" autocomplete="off" required="true">
                                                                     </div>
                                                                 </div> 
                                                             </div>
@@ -224,7 +224,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-transgender"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control"  name="Sexo" placeholder="Sexo" readonly>
+                                                                        <input type="text" class="form-control"  name="Sexo" placeholder="Sexo" readonly autocomplete="off" required="true">
                                                                     </div>
                                                                 </div>                
                                                                 <div class="form-group col-md-6">
@@ -233,7 +233,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text" ><i class="las la-calendar"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control" name="fecha" placeholder="fecha" readonly >
+                                                                        <input type="text" class="form-control" name="fecha" placeholder="fecha" readonly autocomplete="off" required="true">
                                                                     </div>
                                                                 </div>
 
@@ -245,7 +245,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text"  ><i class="las la-key"></i></span>
                                                                         </div>
-                                                                        <input type="password" class="form-control"  name="contra" placeholder="Contraseña" readonly>
+                                                                        <input type="password" class="form-control"  name="contra" placeholder="Contraseña" readonly autocomplete="off" required="true">
                                                                     </div>
                                                                 </div> 
 
@@ -255,7 +255,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span style="font-size: 20px"class="input-group-text"  ><i class="las la-key"></i></span>
                                                                         </div>
-                                                                        <input type="password" class="form-control"  name="contra" placeholder="Contraseña" readonly>
+                                                                        <input type="password" class="form-control"  name="contra" placeholder="Contraseña" readonly autocomplete="off" required="true">
                                                                     </div>
                                                                 </div> 
                                                             </div>    
@@ -264,7 +264,7 @@
                                                                 <div class="input-group-prepend">
                                                                     <span style="font-size: 20px"class="input-group-text"  ><i class="las la-at"></i></span>
                                                                 </div>
-                                                                <input type="text" class="form-control"  name="correo" placeholder="Correo">
+                                                                <input type="text" class="form-control"  name="correo" placeholder="Correo" autocomplete="off" required="true">
                                                             </div>
 
 
