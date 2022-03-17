@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import bean.beancliente;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -61,41 +55,12 @@ public class controladorcliente extends HttpServlet {
                 break;
             case "agregar":
                 agregar(request, response);
-                /*
-                PrintWriter out = response.getWriter();
-                try {
-                    String res;
-                    bcli.setNombrecli(request.getParameter("nombre"));
-                    bcli.setApellidocli(request.getParameter("apellido"));
-                    bcli.setTelefonocli(request.getParameter("telefono"));
-                    bcli.setCorreocli(request.getParameter("correo"));
-                    bcli.setClavecli(request.getParameter("contra"));
-                    bcli.setIngresocli(request.getParameter("fecha"));
-                    bcli.setCondicioncli("nuevo");
-                    bcli.setEliminacli("activo");
-                    bcli.setDnicli(request.getParameter("dni"));
-                    bcli.setSexocli(request.getParameter("genero"));
-                    res = lcli.agregarC(bcli);
-                    out.print(res);
-                } catch (Exception e) {
-                    out.print(e);
-                }
-                request.getRequestDispatcher("controladorcliente?accion=listar").forward(request, response);*/
                 break;
             case "actualizar":
                 modificar(request, response);
                 break;
             case "eliminar":
                 eliminar(request, response);
-                /*
-                PrintWriter out2 = response.getWriter();
-                int idcli = Integer.parseInt(request.getParameter("idcli"));
-                try {
-                    String res = lcli.eliminarC(idcli);
-                    out2.print(res);
-                } catch (Exception e) {
-                    out2.print(e);
-                }*/
                 break;
             case "listar":
                 listar(request, response);
@@ -107,7 +72,6 @@ public class controladorcliente extends HttpServlet {
     }
 
     public void agregar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
         PrintWriter out = response.getWriter();
         try {
             String res;
@@ -119,7 +83,6 @@ public class controladorcliente extends HttpServlet {
             bcli.setCorreocli(request.getParameter("correo"));
             bcli.setClavecli(request.getParameter("contra"));
             bcli.setIngresocli(request.getParameter("fecha"));
-
             res = lcli.agregarC(bcli);
             out.print(res);
         } catch (Exception e) {
@@ -135,7 +98,6 @@ public class controladorcliente extends HttpServlet {
     }
 
     public void modificar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
         PrintWriter out = response.getWriter();
         String res;
         try {
@@ -157,7 +119,6 @@ public class controladorcliente extends HttpServlet {
     }
 
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
         int id = Integer.parseInt(request.getParameter("idCliente"));
         lcli.eliminarC(id);
         request.getRequestDispatcher("controladorcliente?accion=listar").forward(request, response);
@@ -178,6 +139,6 @@ public class controladorcliente extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

@@ -16,30 +16,6 @@ public class logiccliente {
         return (dacli.cliente(idcliente));
     }
 
-    public String actualizar(beancliente cli) {
-        beancliente bcliente = new beancliente();
-        daocliente dcliente = new daocliente();
-
-        bcliente.setIdcliente(cli.getIdcliente());
-        bcliente.setDnicli(cli.getDnicli());
-        bcliente.setNombrecli(cli.getNombrecli());
-        bcliente.setApellidocli(cli.getApellidocli());
-        bcliente.setTelefonocli(cli.getTelefonocli());
-        bcliente.setSexocli(cli.getSexocli());
-        bcliente.setIngresocli(cli.getIngresocli());
-        bcliente.setCorreocli(cli.getCorreocli());
-
-        return dcliente.actualizar(bcliente);
-    }
-
-    public String actualizarclave(beancliente cli, String clavenueva) {
-        beancliente bcliente = new beancliente();
-        daocliente dcliente = new daocliente();
-        bcliente.setClavecli(cli.getClavecli());
-        bcliente.setIdcliente(cli.getIdcliente());
-        return dcliente.actualizarclave(bcliente, clavenueva);
-    }
-
     public String agregarC(beancliente bCli) {
         beancliente bcliente = new beancliente();
         daocliente dcliente = new daocliente();
@@ -59,6 +35,22 @@ public class logiccliente {
         }
     }
 
+    public String actualizar(beancliente cli) {
+        beancliente bcliente = new beancliente();
+        daocliente dcliente = new daocliente();
+
+        bcliente.setIdcliente(cli.getIdcliente());
+        bcliente.setDnicli(cli.getDnicli());
+        bcliente.setNombrecli(cli.getNombrecli());
+        bcliente.setApellidocli(cli.getApellidocli());
+        bcliente.setTelefonocli(cli.getTelefonocli());
+        bcliente.setSexocli(cli.getSexocli());
+        bcliente.setIngresocli(cli.getIngresocli());
+        bcliente.setCorreocli(cli.getCorreocli());
+
+        return dcliente.actualizar(bcliente);
+    }
+
     public String eliminarC(int idcliente) {
         daocliente dcliente = new daocliente();
         return dcliente.eliminar(idcliente);
@@ -67,6 +59,14 @@ public class logiccliente {
     public List listarC() {
         daocliente dcliente = new daocliente();
         return dcliente.listar();
+    }
+
+    public String actualizarclave(beancliente cli, String clavenueva) {
+        beancliente bcliente = new beancliente();
+        daocliente dcliente = new daocliente();
+        bcliente.setClavecli(cli.getClavecli());
+        bcliente.setIdcliente(cli.getIdcliente());
+        return dcliente.actualizarclave(bcliente, clavenueva);
     }
 
 }

@@ -3,7 +3,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
         <link href="css/logeo.css" rel="stylesheet" type="text/css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Garfasoft/login</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark navbar-light sticky-top">
@@ -30,7 +30,7 @@
             <img src="imagenes/im1.jpg" class="img-fluid" alt="Responsive image">
             <div  class="hijo">
                 <div class="hijo-1">
-                    <h1>SOFTWARE PARA MONITORIA ACTIVIDADES</h1>
+                    <h1>SOFTWARE PARA MONITOREO DE ACTIVIDADES</h1>
                 </div>
             </div>   
         </section>
@@ -41,13 +41,13 @@
             <div class="cards" style="width: 18rem;">
                 <div class="card-body " data-toggle="modal" data-target="#adminModal">  
                     <div class="icono"> <i class="fas fa-user-tie border border-white"></i> </div>
-                    <div class="text mt-1" > ADMINISTRADOR</div>
+                    <div class="text mt-1">ADMINISTRADOR</div>
                 </div>
             </div>
             <div class="cards" style="width: 18rem;">
                 <div class="card-body " data-toggle="modal" data-target="#clienteModal">
                     <div class="icono"><i class=" border border-white fas fa-users  "></i> </div>
-                    <div class="text mt-1"> CLIENTES</div>    
+                    <div class="text mt-1">CLIENTES</div>    
                 </div>
             </div>
             <div class="cards" style="width: 18rem;">
@@ -183,6 +183,4 @@
         }
 
     </script>
-
-
 </html>

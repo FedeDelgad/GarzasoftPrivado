@@ -63,7 +63,6 @@ public class daocliente {
         return bcli;
     }
 
-    /*metodo actualizar cliente*/
     public String actualizar(beancliente cliente) {
         String out;
         String sql = "update cliente set dni=?,nombre=?,apellido=?,telefono=?,genero=?,fechaIngreso=?,correo=? where idcliente=?";

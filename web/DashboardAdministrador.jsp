@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
         <link href="css/admi-principal.css" rel="stylesheet" type="text/css"/>
-
         <title>Dashboard/Administrador</title>
     </head>
     <body>
@@ -24,7 +23,7 @@
                 </section>
                 <section class="s-menu">
                     <div>
-                        <a href="VistaInicioAdmin.jsp" target="myFrame"><i class="las la-home"></i> <span>Inicio</span></a> 
+                        <a href="VistaInicioAdmin.jsp" target="myFrame"><i class="las la-home"></i><span>Inicio</span></a> 
                     </div>
                     <div>
                         <a href="controladoradministrador?accion=perfil&idadministrador=${administrador.getIdadministrador()}" target="myFrame"><i class="las la-user"></i><span>Perfil</span></a> 
@@ -37,14 +36,14 @@
                         </a> 
                         <section class="dentro1-1">
                             <div><a href="#" >Desarrollo</a></div>
-                            <div><a  href="a">Soporte</a></div>
+                            <div><a  href="#">Soporte</a></div>
                         </section>    
                     </div>
                     <div>
                         <a href="controladorcliente?accion=listar" target="myFrame"><i class="las la-users"></i><span>Clientes</span></a> 
                     </div>
                     <div>
-                        <a href="CrudTrabajador.jsp" target="myFrame"><i class="las la-users"></i><span>Trabajadores</span></a> 
+                        <a href="controladortrabajador?accion=listar" target="myFrame"><i class="las la-users"></i><span>Trabajadores</span></a> 
                     </div>
                     <div>
                         <a href="validaradministrador?accion=cerrar"><i class="las la-door-open"></i><span>Salir</span></a> 
@@ -77,13 +76,11 @@
         </div>
         <input type="hidden" id="msj" value="${rpta1}">
     </body>
-    
     <script src="https://kit.fontawesome.com/ef7654b222.js" crossorigin="anonymous"></script>   
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   
     <script>
         var msj = document.getElementById("msj").value;
         if (msj) {
@@ -110,5 +107,5 @@
         };
         lista.addEventListener('click', lis);
     </script>
-    
+
 </html>
