@@ -19,9 +19,16 @@ public class logiccliente {
     public String actualizar(beancliente cli) {
         beancliente bcliente = new beancliente();
         daocliente dcliente = new daocliente();
-        bcliente.setTelefonocli(cli.getTelefonocli());
-        bcliente.setCorreocli(cli.getCorreocli());
+        
         bcliente.setIdcliente(cli.getIdcliente());
+        bcliente.setDnicli(cli.getDnicli());
+        bcliente.setNombrecli(cli.getNombrecli());
+        bcliente.setApellidocli(cli.getApellidocli());
+        bcliente.setTelefonocli(cli.getTelefonocli());
+        bcliente.setSexocli(cli.getSexocli());
+        bcliente.setIngresocli(cli.getIngresocli());
+        bcliente.setCorreocli(cli.getCorreocli());
+        
         return dcliente.actualizar(bcliente);
     }
 

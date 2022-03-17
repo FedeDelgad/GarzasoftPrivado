@@ -41,7 +41,7 @@
                         </section>    
                     </div>
                     <div>
-                        <a href="CrudCliente.jsp" target="myFrame"><i class="las la-users"></i><span>Clientes</span></a> 
+                        <a href="controladorcliente?accion=listar" target="myFrame"><i class="las la-users"></i><span>Clientes</span></a> 
                     </div>
                     <div>
                         <a href="CrudTrabajador.jsp" target="myFrame"><i class="las la-users"></i><span>Trabajadores</span></a> 

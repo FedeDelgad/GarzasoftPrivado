@@ -2,11 +2,9 @@ package dao;
 
 import bean.beantrabajador;
 import config.conexion;
-import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import static java.lang.System.out;
 import java.sql.SQLException;
 
 /**

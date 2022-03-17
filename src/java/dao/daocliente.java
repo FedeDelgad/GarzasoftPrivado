@@ -62,17 +62,22 @@ public class daocliente {
         }
         return bcli;
     }
-    
+
     /*metodo actualizar cliente*/
-    public String actualizar(beancliente cli) {
+    public String actualizar(beancliente cliente) {
         String out;
-        String sql = "update cliente set telefono=? , correo=? where idcliente=?";
+        String sql = "update cliente set dni=?,nombre=?,apellido=?,telefono=?,sexo=?,ingreso=?,correo=? where idcliente=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, cli.getTelefonocli());
-            ps.setString(2, cli.getCorreocli());
-            ps.setInt(3, cli.getIdcliente());
+            ps.setString(1, cliente.getDnicli());
+            ps.setString(2, cliente.getNombrecli());
+            ps.setString(3, cliente.getApellidocli());
+            ps.setString(4, cliente.getTelefonocli());
+            ps.setString(5, cliente.getSexocli());
+            ps.setString(6, cliente.getIngresocli());
+            ps.setString(7, cliente.getCorreocli());
+            ps.setInt(8, cliente.getIdcliente());
             ps.executeUpdate();
             out = "Correcto...";
         } catch (SQLException e) {
@@ -98,30 +103,29 @@ public class daocliente {
         }
         return out;
     }
-    
+
     public List listar() {
         ArrayList<beancliente> listac = new ArrayList<>();
-        String sql = "select * from cliente";
+        String sql = "select*from cliente where elimina='activo'";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 beancliente cliB = new beancliente();
+                cliB.setIdcliente(rs.getInt("idcliente"));
                 cliB.setNombrecli(rs.getString("nombre"));
                 cliB.setApellidocli(rs.getString("apellido"));
                 cliB.setTelefonocli(rs.getString("telefono"));
                 cliB.setCorreocli(rs.getString("correo"));
                 cliB.setClavecli(rs.getString("clave"));
                 cliB.setIngresocli(rs.getString("ingreso"));
-                cliB.setCondicioncli("nuevo");
-                cliB.setEliminacli("activo");
+                cliB.setCondicioncli("condicion");
                 cliB.setDnicli(rs.getString("dni"));
                 cliB.setSexocli(rs.getString("sexo"));
-                
                 listac.add(cliB);
             }
-        }  catch (SQLException e) {
+        } catch (SQLException e) {
             out.print("ERROR" + e);
         }
         return listac;
@@ -130,21 +134,21 @@ public class daocliente {
     public String agregar(beancliente clienteB) {
         String out;
         String sql = "INSERT INTO cliente (nombre, apellido, telefono, correo, clave, ingreso, condicion, elimina, dni, sexo)"
-                + "VALUES ('" +clienteB.getNombrecli()+ "','" +clienteB.getApellidocli()+ "', '" +clienteB.getTelefonocli()+ 
-                            "','"+clienteB.getCorreocli()+"','" +clienteB.getClavecli()+ "','" +clienteB.getIngresocli()+
-                            "','" +clienteB.getCondicioncli()+ "','" +clienteB.getEliminacli()+ "','" +clienteB.getDnicli()+ 
-                            "','" +clienteB.getSexocli()+"')";
+                + "VALUES ('" + clienteB.getNombrecli() + "','" + clienteB.getApellidocli() + "', '" + clienteB.getTelefonocli()
+                + "','" + clienteB.getCorreocli() + "','" + clienteB.getClavecli() + "','" + clienteB.getIngresocli()
+                + "','" + clienteB.getCondicioncli() + "','" + clienteB.getEliminacli() + "','" + clienteB.getDnicli()
+                + "','" + clienteB.getSexocli() + "')";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
-            out="Agregado correctamente...";
-        } catch (Exception e) {
-            out="Error" + e.getMessage();
+            out = "Agregado correctamente...";
+        } catch (SQLException e) {
+            out = "Error" + e.getMessage();
         }
         return out;
     }
-       
+
     public String eliminar(int idcliente) {
         String out;
         String sql = "DELETE from cliente where idcliente=" + idcliente;
@@ -154,13 +158,13 @@ public class daocliente {
             ps.executeUpdate();
             out = "Eliminado Correctamente";
 
-        } catch (Exception e) {
-            out="Error" + e.getMessage();
+        } catch (SQLException e) {
+            out = "Error" + e.getMessage();
         }
         return out;
     }
 
-    public boolean buscar(String dni){
+    public boolean buscar(String dni) {
         String sql = "SELECT * FROM cliente WHERE dni = " + dni;
         try {
             con = cn.getConnection();
