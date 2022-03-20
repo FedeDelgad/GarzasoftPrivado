@@ -67,6 +67,9 @@ public class controladortrabajador extends HttpServlet {
             case "eliminar":
                 eliminar(request, response);
                 break;
+            case "agregarproyecto":
+                agregarproyecto(request,response);
+                break;
             default:
                 throw new AssertionError();
         }
@@ -96,6 +99,13 @@ public class controladortrabajador extends HttpServlet {
         List<beantrabajador> listatrabajador = logic.listar();
         request.setAttribute("listaTrabajador", listatrabajador);
         request.getRequestDispatcher("CrudTrabajador.jsp").forward(request, response);
+    }
+    
+     public void agregarproyecto(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        List<beantrabajador> listatrabajadorproyecto = logic.listar();
+        request.setAttribute("listaTrabajadorpro", listatrabajadorproyecto);
+        request.getRequestDispatcher("ProyectoDesarrolloNuevo.jsp").forward(request, response);
     }
 
     public void modificar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

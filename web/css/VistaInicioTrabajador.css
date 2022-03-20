@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+body{
+    background: #E5E7E9 ;
+}
+
+/*cuerpo*/
+.cuerpo{
+    padding: 9px 10px 0px 10px;
+    justify-content: center;
+}
+.tr-2{
+    font-size: 45px;
+}
+
+.card{
+    margin: 6px;
+}
+
+.card-body .t-1
+{
+    color: #1F618D;
+}
+
+

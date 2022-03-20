@@ -14,7 +14,6 @@ public class daoadministrador {
     PreparedStatement ps;
     ResultSet rs;
 
-    /*validar Administrador */
     public beanadministrador validar(String dni, String clave) {
         beanadministrador badm = new beanadministrador();
         String sql = "select * from administrador where dni=? and clave=?";
@@ -37,7 +36,6 @@ public class daoadministrador {
         return badm;
     }
 
-    /*capturar a administrador*/
     public beanadministrador administrador(int idadministrador) {
         beanadministrador badm = new beanadministrador();
         String sql = "select *from administrador where idadministrador=" + idadministrador;
@@ -61,7 +59,6 @@ public class daoadministrador {
         return badm;
     }
 
-    /* metodo para actualizar clave*/
     public String actualizarclave(beanadministrador admi, String clavenueva) {
         String out;
         String sql = "Update administrador set clave=? where idadministrador=? and clave=?";
@@ -73,7 +70,7 @@ public class daoadministrador {
             ps.setString(3, admi.getClaveadmi());
             ps.executeUpdate();
             out = "Correcto...";
-        } catch (Exception e) {
+        } catch (SQLException e) {
             out = "Error" + e.getMessage();
         }
 

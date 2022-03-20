@@ -105,7 +105,7 @@ public class daocliente {
 
     public List listar() {
         ArrayList<beancliente> listac = new ArrayList<>();
-        String sql = "select*from cliente where elimina='activo'";
+        String sql = "select*from cliente where estado='activo'";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class daocliente {
 
     public String agregar(beancliente cliente) {
         String out;
-        String sql = "INSERT INTO cliente (dni,nombre,apellido,telefono,genero,fechaIngreso,correo,clave,condicion,elimina) values(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente (dni,nombre,apellido,telefono,genero,fechaIngreso,correo,clave,condicion,estado) values(?,?,?,?,?,?,?,?,?,?)";
 
         try {
             con = cn.getConnection();

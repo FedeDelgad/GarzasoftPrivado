@@ -62,7 +62,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-2 col-sm-8 ml-5" >
                     <div class="modal-body">
-                        <form class="form-sign" action="validaradministrador?" method="post">
+                        <form class="form-sign" action="controladorLogin?accion=Admin" method="post">
                             <div class="form-group text-center">
                                 <h3 style="font-size:20px; text-align: center ">ADMINISTRADOR</h3>
                                 <i style="font-size: 100px; color: #A1A7A7" class="fas fa-user-circle nav-link" ></i> 
@@ -74,7 +74,7 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" name="usuario" placeholder="Usuario" required="true">
+                                    <input type="text" class="form-control" name="usuario" required="true">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -83,10 +83,10 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" class="form-control" name="password" placeholder="Contraseña" required="true">
+                                    <input type="password" class="form-control" name="clave" required="true">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block mt4" name="accion" value="ingresar">Ingresar</button>
+                            <button type="submit" class="btn btn-primary btn-block mt4">Ingresar</button>
                         </form>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-2 col-sm-8 ml-5">
                     <div class="modal-body">
-                        <form class="form-sign" action="validarcliente?" method="post">
+                        <form class="form-sign" action="controladorLogin?accion=cliente" method="post">
                             <div class="form-group text-center">
                                 <h3 style="font-size:20px; text-align: center ">CLIENTE</h3>
                                 <i style="font-size: 100px;color: #A1A7A7" class="fas fa-user-circle nav-link" ></i>
@@ -118,10 +118,10 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                                    <input type="password" class="form-control" name="clave" placeholder="Contraseña">
                                 </div>
                             </div>
-                            <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block mt-4" >
+                            <button type="submit" class="btn btn-primary btn-block mt4">Ingresar</button>
                         </form>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-2 col-sm-8 ml-5">
                     <div class="modal-body">
-                        <form class="form-sign" action="validartrabajador" method="post">
+                        <form class="form-sign" action="controladorLogin?accion=trabajador" method="post">
                             <div class="form-group text-center">
                                 <h3 style="font-size:20px; text-align: center ">TRABAJADOR</h3>
                                 <i style="font-size: 100px; color:#A1A7A7 " class="fas fa-user-circle nav-link" ></i>
@@ -153,36 +153,21 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                                    <input type="password" class="form-control" name="clave" placeholder="Contraseña">
                                 </div>
                             </div>
-                            <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block mt-4" >
+                            <button type="submit" class="btn btn-primary btn-block mt4">Ingresar</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <input type="hidden" id="mensaje" value="${rpta2}">
+        <input type="hidden" id="mensaje" value="${respuesta}">
     </body>
     <script src="https://kit.fontawesome.com/ef7654b222.js" crossorigin="anonymous"></script>  
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!--
-    <script>
-        var mensaje = document.getElementById("mensaje").value;
-        if (mensaje) {
-            Swal.fire({
-                icon: 'warning',
-                title: mensaje,
-                text: 'Ingrese sus datos nuevamente',
-                confirmButtonColor: '#2874A6 ',
-                confirmButtonText: 'Aceptar',
-                width: '30%'
-            });
-        }
-
-    </script>
-    -->
+    <script src="js/login.js" type="text/javascript"></script>
 </html>

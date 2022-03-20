@@ -17,7 +17,7 @@
                 <section class="d-flex img ">
                     <img  class=" bg-white rounded-circle" src="imagenes/img.1.png" width="60px" height="60px"/>
                     <div class="lr" >
-                        <div class="lr-1 text-center text-white">Bienvenido:</div>
+                        <div class="lr-1 text-center text-white">Administrador:</div>
                         <div class="lr-2 text-white">${administrador.getNombreadmi()}</div>
                     </div>
                 </section>
@@ -35,8 +35,8 @@
                             <i class="las la-angle-right flecha" style="font-size:15px"></i>
                         </a> 
                         <section class="dentro1-1">
-                            <div><a href="#" >Desarrollo</a></div>
-                            <div><a  href="#">Soporte</a></div>
+                            <div><a href="CrudProyectoDesarrollo.jsp" target="myFrame">Desarrollo</a></div>
+                            <div><a href="controladorproyecto?accion=soporte" target="myFrame">Soporte</a></div>
                         </section>    
                     </div>
                     <div>
@@ -46,7 +46,7 @@
                         <a href="controladortrabajador?accion=listar" target="myFrame"><i class="las la-users"></i><span>Trabajadores</span></a> 
                     </div>
                     <div>
-                        <a href="validaradministrador?accion=cerrar"><i class="las la-door-open"></i><span>Salir</span></a> 
+                        <a href="controladorLogin?accion=cerrar"><i class="las la-door-open"></i><span>Salir</span></a> 
                     </div>
                 </section>
             </section>
@@ -62,7 +62,7 @@
                                     <div class="dropdown-menu dropdown-menu-right text-center submenu" aria-labelledby="navbarDropdownMenuLink ">
                                         <a class="dropdown-item text-center" href="controladoradministrador?accion=perfil&idadministrador=${administrador.getIdadministrador()}"><i class="las la-user" style="font-size:21px"></i> Perfil</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="validaradministrador?accion=cerrar"> <i class="las la-power-off" style="font-size:20px" ></i> salir</a>
+                                        <a class="dropdown-item" href="controladorLogin?accion=cerrar"> <i class="las la-power-off" style="font-size:20px" ></i> salir</a>
                                     </div>
                                 </li>
                             </div>
@@ -81,6 +81,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
         var msj = document.getElementById("msj").value;
         if (msj) {

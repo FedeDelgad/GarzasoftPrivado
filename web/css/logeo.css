@@ -83,3 +83,15 @@ body{
 .navbar-toggler span{
     color: black;
 }
+
+#loginAdmin{
+    display: none;
+}
+
+#loginTrabajador{
+    display: none;
+}
+
+#loginCliente{
+    display: none;
+}

@@ -6,9 +6,9 @@ import java.util.List;
 
 public class logiccliente {
 
-    public beancliente validar(String dni, String contra) {
+    public beancliente validar(String usuario, String clave) {
         daocliente dacli = new daocliente();
-        return (dacli.validar(dni, contra));
+        return (dacli.validar(usuario, clave));
     }
 
     public beancliente cliente(int idcliente) {

@@ -32,6 +32,10 @@
         <servlet-name>controladorcliente</servlet-name>
         <servlet-class>controlador.controladorcliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controladorLogin</servlet-name>
+        <servlet-class>controlador.controladorLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>validar</servlet-name>
         <url-pattern>/validar</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>controladorcliente</servlet-name>
         <url-pattern>/controladorcliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controladorLogin</servlet-name>
+        <url-pattern>/controladorLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

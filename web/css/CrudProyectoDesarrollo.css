@@ -1,0 +1,39 @@
+body{
+    background-color: #E5E7E9;
+}
+
+.ma-1{
+    color:#1F618D;
+    
+}
+.btn-1{
+    background: #1F618D;
+}
+.btn-1:hover{
+    background:#2A7EB6   ;
+}
+.mod-h{
+    background: #1F618D;
+}
+
+.col-r{
+    word-wrap: break-word;
+}
+
+table .col-r:first-child{
+    width: 50px;
+    text-align: center;
+}
+
+table .col-r:last-child{
+    width: 150px;
+}
+
+#formulario{
+    display: none;
+}
+
+#tabladatos{
+    display: block;
+}
+

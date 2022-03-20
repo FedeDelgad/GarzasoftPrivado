@@ -11,74 +11,63 @@
     <body style="background-color: #E5E7E9; overflow-x: hidden ">
         <input type="hidden" id="msj2" value="${rpta}">
         <div class=" cuerpo pl-4 pr-4 pt-4 pb-2 ">
-            <div class="ma-1 h4 pt-1 pb-3 ml- mr-"><i class="fas fa-user"></i> Perfil  del Usuario</div>
             <section class="d-flex cards" style="justify-content: center">
-                <div class="card p-3" style="width: 47rem;">
+                <div class="card p-3 mb-3" style="width: 100%">
                     <div class="card-body">
                         <h5 class="card-title mt-3 mb-4"><i class="fa-solid fa-user-pen"></i> Datos Personales</h5>
                         <form action="controladoradministrador" id="formulario" method="post">
                             <input type="hidden" name="idadministrador" value="${administrador.getIdadministrador()}">
                             <input  type="hidden" name="clave" id="idclave" value="${administrador.getClaveadmi()}">
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="idnombre" class=" pb-1 ">Nombres : </label>
+                                <div class="form-group col-md-4">
+                                    <label for="idnombre" class=" pb-1 ml-2">Nombres : </label>
                                     <input type="text" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1 read" id="idnombre" value="${unadministrador.getNombreadmi()}" readonly>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="idapellido" class=" pb-1 ">Apellidos : </label>
+                                <div class="form-group col-md-4">
+                                    <label for="idapellido" class=" pb-1 ml-2">Apellidos : </label>
                                     <input type="text" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1 read" id="idapellido" value="${unadministrador.getApellidosadmi()}" readonly>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="iddni" class=" pb-1 ml-2" >Dni : </label>
+                                    <input type="text" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1 read" id="iddni" value="${unadministrador.getDniadmi()}" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="iddni" class=" pb-1 " >Dni : </label>
-                                    <input type="text" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1 read" id="iddni" value="${unadministrador.getDniadmi()}" readonly>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="idtelefono" class=" pb-1 " >Telefono : </label>
+                                <div class="form-group col-md-4">
+                                    <label for="idtelefono" class=" pb-1 ml-2" >Telefono : </label>
                                     <input type="text" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1" id="idtelefoni" name="telefono" value="${unadministrador.getTelefonoadmi()}">
                                 </div>
+                                <div class="form-group col-md-8">
+                                    <label for="idcorreo" class=" pb-1 ml-2">Correo : </label>
+                                    <input type="text" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1" id="idcorreo" name="correo" value="${unadministrador.getCorreoadmi()}">
+                                </div>
                             </div>
-                            <div class="form-group ">
-                                <label for="idcorreo" class=" pb-1 ">Correo : </label>
-                                <input type="text" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1" id="idcorreo" name="correo" value="${unadministrador.getCorreoadmi()}">
-                            </div>
+
                             <h5 class="card-title mb-4" style="margin-top: 33px"><i class="fa-solid fa-lock"></i> Cambiar Contraseña</h5>
                             <div class="form-row">
                                 <p class="card-text pt-2 pb-3 pl-3 pr-3">Para actualizar la contraseña de esta cuenta debera ingresar la contraseña actual, una nueva y volverla a escribir. En caso que no desee actualizarla debe dejar los 3 campos vacios</p>
                                 <div class="form-group col-md-4">
-                                    <label for="idcontraseña" class=" pb-1 " >Contraseña Actual : </label>
+                                    <label for="idcontraseña" class=" pb-1 ml-2" >Contraseña Actual : </label>
                                     <input type="password" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1" id="idclaveantigua" name="claveantigua" placeholder="Ingrese Contraseña Actual">
                                     <div class=" invalid-feedback  text-danger pl-2 mt-2" id="no_valido"><i class="fa-solid fa-circle-exclamation"></i>  Ingrese contraseña correcta </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="idcontraseña" class=" pb-1 ">Contraseña Nueva : </label>
+                                    <label for="idcontraseña" class=" pb-1 ml-2">Contraseña Nueva : </label>
                                     <input type="password" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1" id="idclavenueva" name="clavenueva" placeholder="Ingrese Contraseña Nueva">
                                     <div class="invalid-feedback  ml-2 text-danger pl-2 mt-2" id="no_valido1"><i class="fa-solid fa-circle-exclamation"></i> Ambas contraseñas deben ser igual </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="idcontraseña" class=" pb-1 ">Repita Contraseña Nueva : </label>
+                                    <label for="idcontraseña" class=" pb-1 ml-2">Repita Contraseña Nueva : </label>
                                     <input type="password" class="pb-1 pt-1 pl-2 pr-2 w-100 m-1" id="idclavenuevar" name="rclavenueva" placeholder="Repita Contraseña Nueva">
                                     <div class="invalid-feedback  ml-2 text-danger pl-2 mt-2" id="no_valido2"><i class="fa-solid fa-circle-exclamation"></i> Ambas contraseñas deben ser igual </div>
                                 </div>
-
                             </div>
-                            <button type="submit " name="accion" value="actualizar" class="btn btn-primary float-right mt-5  mb-2 pl-5 pr-5 pb-2 pt-2 "><i class="fa-regular fa-floppy-disk mr-1 ml-1" style="font-size: 22px"></i>  ACTUALIZAR</button>
+                            <div class="form-group col-md-4 float-right">
+                                <button type="submit " name="accion" value="actualizar" class="btn btn-primary" style="width: 105%"><i class="fa-regular fa-floppy-disk mr-1 ml-1" style="font-size: 22px"></i>  ACTUALIZAR</button>
+                            </div>
                         </form>
                     </div>
                 </div>
-                <div class="card" style="width: 20rem; height:350px">
-                    <div class="card-body perfil text-center" style="height: 200px ">
-                        <img  class=" bg-white rounded-circle mt-4" src="imagenes/icon2.png" width="90px" height="90px"/>
-                        <h5 class="pt-4 text-white">Administrador</h5>
-                        <p class="text-white mb-3">${unadministrador.getCorreoadmi()}</p>
-
-                    </div>
-                    <div class="card-body" >
-
-                    </div>
-                </div> 
-
 
             </section>
         </div>

@@ -14,9 +14,9 @@ import dao.daoadministrador;
  */
 public class logicadministrador {
    
-     public beanadministrador validar(String dni , String contra){
+     public beanadministrador validar(String usuario , String clave){
         daoadministrador daadm =new daoadministrador();
-        return (daadm.validar(dni, contra));
+        return (daadm.validar(usuario, clave));
     }
     
    public beanadministrador administrador(int idadmnistrador){

@@ -6,9 +6,9 @@ import java.util.List;
 
 public class logictrabajador {
 
-    public beantrabajador validar(String dni, String contra) {
+    public beantrabajador validar(String usuario, String clave) {
         daotrabajador datrab = new daotrabajador();
-        return (datrab.validar(dni, contra));
+        return (datrab.validar(usuario, clave));
     }
 
     public beantrabajador trabajador(int idtrabajador) {
