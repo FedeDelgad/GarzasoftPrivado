@@ -46,7 +46,7 @@
                   </a> 
              </div>
               <div>
-                  <a href="validarcliente?accion=cerrarCliente">
+                  <a href="controladorLogin?accion=cerrar">
                          <i class="las la-door-open"></i>
                         <span>Salir</span> 
                   </a> 
@@ -69,7 +69,7 @@
                         <a class="dropdown-item text-center" href="cli-perfil.jsp"><i class="las la-user" style="font-size:21px"></i> Perfil</a>
                        <div class="dropdown-divider"></div>
                        
-                      <a class="dropdown-item" href="validarcliente?accion=cerrarCliente"> <i class="las la-power-off "style="font-size:20px"></i> salir</a>
+                      <a class="dropdown-item" href="controladorLogin?accion=cerrar"> <i class="las la-power-off "style="font-size:20px"></i> salir</a>
                       
                     </div>
                   </li>

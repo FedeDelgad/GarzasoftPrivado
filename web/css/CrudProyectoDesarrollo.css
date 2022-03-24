@@ -4,7 +4,7 @@ body{
 
 .ma-1{
     color:#1F618D;
-    
+
 }
 .btn-1{
     background: #1F618D;
@@ -35,5 +35,10 @@ table .col-r:last-child{
 
 #tabladatos{
     display: block;
+}
+
+table tr td .datos{
+    border: none;
+    width: 60px;
 }
 

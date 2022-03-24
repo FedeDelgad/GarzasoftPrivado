@@ -23,7 +23,7 @@
                 </section>
                 <section class="s-menu">
                     <div>
-                        <a href="VistaInicioAdmin.jsp" target="myFrame"><i class="las la-home"></i><span>Inicio</span></a> 
+                        <a href="controladorproyecto?accion=inicio" target="myFrame"><i class="las la-home"></i><span>Inicio</span></a> 
                     </div>
                     <div>
                         <a href="controladoradministrador?accion=perfil&idadministrador=${administrador.getIdadministrador()}" target="myFrame"><i class="las la-user"></i><span>Perfil</span></a> 
@@ -35,7 +35,7 @@
                             <i class="las la-angle-right flecha" style="font-size:15px"></i>
                         </a> 
                         <section class="dentro1-1">
-                            <div><a href="CrudProyectoDesarrollo.jsp" target="myFrame">Desarrollo</a></div>
+                            <div><a href="controladorproyecto?accion=listar" target="myFrame">Desarrollo</a></div>
                             <div><a href="controladorproyecto?accion=soporte" target="myFrame">Soporte</a></div>
                         </section>    
                     </div>
@@ -70,7 +70,7 @@
                     </nav>
                 </div>
                 <div style="height: 555px">
-                    <iframe src="VistaInicioAdmin.jsp" name="myFrame" style="height: 100%; width: 100%; border:none; margin-bottom: 15px"></iframe>
+                    <iframe src="controladorproyecto?accion=inicio" name="myFrame" style="height: 100%; width: 100%; border:none; margin-bottom: 15px"></iframe>
                 </div>
             </section>
         </div>

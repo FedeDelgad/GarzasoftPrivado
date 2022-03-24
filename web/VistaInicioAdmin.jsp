@@ -1,4 +1,6 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -57,14 +59,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td >Sistema Veterinario</td>
-                                <td>19/02/2022</td>
-                                <td>04/04/2022</td>
-                                <td class="m-0 p-1">
-                                    <div class="card  text-white bg-danger p-1 text-center" style="width: 7rem; font-weight:600; border: none">PENDIENTE</div>
-                                </td>
-                            </tr>
+                            <c:forEach var="lista" items="${listainicio}">
+                                <tr>
+                                    <td>${lista.getNombre()}</td>
+                                    <td>${lista.getInicio()}</td>
+                                    <td>${lista.getFin()}</td>
+                                    <td class="m-0 p-1">
+                                        <div class="card  text-white bg-danger p-1 text-center" style="width: 7rem; font-weight:600; border: none">${lista.getEstado()}</div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>

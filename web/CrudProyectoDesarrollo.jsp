@@ -13,56 +13,8 @@
     <body>     
         <div class=" cuerpo pl-4 pr-4 pt-4 pb-2 " >
             <div class=" d-inline h4 ma-1 pl-2 "><i class="fas fa-user"></i>Lista de Proyectos de Desarrollo</div>
-            <!--Modal Registrar-->
-            <button type="button" class="btn text-white float-right btn-1" data-toggle="modal" data-target="#perfectivo"><i class="fas fa-plus"></i> De Mantenimiento Perfectivo</button>
-            <a href="ProyectoDesarrolloNuevo.jsp" class="btn text-white float-right btn-success mr-2" target="myFrame"><i class="fas fa-plus"></i> Proyecto Nuevo</a>
-            <!--modal proyecto nuevo-->
-            <div class="modal fade" id="nuevo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl" role="document">
-                    <div class="modal-content ">
-                        <div class="modal-header mod-h p-3 ">
-                            <h4 class="modal-title  text-white" id="exampleModalLabel">Proyecto Nuevo</h4>
-                            <div style="border: none" class="close  text-white mr-2" data-dismiss="modal" aria-label="Close">
-                                &times;
-                            </div>
-                        </div>
-                        <div class="modal-body">
-                            <form  action="controladorproyecto?accion=agregarNuevo" method="post">
-                                <h3>Agregue los requerimientos funcionales</h3>
-                                <div class="form-group">
-                                    <label for="inputtext">Nombre</label>
-                                    <div class="d-flex">
-                                        <input type="text" class="form-control"  name="dni" autocomplete="off" required="true">
-                                        <button type="submit" class="btn btn-primary ml-2">Agregar</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class=" table-responsive">
-                                <table class="table">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th class="col-r text-center">Numero</th>
-                                            <th class="col-r">Nombre</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-r text-center">1</td>
-                                            <td class="col-r">Agregar cliente</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-r text-center">2</td>
-                                            <td class="col-r">Modificar Cliente</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--modal de mantenimiento perfectivo-->
-
+            <a href="controladorprotecto?accion=cargarDatos" class="btn text-white float-right btn-1" target="myFrame"><i class="fas fa-plus"></i> De Mantenimiento Perfectivo</a>
+            <a href="controladorproyecto?accion=cargarDatos" class="btn text-white float-right btn-success mr-2" target="myFrame"><i class="fas fa-plus"></i> Proyecto Nuevo</a>         
             <hr class="mt-4" style="background: #1F618D">
             <div >
                 <div class="card " style="border: none ">
@@ -80,103 +32,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="lista" items="${listaTrabajador}">
+                                <c:forEach var="lista" items="${listadesarrollo}">
                                     <tr>
-                                        <td>${lista.getDni()}</td>
                                         <td>${lista.getNombre()}</td>
-                                        <td>${lista.getApellido()}</td>
-                                        <td>${lista.getTelefono()}</td>
-                                        <td>${lista.getCorreo()}</td>
-                                        <td>${lista.getCondicion()}</td>
+                                        <td>${lista.getInicio()}</td>
+                                        <td>${lista.getFin()}</td>
+                                        <td>${lista.getNombreTrabajador()}</td>
+                                        <td>${lista.getNombreCliente()}</td>
+                                        <td>${lista.getEstado()}</td>
                                         <td  >
-                                            <a class="btn btn-warning text-white " style="font-size: 17px" id="actualizar" data-toggle="modal" data-target="#modificar${lista.getIdtrabajador()}"><i class="fas fa-edit"></i></a>  
-                                            <!--modal actualizar-->  
-                                            <div class="modal fade" id="modificar${lista.getIdtrabajador()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content col-sm-11 p-0">
-                                                        <div class="modal-header mod-h p-3 ">
-                                                            <h4 class="modal-title  text-white"><i class="fas fa-user"></i> Actualizar Trabajador</h4>
-                                                            <div style="border: none" class="close  text-white mr-2" data-dismiss="modal" aria-label="Close">
-                                                                &times;
-                                                            </div>
-                                                        </div>
-                                                        <form  action="controladortrabajador?accion=modificar" method="post">
-                                                            <div class="modal-body">
-                                                                <input type="hidden" name="id" value="${lista.getIdtrabajador()}">
-                                                                <div class="form-row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label for="inputtext">Dni</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-prepend">
-                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-address-card"></i></span>
-                                                                            </div>
-                                                                            <input type="text" class="form-control"  name="dni" autocomplete="off" required="true" value="${lista.getDni()}">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label for="inputtext">Nombre</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-prepend">
-                                                                                <span style="font-size: 20px"class="input-group-text"  ><i class="las la-user "></i></span>
-                                                                            </div>
-                                                                            <input type="text" class="form-control"  name="nombre" autocomplete="off" required="true" value="${lista.getNombre()}">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label for="inputtext">Apellido</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-prepend">
-                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-user "></i></span>
-                                                                            </div>
-                                                                            <input type="text" class="form-control"  name="apellido" autocomplete="off" required="true" value="${lista.getApellido()}">
-                                                                        </div>
-                                                                    </div>  
-                                                                    <div class="form-group col-md-6">
-                                                                        <label for="inputtext">Telefono o Celular</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-prepend">
-                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-phone-alt"></i></span>
-                                                                            </div>
-                                                                            <input type="text" class="form-control" name="telefono" autocomplete="off" required="true" value="${lista.getTelefono()}">
-                                                                        </div>
-                                                                    </div> 
-                                                                </div>
-                                                                <div class="form-row">  
-                                                                    <div class="form-group col-md-6">
-                                                                        <label for="inputtext">Genero</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-prepend">
-                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-transgender"></i></span>
-                                                                            </div>
-                                                                            <input type="text" class="form-control" name="genero" readonly autocomplete="off" required="true" value="${lista.getSexo()}">
-                                                                        </div>
-                                                                    </div>                
-                                                                    <div class="form-group col-md-6">
-                                                                        <label for="inputtext">Fecha de Ingreso</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-prepend">
-                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-calendar"></i></span>
-                                                                            </div>
-                                                                            <input type="text" class="form-control" name="ingreso" autocomplete="off" required="true" value="${lista.getIngreso()}">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <label for="inputtext">Correo</label>
-                                                                <div class="input-group">
-                                                                    <div class="input-group-prepend">
-                                                                        <span style="font-size: 20px"class="input-group-text"  ><i class="las la-at"></i></span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control"  name="correo" autocomplete="off" required="true" value="${lista.getCorreo()}">
-                                                                </div>
-                                                                <button type="submit" class="btn  btn-block mt-3 btn-1 text-white" >Actualizar</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a href="controladortrabajador?accion=eliminar&id=${lista.getIdtrabajador()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="controladorproyecto?accion=editar&id=${lista.getIdProyecto()}" class="btn btn-warning text-white " style="font-size: 17px"><i class="fas fa-edit"></i></a>  
+                                            <a href="controladorproyecto?accion=eliminar&id=${lista.getIdProyecto()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
