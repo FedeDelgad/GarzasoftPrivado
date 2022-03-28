@@ -1,6 +1,6 @@
 package bean;
 
-public class beanproyectoDesarrollo {
+public class beanproyecto {
 
     private int idProyecto;
     private int idCliente;

@@ -129,7 +129,7 @@ public class daocliente {
         }
         return listac;
     }
-
+    
     public String agregar(beancliente cliente) {
         String out;
         String sql = "INSERT INTO cliente (dni,nombre,apellido,telefono,genero,fechaIngreso,correo,clave,condicion,estado) values(?,?,?,?,?,?,?,?,?,?)";

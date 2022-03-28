@@ -21,10 +21,10 @@ public class controladorproyecto extends HttpServlet {
     daocliente daocliente = new daocliente();
     logictrabajador logictra = new logictrabajador();
     logiccliente logicliente = new logiccliente();
-    logicproyectoDesarrollo logicdesarrollo = new logicproyectoDesarrollo();
+    logicproyecto logicproyecto = new logicproyecto();
+    logicdesarrollo logicdesarrollo = new logicdesarrollo();
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
         switch (accion) {
@@ -34,18 +34,31 @@ public class controladorproyecto extends HttpServlet {
             case "listar":
                 listar(request, response);
                 break;
+            case "listaDesarrollo":
+                listaDesarrollo(request, response);
+                break;
+            case "listarporlcliente":
+                listarporcliente(request, response);
+                break;
             case "inicio":
                 inicio(request, response);
                 break;
             case "capturarDatosTrabajdor":
-                capturarDatosTrabajador(request, response);
+                //capturarDatosTrabajador(request, response);
                 break;
             case "cargarDatos":
                 listaDatos(request, response);
                 break;
+            case "listarID":
+                listarID(request, response);
+                break;
+            case "requerimiento":
+                requerimiento(request, response);
+                break;
         }
     }
 
+    /*
     public void capturarDatosTrabajador(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter out = response.getWriter();
         //capturar datos
@@ -68,32 +81,64 @@ public class controladorproyecto extends HttpServlet {
         request.setAttribute("listaTrabajador", listaTrabajador);
         request.setAttribute("listaCliente", listaCliente);
         request.getRequestDispatcher("ProyectoDesarrolloNuevo.jsp").forward(request, response);
-    }
-
+    }*/
     public void agregarNuevo(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter out = response.getWriter();
-        beanproyectoDesarrollo nuevo = new beanproyectoDesarrollo();
+        String respuesta;
+        beanproyecto nuevo = new beanproyecto();
         try {
             nuevo.setIdCliente(Integer.parseInt(request.getParameter("idcliente")));
             nuevo.setIdTrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
-            nuevo.setNombre(request.getParameter("nombreproyecto"));
+            String nombre = request.getParameter("nombreproyecto");
+            nuevo.setNombre(nombre);
             nuevo.setInicio(request.getParameter("inicio"));
             nuevo.setFin(request.getParameter("fin"));
-            out.print(logicdesarrollo.agregarNuevo(nuevo));
+            respuesta = logicproyecto.agregar(nuevo);
+            if (respuesta.equals("true")) {
+                int iddesarrollo = logicproyecto.bucarPorNombre(nombre);
+                out.print(logicdesarrollo.agregarNuevo(iddesarrollo));
+                request.getRequestDispatcher("controladorproyecto?accion=listaDesarrollo").forward(request, response);
+            } else {
+                out.print("Error");
+                request.getRequestDispatcher("ProyectoDesarrolloNuevo.jsp").forward(request, response);
+            }
+
         } catch (NumberFormatException e) {
             out.print(e);
+            request.getRequestDispatcher("ProyectoDesarrolloNuevo.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("controladorproyecto?accion=listar").forward(request, response);
+
     }
 
     public void listar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        List<beanproyectoDesarrollo> listadesarrollo = logicdesarrollo.listar();
+        List<beanproyecto> listadesarrollo = logicproyecto.listar();
         request.setAttribute("listadesarrollo", listadesarrollo);
         request.getRequestDispatcher("CrudProyectoDesarrollo.jsp").forward(request, response);
     }
-    
+
+    public void listaDesarrollo(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        List<beandesarrollo> listadesarrollo = logicdesarrollo.listaDesarrollo();
+        request.setAttribute("listadesarrollo", listadesarrollo);
+        request.getRequestDispatcher("CrudProyectoDesarrollo.jsp").forward(request, response);
+    }
+
+    public void listarporcliente(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        int idcliente = Integer.parseInt(request.getParameter("idcliente"));
+        List<beanproyecto> listaprocli = logicproyecto.listarPorCliente(idcliente);
+        request.setAttribute("listaporcliente", listaprocli);
+        request.getRequestDispatcher("VistaInicioCliente.jsp").forward(request, response);
+    }
+
     public void inicio(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        List<beanproyectoDesarrollo> listadesarrollo = logicdesarrollo.listar();
+        List<beantrabajador> listatrabajador = logictra.listar();
+        List<beancliente> listacliente = logicliente.listarC();
+        List<beanproyecto> listadesarrollo = logicproyecto.listar();
+        int cantidadtrabajador = listatrabajador.size();
+        int cantidadcliente = listacliente.size();
+        int cantidadproyecto = listadesarrollo.size();
+        request.setAttribute("cantidadtrabajador", cantidadtrabajador);
+        request.setAttribute("cantidadcliente", cantidadcliente);
+        request.setAttribute("cantidadproyecto", cantidadproyecto);
         request.setAttribute("listainicio", listadesarrollo);
         request.getRequestDispatcher("VistaInicioAdmin.jsp").forward(request, response);
     }
@@ -105,6 +150,27 @@ public class controladorproyecto extends HttpServlet {
         request.setAttribute("listaTrabajador", listaTrabajador);
         request.setAttribute("listaCliente", listaCliente);
         request.getRequestDispatcher("ProyectoDesarrolloNuevo.jsp").forward(request, response);
+    }
+
+    public void listarID(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        int idpro = Integer.parseInt(request.getParameter("iddesarrollo"));
+        List<beandesarrollo> listad = logicdesarrollo.listarID(idpro);
+        int idproyecto = listad.get(0).getIddesarrollo();
+        String nombreproyecto = listad.get(0).getNombreproyecto();
+        String nombretrabajador = listad.get(0).getNombretrabajador();
+        String apellidotrabajador = listad.get(0).getApellidotrabajador();
+        String nombrecliente = listad.get(0).getNombrecliente();
+        String apellidocliente = listad.get(0).getApellidocliente();
+        request.setAttribute("idproyecto", idproyecto);
+        request.setAttribute("nombreproyecto", nombreproyecto);
+        request.setAttribute("datostrabajador", nombretrabajador+" "+apellidotrabajador);
+        request.setAttribute("datoscliente", nombrecliente+" "+apellidocliente);
+        request.getRequestDispatcher("Requerimientos.jsp").forward(request, response);
+    }
+
+    public void requerimiento(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
     }
 
     @Override

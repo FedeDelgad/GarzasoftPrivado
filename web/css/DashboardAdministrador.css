@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
 body{
     background: #E5E7E9 ;
+    overflow: hidden;
 }
 
 .parte1{

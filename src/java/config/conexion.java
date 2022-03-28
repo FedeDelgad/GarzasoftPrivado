@@ -7,6 +7,7 @@ package config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -21,7 +22,7 @@ public class conexion {
          
     
       con = DriverManager.getConnection("jdbc:mysql://localhost:3306/garzasoft", "root", "mysql");
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error" + e);
         }
     }

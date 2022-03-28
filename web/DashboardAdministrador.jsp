@@ -35,7 +35,7 @@
                             <i class="las la-angle-right flecha" style="font-size:15px"></i>
                         </a> 
                         <section class="dentro1-1">
-                            <div><a href="controladorproyecto?accion=listar" target="myFrame">Desarrollo</a></div>
+                            <div><a href="controladorproyecto?accion=listaDesarrollo" target="myFrame">Desarrollo</a></div>
                             <div><a href="controladorproyecto?accion=soporte" target="myFrame">Soporte</a></div>
                         </section>    
                     </div>
@@ -103,8 +103,7 @@
             console.log(menu.scrollHeight);/* ve el tamaño de menu*/
             if (menu.clientHeight == "0") {
                 height = menu.scrollHeight;
-            }
-            ;
+            };
             menu.style.height = height + "px";
         };
         lista.addEventListener('click', lis);

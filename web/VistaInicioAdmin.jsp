@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-body d-flex">
                         <div class="pl-3 pr-3 tr-1">
-                            <h1>54</h1>
+                            <h1>${cantidadproyecto}</h1>
                             <span>Proyectos</span>
                         </div>
                         <div class="tr-2">
@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-body d-flex">
                         <div class="pl-3 pr-3 tr-1">
-                            <h1>54</h1>
+                            <h1>${cantidadtrabajador}</h1>
                             <span>Trabajadores</span>
                         </div>
                         <div class="tr-2" >
@@ -37,7 +37,7 @@
                 <div class="card">
                     <div class="card-body d-flex">
                         <div class="pl-3 pr-3 tr-1">
-                            <h1>54</h1>
+                            <h1>${cantidadcliente}</h1>
                             <span>Clientes</span>
                         </div>
                         <div class="tr-2">

@@ -28,21 +28,97 @@
                                     <th scope="col">Trabajador</th>
                                     <th scope="col">Cliente</th>
                                     <th scope="col">Estado</th>
-                                    <th scope="col">Acciones</th>
+                                    <th scope="col" class="col-r text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <c:forEach var="lista" items="${listadesarrollo}">
                                     <tr>
-                                        <td>${lista.getNombre()}</td>
+                                        <td>${lista.getNombreproyecto()}</td>
                                         <td>${lista.getInicio()}</td>
                                         <td>${lista.getFin()}</td>
-                                        <td>${lista.getNombreTrabajador()}</td>
-                                        <td>${lista.getNombreCliente()}</td>
-                                        <td>${lista.getEstado()}</td>
-                                        <td  >
-                                            <a href="controladorproyecto?accion=editar&id=${lista.getIdProyecto()}" class="btn btn-warning text-white " style="font-size: 17px"><i class="fas fa-edit"></i></a>  
-                                            <a href="controladorproyecto?accion=eliminar&id=${lista.getIdProyecto()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
+                                        <td>${lista.getNombretrabajador()}</td>
+                                        <td>${lista.getNombrecliente()}</td>
+                                        <td>${lista.getEstadoproyecto()}</td>
+                                        <td class="col-r">
+                                            <a class="btn btn-warning text-white " style="font-size: 17px" id="actualizar" data-toggle="modal" data-target="#modificar${lista.getIddesarrollo()}"><i class="fas fa-edit"></i></a>
+                                            <div class="modal fade" id="modificar${lista.getIddesarrollo()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content col-sm-11 p-0">
+                                                        <div class="modal-header mod-h p-3 ">
+                                                            <h4 class="modal-title text-white">Actualizar Datos del Proyecto</h4>
+                                                            <div style="border: none" class="close  text-white mr-2" data-dismiss="modal" aria-label="Close">
+                                                                &times;
+                                                            </div>
+                                                        </div>
+                                                        <form  action="controladorproyecto?accion=actualizar" method="post">
+                                                            <div class="modal-body">
+                                                                <input type="hidden" name="id" value="${lista.getIddesarrollo()}">
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label>Nombre</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-address-card"></i></span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control"  name="nombre" value="${lista.getNombreproyecto()}" autocomplete="off" required="true">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-6">
+                                                                        <label>Fecha Inicio</label>
+                                                                        <div class="input-group">
+                                                                            <input type="date" class="form-control"  name="inicio" value="${lista.getInicio()}" autocomplete="off" required="true">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="inputtext">Fecha de finalizacion</label>
+                                                                        <div class="input-group">
+                                                                            <input type="date" class="form-control"  name="fin" value="${lista.getFin()}" autocomplete="off" required="true">
+                                                                        </div>
+                                                                    </div>  
+                                                                </div>
+                                                                <div class="form-row">  
+                                                                    <div class="form-group col-md-6">
+                                                                        <label >Trabajador</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-phone-alt"></i></span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control"  name="trabajador" value="${lista.getNombretrabajador()}" autocomplete="off" required="true">
+                                                                        </div>
+                                                                    </div> 
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="inputtext">Cliente</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-transgender"></i></span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control"  name="cliente" value="${lista.getNombrecliente()}" autocomplete="off" required="true">
+                                                                        </div>
+                                                                    </div>                
+
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label>Estado</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-calendar"></i></span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" name="estado" value="${lista.getEstadoproyecto()}" autocomplete="off" required="true">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <button type="submit" class="btn  btn-block mt-3 btn-1 text-white" >Actualizar</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="controladorproyecto?accion=eliminar&id=${lista.getIddesarrollo()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="controladorRequerimiento?accion=listar&iddesarrollo=${lista.getIddesarrollo()}" class="btn btn-info text-white ml-1 "style="font-size: 17px"><i class="fa-solid fa-list-check"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
