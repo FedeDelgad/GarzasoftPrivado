@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="container mt-4">
-            <div class="d-inline h4 ma-1 pl-2">Agregue los requerimientos del proyecto</div>
+            <div class="d-inline h4 ma-1 pl-2">Registre las funcionalidades del proyecto Perfectivo</div>
             <hr class="mt-4" style="background: #1f618d" />
             <!--datos de los requerimientos-->
             <div class="card mt-3">
@@ -34,9 +34,9 @@
                             </div>
                         </div>
                         <div class="row ml-1 mt-3">
-                            <label>Descripcion del requerimiento</label>
+                            <label>Descripcion de la funcionalidad</label>
                         </div>
-                        <form action="controladorRequerimiento?accion=agregarRequerimiento" method="post">
+                        <form action="controladorRequerimiento?accion=agregarFuncionalidad" method="post">
                             <div class="row  d-flex">
                                 <input type="hidden" name="iddesarrollo" value="${iddesarrollo}">
                                 <div class="form-group col-md-10">
@@ -58,24 +58,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="lista" items="${listare}">
+                                <c:forEach var="lista" items="${listafun}">
                                     <tr>
-                                        <td style="width:100px; text-align: center">${lista.getIdrequerimiento()}</td>
+                                        <td style="width:100px; text-align: center">${lista.getIdfuncionalidad()}</td>
                                         <td>${lista.getNombre()}</td>
                                         <td style="width:200px; text-align: center">
-                                            <a class="btn btn-warning text-white " style="font-size: 17px" id="actualizar" data-toggle="modal" data-target="#modificar${lista.getIdrequerimiento()}"><i class="fas fa-edit"></i></a>
-                                            <div class="modal fade" id="modificar${lista.getIdrequerimiento()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <a class="btn btn-warning text-white " style="font-size: 17px" id="actualizar" data-toggle="modal" data-target="#modificar${lista.getIdfuncionalidad()}"><i class="fas fa-edit"></i></a>
+                                            <div class="modal fade" id="modificar${lista.getIdfuncionalidad()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content col-sm-11 p-0">
                                                         <div class="modal-header mod-h p-3 ">
-                                                            <h4 class="modal-title text-white">Actualizar la descripcion del requerimiento</h4>
+                                                            <h4 class="modal-title text-white">Actualizar la descripcion de la funcionalidad</h4>
                                                             <div style="border: none" class="close  text-white mr-2" data-dismiss="modal" aria-label="Close">
                                                                 &times;
                                                             </div>
                                                         </div>
-                                                        <form  action="controladorRequerimiento?accion=actualizarRequerimiento" method="post">
+                                                        <form  action="controladorRequerimiento?accion=actualizarFuncionalidad" method="post">
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="idre" value="${lista.getIdrequerimiento()}">
+                                                                <input type="hidden" name="idfun" value="${lista.getIdfuncionalidad()}">
                                                                 <input type="hidden" name="iddesarrollo" value="${iddesarrollo}">
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-12">
@@ -94,7 +94,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="controladorRequerimiento?accion=eliminarRequerimiento&idre=${lista.getIdrequerimiento()}&iddesarrollo=${iddesarrollo}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="controladorRequerimiento?accion=eliminarFuncionalidad&idfun=${lista.getIdfuncionalidad()}&iddesarrollo=${iddesarrollo}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -120,5 +120,6 @@
     <script src="js/DataTable.js" type="text/javascript"></script>
     <script src="js/proyectoNuevo.js" type="text/javascript"></script>
 </html>
+
 
 

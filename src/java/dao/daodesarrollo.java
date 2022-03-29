@@ -43,16 +43,20 @@ public class daodesarrollo {
     }
 
     public List listaDesarrollo() {
-        String sql = "select desarrollo.iddesarrollo,proyecto.idproyecto,proyecto.idcliente,proyecto.idtrabajador,proyecto.nombre,proyecto.inicio,\n"
+        
+        String sql = "select*from listadesarrollo where eliminadoLogico='activo'";
+        /*String sql = "select desarrollo.iddesarrollo,desarrollo.tipo,proyecto.idproyecto,proyecto.idcliente,proyecto.idtrabajador,proyecto.nombre,proyecto.inicio,\n"
                 + "proyecto.fin,cliente.nombre,cliente.apellido,trabajador.nombre,trabajador.apellido,proyecto.estado from desarrollo inner join\n"
                 + "proyecto on desarrollo.idproyecto=proyecto.idproyecto inner join cliente on proyecto.idcliente=cliente.idcliente\n"
-                + "inner join trabajador on proyecto.idtrabajador=trabajador.idtrabajador where proyecto.eliminadoLogico='activo';";
+                + "inner join trabajador on proyecto.idtrabajador=trabajador.idtrabajador where proyecto.eliminadoLogico='activo';";*/
+        
         List<beandesarrollo> listade = new ArrayList<>();
         try {
             pst = cn.getConnection().prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
                 beandesarrollo desarrollo = new beandesarrollo();
+                /*
                 desarrollo.setIdproyecto(rs.getInt("proyecto.idproyecto"));
                 desarrollo.setIddesarrollo(rs.getInt("desarrollo.iddesarrollo"));
                 desarrollo.setIdtrabajdor(rs.getInt("proyecto.idtrabajador"));
@@ -64,6 +68,19 @@ public class daodesarrollo {
                 desarrollo.setNombretrabajador(rs.getString("trabajador.nombre"));
                 desarrollo.setApellidotrabajador(rs.getString("trabajador.apellido"));
                 desarrollo.setEstadoproyecto(rs.getString("proyecto.estado"));
+                desarrollo.setTipo(rs.getString("desarrollo.tipo"));*/
+                desarrollo.setIdproyecto(rs.getInt("idproyecto"));
+                desarrollo.setIddesarrollo(rs.getInt("iddesarrollo"));
+                desarrollo.setIdtrabajdor(rs.getInt("idtrabajador"));
+                desarrollo.setNombreproyecto(rs.getString("nombreProyecto"));
+                desarrollo.setInicio(rs.getString("inicio"));
+                desarrollo.setFin(rs.getString("fin"));
+                desarrollo.setNombrecliente(rs.getString("clienteNombre"));
+                desarrollo.setApellidocliente(rs.getString("clienteApellido"));
+                desarrollo.setNombretrabajador(rs.getString("trabajadorNombre"));
+                desarrollo.setApellidotrabajador(rs.getString("trabajadorApellido"));
+                desarrollo.setEstadoproyecto(rs.getString("estado"));
+                desarrollo.setTipo(rs.getString("tipo"));
                 listade.add(desarrollo);
             }
         } catch (SQLException e) {

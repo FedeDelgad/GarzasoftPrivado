@@ -100,6 +100,30 @@ public class daoproyecto {
         }
         return listaprocli;
     }
+    
+    public List listarPorTrabajador(String dni){
+        List<beanproyecto> listatra = new ArrayList<>();
+        String sql="select*from listaportrabajador where eliminadoLogico='activo' and dni='"+dni+"'";
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanproyecto proyecto2 = new beanproyecto();
+                proyecto2.setIdProyecto(rs.getInt("idproyecto"));
+                proyecto2.setIdDesarrollo(rs.getInt("iddesarrollo"));
+                proyecto2.setIdCliente(rs.getInt("idcliente"));
+                proyecto2.setNombre(rs.getString("nombreProyecto"));
+                proyecto2.setInicio(rs.getString("inicio"));
+                proyecto2.setFin(rs.getString("fin"));
+                proyecto2.setEstado(rs.getString("estado"));
+                proyecto2.setTipo(rs.getString("tipo"));
+                listatra.add(proyecto2);
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return listatra;
+    }
 
     public String actualizar(beanproyecto proyecto) {
         String sql = "update proyecto set idtrabajador=?,nombre=?,inicio=?,fin=?,estado=? where idproyecto=?";

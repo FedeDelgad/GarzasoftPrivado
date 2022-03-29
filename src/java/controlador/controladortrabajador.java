@@ -24,7 +24,7 @@ public class controladortrabajador extends HttpServlet {
             case "perfil":
                 int idtrabajador = Integer.parseInt(request.getParameter("idtrabajador"));
                 request.setAttribute("untrabajador", ltrab.trabajador(idtrabajador));
-                request.getRequestDispatcher("trab-perfil.jsp").forward(request, response);
+                request.getRequestDispatcher("PerfilTrabajador.jsp").forward(request, response);
                 break;
             case "actualizar":
                 String claveantigua = request.getParameter("claveantigua");

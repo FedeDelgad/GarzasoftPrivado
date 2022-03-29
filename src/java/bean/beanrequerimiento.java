@@ -12,6 +12,7 @@ package bean;
 public class beanrequerimiento {
     
     private int idrequerimiento;
+    private int idfuncionalidad;
     private int iddesarrollo;
     private String nombre;
     private String estado;
@@ -22,6 +23,14 @@ public class beanrequerimiento {
 
     public void setIdrequerimiento(int idrequerimiento) {
         this.idrequerimiento = idrequerimiento;
+    }
+
+    public int getIdfuncionalidad() {
+        return idfuncionalidad;
+    }
+
+    public void setIdfuncionalidad(int idfuncionalidad) {
+        this.idfuncionalidad = idfuncionalidad;
     }
 
     public int getIddesarrollo() {

@@ -23,7 +23,7 @@
                 </section>
                 <section class="s-menu">
                     <div>
-                        <a href="VistaInicioTrabajador.jsp" target="myFrame"><i class="las la-home"></i> <span>Inicio</span></a> 
+                        <a href="controladorproyecto?accion=trabajador&dni=${trabajador.getDni()}" target="myFrame"><i class="las la-home"></i> <span>Inicio</span></a> 
                     </div>
                     <div>
                         <a href="controladortrabajador?accion=perfil&idtrabajador=${trabajador.getIdtrabajador()}" target="myFrame"><i class="las la-user"></i><span>Perfil</span></a> 
@@ -56,7 +56,7 @@
                     </nav>
                 </div>
                 <div style="height: 555px">
-                    <iframe src="VistaInicioTrabajador.jsp" name="myFrame" style="height: 100%; width: 100%; border:none; margin-bottom: 15px"></iframe>
+                    <iframe src="controladorproyecto?accion=trabajador&dni=${trabajador.getDni()}" name="myFrame" style="height: 100%; width: 100%; border:none; margin-bottom: 15px"></iframe>
                 </div>
             </section>
         </div> 

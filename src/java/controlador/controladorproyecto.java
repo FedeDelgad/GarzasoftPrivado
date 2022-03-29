@@ -20,6 +20,7 @@ public class controladorproyecto extends HttpServlet {
     logiccliente logicliente = new logiccliente();
     logicproyecto logicproyecto = new logicproyecto();
     logicdesarrollo logicdesarrollo = new logicdesarrollo();
+    logicrequerimiento logicre = new logicrequerimiento();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -37,11 +38,17 @@ public class controladorproyecto extends HttpServlet {
             case "listarporlcliente":
                 listarporcliente(request, response);
                 break;
+            case "trabajador":
+                listarPorTrabajador(request, response);
+                break;
             case "inicio":
                 inicio(request, response);
                 break;
-            case "cargarDatos":
-                listaDatos(request, response);
+            case "cargarProNuevo":
+                listaDatosNuevo(request, response);
+                break;
+            case "cargarProPerfectivo":
+                listaDatosPerfectivo(request, response);
                 break;
             case "listarID":
                 listarID(request, response);
@@ -81,6 +88,53 @@ public class controladorproyecto extends HttpServlet {
         request.getRequestDispatcher("VistaInicioCliente.jsp").forward(request, response);
     }
 
+    public void listarPorTrabajador(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String dni = request.getParameter("dni");
+        List<beanproyecto> lista = logicproyecto.listarPorTrabajador(dni);
+        String nombreproyecto = lista.get(0).getNombre();
+        String inicio = lista.get(0).getInicio();
+        String fin = lista.get(0).getFin();
+        int iddesarrollo = lista.get(0).getIdDesarrollo();
+        if (iddesarrollo != 0) {
+            request.setAttribute("nombreproyecto", nombreproyecto);
+            request.setAttribute("inicio", inicio);
+            request.setAttribute("fin", fin);
+            String tipo = lista.get(0).getTipo();
+            if (tipo.equals("nuevo")) {
+                List<beanrequerimiento> requerimientos = logicre.listarRequerimiento(iddesarrollo);
+                int totalre = requerimientos.size();
+                int requerimientosRealizados = 0;
+                int requerimientosFaltantes = 0;
+                for (int i = 0; i < requerimientos.size(); i++) {
+                    if ("pendiente".equals(requerimientos.get(i).getEstado())) {
+                        requerimientosFaltantes = requerimientosFaltantes + 1;
+                    }else if ("Realizado".equals(requerimientos.get(i).getEstado())) {
+                        requerimientosRealizados = requerimientosRealizados + 1;
+                    }
+                }
+                
+                /*
+                for (int i = 0; i < requerimientos.size(); i++) {
+                    if ("realizado".equals(requerimientos.get(i).getEstado())) {
+                        requerimientosRealizados = requerimientosRealizados + 1;
+                    }
+                }*/
+                
+                request.setAttribute("realizados", requerimientosRealizados);
+                request.setAttribute("faltantes", requerimientosFaltantes);
+                request.setAttribute("totalre", totalre);
+
+                request.setAttribute("requerimientos", requerimientos);
+            } else if (tipo.equals("perfectivo")) {
+                List<beanrequerimiento> funcionalidad = logicre.listarFuncionalidad(iddesarrollo);
+                request.setAttribute("requerimientos", funcionalidad);
+            }
+            request.getRequestDispatcher("VistaInicioTrabajador.jsp").forward(request, response);
+        }
+        request.getRequestDispatcher("logeo.jsp").forward(request, response);
+
+    }
+
     public void inicio(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         List<beantrabajador> listatrabajador = logictra.listar();
         List<beancliente> listacliente = logicliente.listarC();
@@ -95,13 +149,22 @@ public class controladorproyecto extends HttpServlet {
         request.getRequestDispatcher("VistaInicioAdmin.jsp").forward(request, response);
     }
 
-    public void listaDatos(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void listaDatosNuevo(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         List<beantrabajador> listaTrabajador = logictra.listar();
         List<beancliente> listaCliente = logicliente.listarC();
         request.setAttribute("listaTrabajador", listaTrabajador);
         request.setAttribute("listaCliente", listaCliente);
         request.getRequestDispatcher("ProyectoDesarrolloNuevo.jsp").forward(request, response);
+    }
+
+    public void listaDatosPerfectivo(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        List<beantrabajador> listaTrabajador = logictra.listar();
+        List<beancliente> listaCliente = logicliente.listarC();
+        request.setAttribute("listaTrabajador", listaTrabajador);
+        request.setAttribute("listaCliente", listaCliente);
+        request.getRequestDispatcher("ProyectoDesarrolloPerfectivo.jsp").forward(request, response);
     }
 
     public void listarID(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

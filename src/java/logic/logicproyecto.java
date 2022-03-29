@@ -44,6 +44,11 @@ public class logicproyecto {
         return proyecto.listarCliente(id);
     }
     
+    public List listarPorTrabajador(String dni){
+        daoproyecto pro = new daoproyecto();
+        return pro.listarPorTrabajador(dni);
+    }
+    
     public String eliminar(int id){
         daoproyecto proyecto = new daoproyecto();
         return proyecto.eliminar(id);

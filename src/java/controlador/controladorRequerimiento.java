@@ -28,37 +28,68 @@ public class controladorRequerimiento extends HttpServlet {
 
         String accion = request.getParameter("accion");
         switch (accion) {
-            case "agregar":
-                agregar(request, response);
+            case "agregarRequerimiento":
+                agregarRequerimiento(request, response);
                 break;
-            case "listar":
-                listar(request, response);
+            case "agregarFuncionalidad":
+                agregarFuncionalidad(request, response);
                 break;
-            case "actualizar":
-                actualizar(request, response);
+            case "checkList":
+                checkList(request, response);
                 break;
-            case "eliminar":
-                eliminar(request, response);
+            case "listarRequerimiento":
+                listarRequerimiento(request, response);
+                break;
+            case "listarFuncionalidad":
+                listarFuncionalidad(request, response);
+                break;
+            case "actualizarRequerimiento":
+                actualizarRequerimiento(request, response);
+                break;
+            case "actualizarFuncionalidad":
+                actualizarFuncionalidad(request, response);
+                break;
+            case "eliminarRequerimiento":
+                eliminarRequerimiento(request, response);
+                break;
+            case "eliminarFuncionalidad":
+                eliminarFuncionalidad(request, response);
                 break;
         }
     }
 
-    public void agregar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void agregarRequerimiento(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter out = response.getWriter();
         try {
             beanrequerimiento beanre = new beanrequerimiento();
             beanre.setIddesarrollo(Integer.parseInt(request.getParameter("iddesarrollo")));
             beanre.setNombre(request.getParameter("nombrere"));
-            out.print(logicre.agregar(beanre));
+            out.print(logicre.agregarRequerimiento(beanre));
         } catch (NumberFormatException e) {
             out.print(e);
         }
 
-        request.getRequestDispatcher("controladorRequerimiento?accion=listar").forward(request, response);
+        request.getRequestDispatcher("controladorRequerimiento?accion=listarRequerimiento").forward(request, response);
 
     }
 
-    public void listar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void agregarFuncionalidad(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        PrintWriter out = response.getWriter();
+        try {
+            beanrequerimiento beanre = new beanrequerimiento();
+            beanre.setIddesarrollo(Integer.parseInt(request.getParameter("iddesarrollo")));
+            beanre.setNombre(request.getParameter("nombrere"));
+            out.print(logicre.agregarFuncionalidad(beanre));
+        } catch (NumberFormatException e) {
+            out.print(e);
+        }
+
+        request.getRequestDispatcher("controladorRequerimiento?accion=listarFuncionalidad").forward(request, response);
+
+    }
+
+    public void checkList(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
         int idpro = Integer.parseInt(request.getParameter("iddesarrollo"));
         List<beandesarrollo> listad = logicdesarrollo.listarID(idpro);
         int idproyecto = listad.get(0).getIddesarrollo();
@@ -72,32 +103,99 @@ public class controladorRequerimiento extends HttpServlet {
         request.setAttribute("datostrabajador", nombretrabajador + " " + apellidotrabajador);
         request.setAttribute("datoscliente", nombrecliente + " " + apellidocliente);
 
-        List<beanrequerimiento> listare = logicre.listar(idpro);
+        String tipodesarrollo = request.getParameter("tipo");
+        if (tipodesarrollo.equals("nuevo")) {
+            List<beanrequerimiento> listare = logicre.listarRequerimiento(idpro);
+            request.setAttribute("listare", listare);
+            request.getRequestDispatcher("Requerimientos.jsp").forward(request, response);
+        }else if(tipodesarrollo.equals("perfectivo")){
+            List<beanrequerimiento> listafun = logicre.listarFuncionalidad(idpro);
+            request.setAttribute("listafun", listafun);
+            request.getRequestDispatcher("Funcionalidad.jsp").forward(request, response);
+        }
+
+    }
+
+    public void listarRequerimiento(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        int idpro = Integer.parseInt(request.getParameter("iddesarrollo"));
+        List<beandesarrollo> listad = logicdesarrollo.listarID(idpro);
+        int idproyecto = listad.get(0).getIddesarrollo();
+        String nombreproyecto = listad.get(0).getNombreproyecto();
+        String nombretrabajador = listad.get(0).getNombretrabajador();
+        String apellidotrabajador = listad.get(0).getApellidotrabajador();
+        String nombrecliente = listad.get(0).getNombrecliente();
+        String apellidocliente = listad.get(0).getApellidocliente();
+        request.setAttribute("iddesarrollo", idproyecto);
+        request.setAttribute("nombreproyecto", nombreproyecto);
+        request.setAttribute("datostrabajador", nombretrabajador + " " + apellidotrabajador);
+        request.setAttribute("datoscliente", nombrecliente + " " + apellidocliente);
+
+        List<beanrequerimiento> listare = logicre.listarRequerimiento(idpro);
         request.setAttribute("listare", listare);
         request.getRequestDispatcher("Requerimientos.jsp").forward(request, response);
     }
 
-    public void actualizar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void listarFuncionalidad(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        int idpro = Integer.parseInt(request.getParameter("iddesarrollo"));
+        List<beandesarrollo> listad = logicdesarrollo.listarID(idpro);
+        int idproyecto = listad.get(0).getIddesarrollo();
+        String nombreproyecto = listad.get(0).getNombreproyecto();
+        String nombretrabajador = listad.get(0).getNombretrabajador();
+        String apellidotrabajador = listad.get(0).getApellidotrabajador();
+        String nombrecliente = listad.get(0).getNombrecliente();
+        String apellidocliente = listad.get(0).getApellidocliente();
+        request.setAttribute("iddesarrollo", idproyecto);
+        request.setAttribute("nombreproyecto", nombreproyecto);
+        request.setAttribute("datostrabajador", nombretrabajador + " " + apellidotrabajador);
+        request.setAttribute("datoscliente", nombrecliente + " " + apellidocliente);
+
+        List<beanrequerimiento> listare = logicre.listarFuncionalidad(idpro);
+        request.setAttribute("listafun", listare);
+        request.getRequestDispatcher("Funcionalidad.jsp").forward(request, response);
+    }
+
+    public void actualizarRequerimiento(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter out = response.getWriter();
         try {
             beanrequerimiento bean = new beanrequerimiento();
             bean.setNombre(request.getParameter("nombrere"));
             bean.setIdrequerimiento(Integer.parseInt(request.getParameter("idre")));
-            out.print(logicre.actualizar(bean));
+            out.print(logicre.actualizarRequerimiento(bean));
         } catch (NumberFormatException e) {
             out.print(e);
         }
 
-        request.getRequestDispatcher("controladorRequerimiento?accion=listar").forward(request, response);
+        request.getRequestDispatcher("controladorRequerimiento?accion=listarRequerimiento").forward(request, response);
 
     }
 
-     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-         int idre = Integer.parseInt(request.getParameter("idre"));
-         logicre.eliminar(idre);
-         request.getRequestDispatcher("controladorRequerimiento?accion=listar").forward(request, response);
-     }
-    
+    public void actualizarFuncionalidad(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        PrintWriter out = response.getWriter();
+        try {
+            beanrequerimiento bean = new beanrequerimiento();
+            bean.setNombre(request.getParameter("nombrere"));
+            bean.setIdfuncionalidad(Integer.parseInt(request.getParameter("idfun")));
+            out.print(logicre.actualizarFuncionalidad(bean));
+        } catch (NumberFormatException e) {
+            out.print(e);
+        }
+
+        request.getRequestDispatcher("controladorRequerimiento?accion=listarFuncionalidad").forward(request, response);
+
+    }
+
+    public void eliminarRequerimiento(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        int idre = Integer.parseInt(request.getParameter("idre"));
+        logicre.eliminarRequerimiento(idre);
+        request.getRequestDispatcher("controladorRequerimiento?accion=listarRequerimiento").forward(request, response);
+    }
+
+    public void eliminarFuncionalidad(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        int idre = Integer.parseInt(request.getParameter("idfun"));
+        logicre.eliminarFuncionalidad(idre);
+        request.getRequestDispatcher("controladorRequerimiento?accion=listarFuncionalidad").forward(request, response);
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

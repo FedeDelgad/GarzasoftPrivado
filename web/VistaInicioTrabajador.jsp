@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,14 +10,14 @@
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
         <title>Dashboard/Trabajador</title>
     </head>
-    <body>
+    <body onload="Color()">
         <div class=" cuerpo d-flex ">
             <div  class="cards" >
                 <div class="card " style="width:51rem;">
                     <div class="card-body pl-4 pr-4">
                         <h5 class="ml-2 mr-2 t-1"> <i class="las la-folder-open"></i> Nombre del Proyecto:</h5>
                         <div class=" d-flex">
-                            <h3 class="mb-0 p-1 ml-1">SISTEMAS DE VENTAS</h3>
+                            <h3 class="mb-0 p-1 ml-1">${nombreproyecto}</h3>
                             <div class="card  p-1 mb-1 text-white bg-danger ml-auto text-center" style="width: 7rem; font-weight:600; border: none">
                                 PENDIENTE
                             </div>  
@@ -36,26 +37,26 @@
                                 </tr>
                             </thead>
                             <tbody class="tbl-1" style="">
-                                <tr>
-                                    <td>Crud de clientes</td>
-                                    <td>12/02/2022</td>
-                                    <td>03/07/2022</td>
-                                    <td class="m-0 p-1">
-                                        <div class="card  text-white bg-danger p-1 text-center" style="width: 7rem; font-weight:600; border: none">
-                                            PENDIENTE
-                                        </div>
-                                    </td>
-                                </tr>
+                                <c:forEach var="lista" items="${requerimientos}">
+                                    <tr>
+                                        <td>${lista.getNombre()}</td>
+                                        <td>${inicio}</td>
+                                        <td>${fin}</td>
+                                        <td class="m-0 p-1">
+                                            <input id="estado" type="text" value="${lista.getEstado()}" class="text-white text-center btn" style="width: 120px; border: none; input:hover{border: none}; background-color: #ed0025" readonly>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
                 </div> 
             </div>
             <div>
-                <div class="card  text-white" style="width: 16rem;background: cadetblue">
+                <div class="card  text-white bg-warning" style="width: 16rem;">
                     <div class="card-body  d-flex " >
                         <div class="pl-3 pr-3 ml-2 tr-1">
-                            <h2>14</h2>
+                            <h2>${totalre}</h2>
                             <span>Requerimientos</span>
                         </div>
                         <div class="tr-2 pt-1">
@@ -63,10 +64,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="card  text-white bg-warning" style="width: 16rem;">
+                <div class="card  text-white bg-success" style="width: 16rem;">
                     <div class="card-body  d-flex p-2 pl-3 " >
                         <div class="pl-3 pr-3 ml-2 pt-0 ">
-                            <h2 class="p-0">4</h2>
+                            <h2 class="p-0">${realizados}</h2>
                             <span >Requerimientos</span>
                             <span >Realizados</span>
                         </div>
@@ -75,10 +76,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="card  text-white bg-success" style="width: 16rem;">
+                <div class="card  text-white " style="width: 16rem;background-color: #ed0025">
                     <div class="card-body  d-flex p-2 pl-3 " >
                         <div class="pl-3 pr-3 ml-2 pt-0 ">
-                            <h2 class="p-0">10</h2>
+                            <h2 class="p-0">${faltantes}</h2>
                             <span >Requerimientos</span>
                             <span >Faltantes</span>
                         </div>
@@ -96,7 +97,7 @@
                             <span class="las la-calendar"></span>
                         </div>
                         <div class="pl-3 pr-3 ml-2 tr-1">  
-                            <span>12/02/2022 - 24/08/2022</span>
+                            <span>${inicio} - ${fin}</span>
                         </div>
                     </div>
                 </div>
@@ -108,4 +109,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        function Color() {
+            var estadoColor = document.getElementById('estado');
+            if (estadoColor.value === 'Realizado') {
+                estadoColor.style.backgroundColor = '#06e100';
+            }
+        }
+
+    </script>
 </html>

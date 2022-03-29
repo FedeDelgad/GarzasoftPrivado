@@ -17,6 +17,7 @@ public class controladorLogin extends HttpServlet {
     logicadministrador logicadmin = new logicadministrador();
     logictrabajador logictrabajador = new logictrabajador();
     logiccliente logiccliente = new logiccliente();
+    logicproyecto logicpro = new logicproyecto();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -31,6 +32,7 @@ public class controladorLogin extends HttpServlet {
                 if (admin.getDniadmi() != null) {
                     obSesion.setAttribute("administrador", admin);
                     request.setAttribute("respuestaadmin", "Bienvenido");
+                    
                     request.getRequestDispatcher("DashboardAdministrador.jsp").forward(request, response);
                 } else {
                     request.setAttribute("respuesta", "Usuario o Contraseña incorrectos...");

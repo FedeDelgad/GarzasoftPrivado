@@ -5,6 +5,8 @@ public class beanproyecto {
     private int idProyecto;
     private int idCliente;
     private int idTrabajador;
+    private int idDesarrollo;
+    private int idSoporte;
     private String nombreCliente;
     private String nombreTrabajador;
     private String nombre;
@@ -37,6 +39,22 @@ public class beanproyecto {
         this.idTrabajador = idTrabajador;
     }
 
+    public int getIdDesarrollo() {
+        return idDesarrollo;
+    }
+
+    public void setIdDesarrollo(int idDesarrollo) {
+        this.idDesarrollo = idDesarrollo;
+    }
+
+    public int getIdSoporte() {
+        return idSoporte;
+    }
+
+    public void setIdSoporte(int idSoporte) {
+        this.idSoporte = idSoporte;
+    }
+    
     public String getNombreCliente() {
         return nombreCliente;
     }

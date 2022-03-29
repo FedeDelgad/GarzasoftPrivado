@@ -1,9 +1,9 @@
 
 package bean;
 
-public class beandesarrollo {
-
-    private int iddesarrollo;
+public class beansoporte {
+    
+    private int idsoporte;
     private int idproyecto;
     private int idcliente;
     private int idtrabajdor;
@@ -17,12 +17,12 @@ public class beandesarrollo {
     private String estadoproyecto;
     private String tipo;
 
-    public int getIddesarrollo() {
-        return iddesarrollo;
+    public int getIdsoporte() {
+        return idsoporte;
     }
 
-    public void setIddesarrollo(int iddesarrollo) {
-        this.iddesarrollo = iddesarrollo;
+    public void setIdsoporte(int idsoporte) {
+        this.idsoporte = idsoporte;
     }
 
     public int getIdproyecto() {
@@ -120,6 +120,6 @@ public class beandesarrollo {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+    
     
 }

@@ -13,8 +13,8 @@
     <body>     
         <div class=" cuerpo pl-4 pr-4 pt-4 pb-2 " >
             <div class=" d-inline h4 ma-1 pl-2 "><i class="fas fa-user"></i>Lista de Proyectos de Desarrollo</div>
-            <a href="controladorprotecto?accion=cargarDatos" class="btn text-white float-right btn-1" target="myFrame"><i class="fas fa-plus"></i> De Mantenimiento Perfectivo</a>
-            <a href="controladorproyecto?accion=cargarDatos" class="btn text-white float-right btn-success mr-2" target="myFrame"><i class="fas fa-plus"></i> Proyecto Nuevo</a>         
+            <a href="controladorproyecto?accion=cargarProPerfectivo" class="btn text-white float-right btn-1" target="myFrame"><i class="fas fa-plus"></i> De Mantenimiento Perfectivo</a>
+            <a href="controladorproyecto?accion=cargarProNuevo" class="btn text-white float-right btn-success mr-2" target="myFrame"><i class="fas fa-plus"></i> Proyecto Nuevo</a>         
             <hr class="mt-4" style="background: #1F618D">
             <div >
                 <div class="card " style="border: none ">
@@ -119,7 +119,7 @@
                                                 </div>
                                             </div>
                                             <a href="controladorproyecto?accion=eliminar&idproyecto=${lista.getIdproyecto()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
-                                            <a href="controladorRequerimiento?accion=listar&iddesarrollo=${lista.getIddesarrollo()}" class="btn btn-info text-white ml-1 "style="font-size: 17px"><i class="fa-solid fa-list-check"></i></a>
+                                            <a href="controladorRequerimiento?accion=checkList&iddesarrollo=${lista.getIddesarrollo()}&tipo=${lista.getTipo()}" class="btn btn-info text-white ml-1 "style="font-size: 17px"><i class="fa-solid fa-list-check"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
