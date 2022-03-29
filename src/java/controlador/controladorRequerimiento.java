@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import bean.*;
@@ -16,14 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author cleiv
- */
 @WebServlet(name = "controladorRequerimiento", urlPatterns = {"/controladorRequerimiento"})
 public class controladorRequerimiento extends HttpServlet {
 
-    
     beanproyecto proyecto = new beanproyecto();
     beancliente cliente = new beancliente();
     beantrabajador trabajador = new beantrabajador();
@@ -44,13 +34,13 @@ public class controladorRequerimiento extends HttpServlet {
             case "listar":
                 listar(request, response);
                 break;
+            case "actualizar":
+                actualizar(request, response);
+                break;
+            case "eliminar":
+                eliminar(request, response);
+                break;
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     public void agregar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -85,6 +75,33 @@ public class controladorRequerimiento extends HttpServlet {
         List<beanrequerimiento> listare = logicre.listar(idpro);
         request.setAttribute("listare", listare);
         request.getRequestDispatcher("Requerimientos.jsp").forward(request, response);
+    }
+
+    public void actualizar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        PrintWriter out = response.getWriter();
+        try {
+            beanrequerimiento bean = new beanrequerimiento();
+            bean.setNombre(request.getParameter("nombrere"));
+            bean.setIdrequerimiento(Integer.parseInt(request.getParameter("idre")));
+            out.print(logicre.actualizar(bean));
+        } catch (NumberFormatException e) {
+            out.print(e);
+        }
+
+        request.getRequestDispatcher("controladorRequerimiento?accion=listar").forward(request, response);
+
+    }
+
+     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+         int idre = Integer.parseInt(request.getParameter("idre"));
+         logicre.eliminar(idre);
+         request.getRequestDispatcher("controladorRequerimiento?accion=listar").forward(request, response);
+     }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     @Override

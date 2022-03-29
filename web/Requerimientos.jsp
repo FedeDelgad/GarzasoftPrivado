@@ -63,13 +63,50 @@
                                         <td style="width:100px; text-align: center">${lista.getIdrequerimiento()}</td>
                                         <td>${lista.getNombre()}</td>
                                         <td style="width:200px; text-align: center">
-                                            <a href="controladorproyecto?accion=editar&id=${lista.getIdrequerimiento()}" class="btn btn-warning text-white " style="font-size: 17px"><i class="fas fa-edit"></i></a>  
-                                            <a href="controladorproyecto?accion=eliminar&id=${lista.getIdrequerimiento()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
+                                            <a class="btn btn-warning text-white " style="font-size: 17px" id="actualizar" data-toggle="modal" data-target="#modificar${lista.getIdrequerimiento()}"><i class="fas fa-edit"></i></a>
+                                            <div class="modal fade" id="modificar${lista.getIdrequerimiento()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content col-sm-11 p-0">
+                                                        <div class="modal-header mod-h p-3 ">
+                                                            <h4 class="modal-title text-white">Actualizar la descripcion del requerimiento</h4>
+                                                            <div style="border: none" class="close  text-white mr-2" data-dismiss="modal" aria-label="Close">
+                                                                &times;
+                                                            </div>
+                                                        </div>
+                                                        <form  action="controladorRequerimiento?accion=actualizar" method="post">
+                                                            <div class="modal-body">
+                                                                <input type="hidden" name="idre" value="${lista.getIdrequerimiento()}">
+                                                                <input type="hidden" name="iddesarrollo" value="${iddesarrollo}">
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label>Nombre</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-address-card"></i></span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control"  name="nombrere" value="${lista.getNombre()}" autocomplete="off" required="true">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <button type="submit" class="btn  btn-block mt-3 btn-1 text-white" >Actualizar</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="controladorRequerimiento?accion=eliminar&idre=${lista.getIdrequerimiento()}&iddesarrollo=${iddesarrollo}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer" style="background-color: white;">
+                <div class="row float-right" >
+                    <div class="form-group mr-2">
+                        <a href="controladordesarrollo?accion=listaDesarrollo" class="btn btn-primary" style="width: 200px">Guardar</a>
                     </div>
                 </div>
             </div>

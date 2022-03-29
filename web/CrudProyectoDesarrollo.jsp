@@ -53,7 +53,7 @@
                                                         </div>
                                                         <form  action="controladorproyecto?accion=actualizar" method="post">
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="id" value="${lista.getIddesarrollo()}">
+                                                                <input type="hidden" name="idproyecto" value="${lista.getIdproyecto()}">
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-12">
                                                                         <label>Nombre</label>
@@ -61,7 +61,7 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-address-card"></i></span>
                                                                             </div>
-                                                                            <input type="text" class="form-control"  name="nombre" value="${lista.getNombreproyecto()}" autocomplete="off" required="true">
+                                                                            <input type="text" class="form-control"  name="nombreproyecto" value="${lista.getNombreproyecto()}" autocomplete="off" required="true">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -81,12 +81,13 @@
                                                                 </div>
                                                                 <div class="form-row">  
                                                                     <div class="form-group col-md-6">
+                                                                        <input type="hidden" name="idtrabajador" value="${lista.getIdtrabajdor()}">
                                                                         <label >Trabajador</label>
                                                                         <div class="input-group">
                                                                             <div class="input-group-prepend">
                                                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-phone-alt"></i></span>
                                                                             </div>
-                                                                            <input type="text" class="form-control"  name="trabajador" value="${lista.getNombretrabajador()}" autocomplete="off" required="true">
+                                                                            <input type="text" class="form-control"  value="${lista.getNombretrabajador()}" autocomplete="off" required="true">
                                                                         </div>
                                                                     </div> 
                                                                     <div class="form-group col-md-6">
@@ -95,7 +96,7 @@
                                                                             <div class="input-group-prepend">
                                                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-transgender"></i></span>
                                                                             </div>
-                                                                            <input type="text" class="form-control"  name="cliente" value="${lista.getNombrecliente()}" autocomplete="off" required="true">
+                                                                            <input type="text" class="form-control"  value="${lista.getNombrecliente()}" autocomplete="off" required="true">
                                                                         </div>
                                                                     </div>                
 
@@ -117,7 +118,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="controladorproyecto?accion=eliminar&id=${lista.getIddesarrollo()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="controladorproyecto?accion=eliminar&idproyecto=${lista.getIdproyecto()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
                                             <a href="controladorRequerimiento?accion=listar&iddesarrollo=${lista.getIddesarrollo()}" class="btn btn-info text-white ml-1 "style="font-size: 17px"><i class="fa-solid fa-list-check"></i></a>
                                         </td>
                                     </tr>

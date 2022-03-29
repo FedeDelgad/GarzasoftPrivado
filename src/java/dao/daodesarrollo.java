@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao;
 
 import bean.*;
@@ -14,10 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author cleiv
- */
 public class daodesarrollo {
 
     conexion cn = new conexion();
@@ -27,7 +19,7 @@ public class daodesarrollo {
     String respuesta;
 
     public String agregarDesarrolloNuevo(int idproyecto) {
-        String sql = "insert into desarrollo(idproyecto,eliminadoLogico,tipo) values(" + idproyecto + ",'activo','nuevo')";
+        String sql = "insert into desarrollo(idproyecto,tipo) values(" + idproyecto + ",'nuevo')";
         try {
             pst = cn.getConnection().prepareStatement(sql);
             pst.executeUpdate();
@@ -39,7 +31,7 @@ public class daodesarrollo {
     }
 
     public String agregarDesarrolloPerfectivo(int idproyecto) {
-        String sql = "insert into desarrollo(idproyecto,eliminadoLogico,tipo) values(" + idproyecto + ",'activo','perfectivo')";
+        String sql = "insert into desarrollo(idproyecto,tipo) values(" + idproyecto + ",'perfectivo')";
         try {
             pst = cn.getConnection().prepareStatement(sql);
             pst.executeUpdate();
@@ -54,14 +46,16 @@ public class daodesarrollo {
         String sql = "select desarrollo.iddesarrollo,proyecto.idproyecto,proyecto.idcliente,proyecto.idtrabajador,proyecto.nombre,proyecto.inicio,\n"
                 + "proyecto.fin,cliente.nombre,cliente.apellido,trabajador.nombre,trabajador.apellido,proyecto.estado from desarrollo inner join\n"
                 + "proyecto on desarrollo.idproyecto=proyecto.idproyecto inner join cliente on proyecto.idcliente=cliente.idcliente\n"
-                + "inner join trabajador on proyecto.idtrabajador=trabajador.idtrabajador where desarrollo.eliminadoLogico='activo';";
+                + "inner join trabajador on proyecto.idtrabajador=trabajador.idtrabajador where proyecto.eliminadoLogico='activo';";
         List<beandesarrollo> listade = new ArrayList<>();
         try {
             pst = cn.getConnection().prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
                 beandesarrollo desarrollo = new beandesarrollo();
+                desarrollo.setIdproyecto(rs.getInt("proyecto.idproyecto"));
                 desarrollo.setIddesarrollo(rs.getInt("desarrollo.iddesarrollo"));
+                desarrollo.setIdtrabajdor(rs.getInt("proyecto.idtrabajador"));
                 desarrollo.setNombreproyecto(rs.getString("proyecto.nombre"));
                 desarrollo.setInicio(rs.getString("proyecto.inicio"));
                 desarrollo.setFin(rs.getString("proyecto.fin"));

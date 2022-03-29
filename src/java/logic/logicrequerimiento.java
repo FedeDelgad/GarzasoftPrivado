@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package logic;
 
 import bean.beanrequerimiento;
 import dao.daorequerimiento;
 import java.util.List;
 
-/**
- *
- * @author cleiv
- */
 public class logicrequerimiento {
     
     public String agregar(beanrequerimiento req){
@@ -26,5 +18,18 @@ public class logicrequerimiento {
     public List listar(int iddesarrollo){
         daorequerimiento daore = new daorequerimiento();
         return daore.listar(iddesarrollo);
+    }
+    
+    public String actualizar(beanrequerimiento req){
+        beanrequerimiento reque = new beanrequerimiento();
+        daorequerimiento dao = new daorequerimiento();
+        reque.setNombre(req.getNombre());
+        reque.setIdrequerimiento(req.getIdrequerimiento());
+        return dao.actualizarDesdeAdmin(reque);
+    }
+    
+    public String eliminar(int id){
+        daorequerimiento daore = new daorequerimiento();
+        return daore.eliminar(id);
     }
 }

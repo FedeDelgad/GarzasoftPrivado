@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao;
 
 import bean.*;
@@ -14,10 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author cleiv
- */
 public class daorequerimiento {
 
     conexion cn = new conexion();
@@ -60,5 +52,31 @@ public class daorequerimiento {
         }
 
         return lista;
+    }
+    
+    public String actualizarDesdeAdmin(beanrequerimiento reque){
+        String sql = "update requerimientonuevo set nombre=? where idrequerimiento=?";
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            pst.setString(1, reque.getNombre());
+            pst.setInt(2, reque.getIdrequerimiento());
+            pst.executeUpdate();
+            respuesta = "Se modifico correctamente...";
+        } catch (SQLException e) {
+            respuesta = "error";
+        }
+        return respuesta;
+    }
+    
+    public String eliminar(int id){
+        String sql = "delete from requerimientonuevo where idrequerimiento="+id;
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            pst.executeUpdate();
+            respuesta = "Se ha eliminado correctamente";
+        } catch (SQLException e) {
+            respuesta = "Error" + e.getMessage();
+        }
+        return respuesta;
     }
 }

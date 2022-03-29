@@ -15,7 +15,7 @@
             <div class="d-inline h4 ma-1 pl-2">Proyectos de Desarrollo Nuevos</div>
             <hr class="mt-4" style="background: #1f618d" />
             <div class="card">
-                <form action="controladorproyecto?accion=agregar" method="post">
+                <form action="controladordesarrollo?accion=agregarNuevo" method="post">
                     <div class="card-body">
                         <div class="form-row">
                             <div class="col-md-4 form-group">

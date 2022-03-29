@@ -35,7 +35,7 @@
                             <i class="las la-angle-right flecha" style="font-size:15px"></i>
                         </a> 
                         <section class="dentro1-1">
-                            <div><a href="controladorproyecto?accion=listaDesarrollo" target="myFrame">Desarrollo</a></div>
+                            <div><a href="controladordesarrollo?accion=listaDesarrollo" target="myFrame">Desarrollo</a></div>
                             <div><a href="controladorproyecto?accion=soporte" target="myFrame">Soporte</a></div>
                         </section>    
                     </div>
