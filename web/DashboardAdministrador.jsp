@@ -36,7 +36,7 @@
                         </a> 
                         <section class="dentro1-1">
                             <div><a href="controladordesarrollo?accion=listaDesarrollo" target="myFrame">Desarrollo</a></div>
-                            <div><a href="controladorproyecto?accion=soporte" target="myFrame">Soporte</a></div>
+                            <div><a href="controladorsoporte?accion=listar" target="myFrame">Soporte</a></div>
                         </section>    
                     </div>
                     <div>

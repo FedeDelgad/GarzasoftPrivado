@@ -16,6 +16,7 @@ public class beansoporte {
     private String fin;
     private String estadoproyecto;
     private String tipo;
+    private String actividad;
 
     public int getIdsoporte() {
         return idsoporte;
@@ -119,6 +120,14 @@ public class beansoporte {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
     }
     
     

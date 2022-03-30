@@ -50,6 +50,9 @@ public class controladorproyecto extends HttpServlet {
             case "cargarProPerfectivo":
                 listaDatosPerfectivo(request, response);
                 break;
+            case "cargarProSoporte":
+                listaDatosSoporte(request, response);
+                break;
             case "listarID":
                 listarID(request, response);
                 break;
@@ -112,14 +115,6 @@ public class controladorproyecto extends HttpServlet {
                         requerimientosRealizados = requerimientosRealizados + 1;
                     }
                 }
-                
-                /*
-                for (int i = 0; i < requerimientos.size(); i++) {
-                    if ("realizado".equals(requerimientos.get(i).getEstado())) {
-                        requerimientosRealizados = requerimientosRealizados + 1;
-                    }
-                }*/
-                
                 request.setAttribute("realizados", requerimientosRealizados);
                 request.setAttribute("faltantes", requerimientosFaltantes);
                 request.setAttribute("totalre", totalre);
@@ -165,6 +160,15 @@ public class controladorproyecto extends HttpServlet {
         request.setAttribute("listaTrabajador", listaTrabajador);
         request.setAttribute("listaCliente", listaCliente);
         request.getRequestDispatcher("ProyectoDesarrolloPerfectivo.jsp").forward(request, response);
+    }
+    
+    public void listaDatosSoporte(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        List<beantrabajador> listaTrabajador = logictra.listar();
+        List<beancliente> listaCliente = logicliente.listarC();
+        request.setAttribute("listaTrabajador", listaTrabajador);
+        request.setAttribute("listaCliente", listaCliente);
+        request.getRequestDispatcher("FormSoporte.jsp").forward(request, response);
     }
 
     public void listarID(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

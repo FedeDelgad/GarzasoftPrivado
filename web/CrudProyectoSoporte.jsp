@@ -31,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="lista" items="${listadesarrollo}">
+                                <c:forEach var="lista" items="${listasoporte}">
                                     <tr>
                                         <td>${lista.getNombreproyecto()}</td>
                                         <td>${lista.getInicio()}</td>
@@ -40,8 +40,8 @@
                                         <td>${lista.getNombrecliente()}</td>
                                         <td>${lista.getEstadoproyecto()}</td>
                                         <td class="col-r">
-                                            <a class="btn btn-warning text-white " style="font-size: 17px" id="actualizar" data-toggle="modal" data-target="#modificar${lista.getIddesarrollo()}"><i class="fas fa-edit"></i></a>
-                                            <div class="modal fade" id="modificar${lista.getIddesarrollo()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <a class="btn btn-warning text-white " style="font-size: 17px" id="actualizar" data-toggle="modal" data-target="#modificar${lista.getIdsoporte()}"><i class="fas fa-edit"></i></a>
+                                            <div class="modal fade" id="modificar${lista.getIdsoporte()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content col-sm-11 p-0">
                                                         <div class="modal-header mod-h p-3 ">
@@ -90,7 +90,7 @@
                                                                         </div>
                                                                     </div> 
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="inputtext">Cliente</label>
+                                                                        <label >Cliente</label>
                                                                         <div class="input-group">
                                                                             <div class="input-group-prepend">
                                                                                 <span style="font-size: 20px"class="input-group-text" ><i class="las la-transgender"></i></span>
