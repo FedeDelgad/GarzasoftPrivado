@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer" style="background-color: white;">
+            <div class="card-footer" style="background-color: white; height: 80px">
                 <div class="row float-right" >
                     <div class="form-group mr-2">
                         <a href="controladordesarrollo?accion=listaDesarrollo" class="btn btn-primary" style="width: 200px">Guardar</a>

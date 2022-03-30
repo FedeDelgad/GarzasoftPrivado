@@ -112,7 +112,7 @@ public class daoproyecto {
                 proyecto2.setIdProyecto(rs.getInt("idproyecto"));
                 proyecto2.setIdDesarrollo(rs.getInt("iddesarrollo"));
                 proyecto2.setIdCliente(rs.getInt("idcliente"));
-                proyecto2.setNombre(rs.getString("nombreProyecto"));
+                proyecto2.setNombre(rs.getString("nombre"));
                 proyecto2.setInicio(rs.getString("inicio"));
                 proyecto2.setFin(rs.getString("fin"));
                 proyecto2.setEstado(rs.getString("estado"));
@@ -123,6 +123,30 @@ public class daoproyecto {
             return null;
         }
         return listatra;
+    }
+    
+    public List listarPorTrabajadorSoporte(String dni){
+        List<beanproyecto> listatrasoporte = new ArrayList<>();
+        String sql="select*from listaportrabajadorsoporte where eliminadoLogico='activo' and dni='"+dni+"'";
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanproyecto proyecto2 = new beanproyecto();
+                proyecto2.setIdProyecto(rs.getInt("idproyecto"));
+                proyecto2.setIdSoporte(rs.getInt("idsoporte"));
+                proyecto2.setIdCliente(rs.getInt("idcliente"));
+                proyecto2.setNombre(rs.getString("nombre"));
+                proyecto2.setInicio(rs.getString("inicio"));
+                proyecto2.setFin(rs.getString("fin"));
+                proyecto2.setEstado(rs.getString("estado"));
+                proyecto2.setTipo(rs.getString("tipo"));
+                listatrasoporte.add(proyecto2);
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return listatrasoporte;
     }
 
     public String actualizar(beanproyecto proyecto) {

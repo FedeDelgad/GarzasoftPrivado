@@ -46,7 +46,9 @@ public class controladordesarrollo extends HttpServlet {
         beanproyecto nuevo = new beanproyecto();
         try {
             nuevo.setIdCliente(Integer.parseInt(request.getParameter("idcliente")));
-            nuevo.setIdTrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
+            int idtrabajador = Integer.parseInt(request.getParameter("idtrabajador"));
+            //nuevo.setIdTrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
+            nuevo.setIdTrabajador(idtrabajador);
             String nombre = request.getParameter("nombreproyecto");
             nuevo.setNombre(nombre);
             nuevo.setInicio(request.getParameter("inicio"));
@@ -54,8 +56,12 @@ public class controladordesarrollo extends HttpServlet {
             respuesta = logicproyecto.agregar(nuevo);
             if (respuesta.equals("true")) {
                 int idproyecto = logicproyecto.bucarPorNombre(nombre);
-                out.print(logicdesarrollo.agregarNuevo(idproyecto));
-                request.getRequestDispatcher("controladordesarrollo?accion=listaDesarrollo").forward(request, response);
+                String res2 = logicdesarrollo.agregarNuevo(idproyecto);
+                if (res2.equals("true")) {
+                    String dispo = "ocupado";
+                    logictra.actualizarDisponibilidad(dispo, idtrabajador);
+                    request.getRequestDispatcher("controladordesarrollo?accion=listaDesarrollo").forward(request, response);
+                }
             } else {
                 out.print("Error");
                 request.getRequestDispatcher("ProyectoDesarrolloNuevo.jsp").forward(request, response);
@@ -66,14 +72,16 @@ public class controladordesarrollo extends HttpServlet {
             request.getRequestDispatcher("ProyectoDesarrolloNuevo.jsp").forward(request, response);
         }
     }
-    
+
     public void agregarPerfectivo(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter out = response.getWriter();
         String respuesta;
         beanproyecto nuevo = new beanproyecto();
         try {
             nuevo.setIdCliente(Integer.parseInt(request.getParameter("idcliente")));
-            nuevo.setIdTrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
+            int idtrabajador = Integer.parseInt(request.getParameter("idtrabajador"));
+            //nuevo.setIdTrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
+            nuevo.setIdTrabajador(idtrabajador);
             String nombre = request.getParameter("nombreproyecto");
             nuevo.setNombre(nombre);
             nuevo.setInicio(request.getParameter("inicio"));
@@ -81,8 +89,12 @@ public class controladordesarrollo extends HttpServlet {
             respuesta = logicproyecto.agregar(nuevo);
             if (respuesta.equals("true")) {
                 int idproyecto = logicproyecto.bucarPorNombre(nombre);
-                out.print(logicdesarrollo.agregarPerfectivo(idproyecto));
-                request.getRequestDispatcher("controladordesarrollo?accion=listaDesarrollo").forward(request, response);
+                String res3 = logicdesarrollo.agregarPerfectivo(idproyecto);
+                if (res3.equals("true")) {
+                    String dispo = "ocupado";
+                    logictra.actualizarDisponibilidad(dispo, idtrabajador);
+                    request.getRequestDispatcher("controladordesarrollo?accion=listaDesarrollo").forward(request, response);
+                }
             } else {
                 out.print("Error");
                 request.getRequestDispatcher("ProyectoDesarrolloNuevo.jsp").forward(request, response);

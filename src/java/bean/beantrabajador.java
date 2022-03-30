@@ -21,6 +21,7 @@ public class beantrabajador {
     private String elimina;
     private String dni;
     private String sexo;
+    private String disponibilidad;
 
     public String getSexo() {
         return sexo;
@@ -108,6 +109,14 @@ public class beantrabajador {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public String getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
    
     

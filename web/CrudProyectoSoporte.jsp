@@ -52,6 +52,7 @@
                                                         </div>
                                                         <form  action="controladorproyecto?accion=actualizar" method="post">
                                                             <div class="modal-body">
+                                                                <input type="hidden" name="tipo" value="${lista.getTipo()}"> 
                                                                 <input type="hidden" name="idproyecto" value="${lista.getIdproyecto()}">
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-12">
@@ -111,14 +112,25 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="row">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label>Descripcion de la actividad a realizar</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span style="font-size: 20px"class="input-group-text" ><i class="las la-calendar"></i></span>
+                                                                            </div>
+                                                                            <input type="hidden" name="idsoporte" value="${lista.getIdsoporte()}">
+                                                                            <input type="text" class="form-control" name="actividad" value="${lista.getActividad()}" autocomplete="off" required="true">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                                 <button type="submit" class="btn  btn-block mt-3 btn-1 text-white" >Actualizar</button>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="controladorproyecto?accion=eliminar&idproyecto=${lista.getIdproyecto()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
-                                            <a href="controladorRequerimiento?accion=checkList&iddesarrollo=${lista.getIddesarrollo()}&tipo=${lista.getTipo()}" class="btn btn-info text-white ml-1 "style="font-size: 17px"><i class="fa-solid fa-list-check"></i></a>
+                                            <a href="controladorproyecto?accion=eliminar&idproyecto=${lista.getIdproyecto()}&tipo=${lista.getTipo()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

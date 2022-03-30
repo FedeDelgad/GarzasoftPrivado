@@ -58,9 +58,19 @@ public class logictrabajador {
         daotrabajador dao = new daotrabajador();
         return dao.listar();
     }
+    
+    public List listarDisponibles() {
+        daotrabajador daod = new daotrabajador();
+        return daod.listarDisponibles();
+    }
 
     public String eliminar(int id) {
         daotrabajador daotrabajador = new daotrabajador();
         return daotrabajador.eliminar(id);
+    }
+    
+    public String actualizarDisponibilidad(String dis, int idtrabajador){
+        daotrabajador daot = new daotrabajador();
+        return daot.actualizarDisponibilidad(dis, idtrabajador);
     }
 }

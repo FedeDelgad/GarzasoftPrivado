@@ -132,7 +132,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer" style="background-color: white;">
+                    <div class="card-footer" style="background-color: white; ">
                         <div class="row float-right" >
                             <div class="form-group mr-2">
                                 <button type="submit" class="btn btn-primary" style="width: 200px">Guardar</button>

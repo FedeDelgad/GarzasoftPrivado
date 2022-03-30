@@ -43,7 +43,9 @@ public class controladorsoporte extends HttpServlet {
         beanproyecto proyecto = new beanproyecto();
         try {
             proyecto.setIdCliente(Integer.parseInt(request.getParameter("idcliente")));
-            proyecto.setIdTrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
+            int idtrabajador = Integer.parseInt(request.getParameter("idtrabajador"));
+            //proyecto.setIdTrabajador(Integer.parseInt(request.getParameter("idtrabajador")));
+            proyecto.setIdTrabajador(idtrabajador);
             String nombre = request.getParameter("nombreproyecto");
             proyecto.setNombre(nombre);
             proyecto.setInicio(request.getParameter("inicio"));
@@ -52,8 +54,13 @@ public class controladorsoporte extends HttpServlet {
             if (respuesta.equals("true")) {
                 String actividad = request.getParameter("actividad");
                 int idproyecto = logicproyecto.bucarPorNombre(nombre);
-                logicsoporte.agregarSoporte(idproyecto, actividad);
-                request.getRequestDispatcher("controladorsoporte?accion=listar").forward(request, response);
+                String res2 = logicsoporte.agregarSoporte(idproyecto, actividad);
+                if(res2.equals("true")){
+                    String dispo = "ocupado";
+                    logictra.actualizarDisponibilidad(dispo, idtrabajador);
+                    request.getRequestDispatcher("controladorsoporte?accion=listar").forward(request, response);
+                }
+                
             } else {
                 out.print("Error");
                 request.getRequestDispatcher("CrudProyectoSoporte.jsp").forward(request, response);

@@ -109,7 +109,7 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" name="usuario" placeholder="Usuario">
+                                    <input type="text" class="form-control" name="usuario" placeholder="Usuario" required="true">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -118,7 +118,7 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" class="form-control" name="clave" placeholder="Contraseña">
+                                    <input type="password" class="form-control" name="clave" placeholder="Contraseña" required="true">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block mt4">Ingresar</button>
@@ -144,7 +144,7 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" name="usuario" placeholder="Usuario">
+                                    <input type="text" class="form-control" name="usuario" placeholder="Usuario" required="true">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -153,7 +153,7 @@
                                     <div class="input-group-prepend">
                                         <span style="font-size: 20px" class="input-group-text" ><i class="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" class="form-control" name="clave" placeholder="Contraseña">
+                                    <input type="password" class="form-control" name="clave" placeholder="Contraseña" required="true">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block mt4">Ingresar</button>

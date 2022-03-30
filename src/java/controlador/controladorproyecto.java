@@ -20,6 +20,7 @@ public class controladorproyecto extends HttpServlet {
     logiccliente logicliente = new logiccliente();
     logicproyecto logicproyecto = new logicproyecto();
     logicdesarrollo logicdesarrollo = new logicdesarrollo();
+    logicsoporte logicsoporte = new logicsoporte();
     logicrequerimiento logicre = new logicrequerimiento();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -69,12 +70,23 @@ public class controladorproyecto extends HttpServlet {
             proyecto.setFin(request.getParameter("fin"));
             proyecto.setEstado(request.getParameter("estado"));
             proyecto.setIdProyecto(Integer.parseInt(request.getParameter("idproyecto")));
-            logicproyecto.actualizar(proyecto);
+            String tipo = request.getParameter("tipo");
+            if (tipo.equals("nuevo") || tipo.equals("perfectivo")) {
+                logicproyecto.actualizar(proyecto);
+                request.getRequestDispatcher("controladordesarrollo?accion=listaDesarrollo").forward(request, response);
+            } else if (tipo.equals("soporte")) {
+                String respuesta = logicproyecto.actualizar(proyecto);
+                if (respuesta.equals("true")) {
+                    int idsoporte = Integer.parseInt(request.getParameter("idsoporte"));
+                    String actividad = request.getParameter("actividad");
+                    logicsoporte.actualizarSoporte(idsoporte, actividad);
+                    request.getRequestDispatcher("controladorsoporte?accion=listar").forward(request, response);
+                }
 
+            }
         } catch (NumberFormatException e) {
             out.print(e);
         }
-        request.getRequestDispatcher("controladordesarrollo?accion=listaDesarrollo").forward(request, response);
 
     }
 
@@ -111,7 +123,7 @@ public class controladorproyecto extends HttpServlet {
                 for (int i = 0; i < requerimientos.size(); i++) {
                     if ("pendiente".equals(requerimientos.get(i).getEstado())) {
                         requerimientosFaltantes = requerimientosFaltantes + 1;
-                    }else if ("Realizado".equals(requerimientos.get(i).getEstado())) {
+                    } else if ("Realizado".equals(requerimientos.get(i).getEstado())) {
                         requerimientosRealizados = requerimientosRealizados + 1;
                     }
                 }
@@ -146,7 +158,7 @@ public class controladorproyecto extends HttpServlet {
 
     public void listaDatosNuevo(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        List<beantrabajador> listaTrabajador = logictra.listar();
+        List<beantrabajador> listaTrabajador = logictra.listarDisponibles();
         List<beancliente> listaCliente = logicliente.listarC();
         request.setAttribute("listaTrabajador", listaTrabajador);
         request.setAttribute("listaCliente", listaCliente);
@@ -155,16 +167,16 @@ public class controladorproyecto extends HttpServlet {
 
     public void listaDatosPerfectivo(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        List<beantrabajador> listaTrabajador = logictra.listar();
+        List<beantrabajador> listaTrabajador = logictra.listarDisponibles();
         List<beancliente> listaCliente = logicliente.listarC();
         request.setAttribute("listaTrabajador", listaTrabajador);
         request.setAttribute("listaCliente", listaCliente);
         request.getRequestDispatcher("ProyectoDesarrolloPerfectivo.jsp").forward(request, response);
     }
-    
+
     public void listaDatosSoporte(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        List<beantrabajador> listaTrabajador = logictra.listar();
+        List<beantrabajador> listaTrabajador = logictra.listarDisponibles();
         List<beancliente> listaCliente = logicliente.listarC();
         request.setAttribute("listaTrabajador", listaTrabajador);
         request.setAttribute("listaCliente", listaCliente);
@@ -190,8 +202,15 @@ public class controladorproyecto extends HttpServlet {
 
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int idproyecto = Integer.parseInt(request.getParameter("idproyecto"));
-        logicproyecto.eliminar(idproyecto);
-        request.getRequestDispatcher("controladordesarrollo?accion=listaDesarrollo").forward(request, response);
+        String tipo = request.getParameter("tipo");
+        if (tipo.equals("nuevo") || tipo.equals("perfectivo")) {
+            logicproyecto.eliminar(idproyecto);
+            request.getRequestDispatcher("controladordesarrollo?accion=listaDesarrollo").forward(request, response);
+        } else if (tipo.equals("soporte")) {
+            logicproyecto.eliminar(idproyecto);
+            request.getRequestDispatcher("controladorsoporte?accion=listar").forward(request, response);
+        }
+
     }
 
     @Override

@@ -22,7 +22,19 @@ public class daosoporte {
         try{
             pst = cn.getConnection().prepareStatement(sql);
             pst.executeUpdate();
-            respuesta = "Se agrego correctamente...";
+            respuesta = "true";
+        }catch(SQLException e){
+            respuesta = "Error " + e.getMessage();
+        }
+        return respuesta;
+    }
+    
+    public String actualizar(int idsoporte, String actividad){
+        String sql ="update soporte set actividad='"+actividad+"' where idsoporte="+idsoporte;
+        try{
+            pst = cn.getConnection().prepareStatement(sql);
+            pst.executeUpdate();
+            respuesta = "Se modifico correctamente...";
         }catch(SQLException e){
             respuesta = "Error " + e.getMessage();
         }
@@ -38,7 +50,7 @@ public class daosoporte {
             while (rs.next()) {
                 beansoporte soporte = new beansoporte();
                 soporte.setIdsoporte(rs.getInt("idsoporte"));
-                soporte.setIdsoporte(rs.getInt("idproyecto"));
+                soporte.setIdproyecto(rs.getInt("idproyecto"));
                 soporte.setIdcliente(rs.getInt("idcliente"));
                 soporte.setIdtrabajdor(rs.getInt("idtrabajador"));
                 soporte.setActividad(rs.getString("actividad"));

@@ -64,7 +64,7 @@ public class daotrabajador {
 
     public String agregar(beantrabajador trabajador) {
         String respuesta;
-        String sql = "insert into trabajador(dni,nombre,apellido,telefono,genero,fechaIngreso,correo,clave,condicion,estado) values(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into trabajador(dni,nombre,apellido,telefono,genero,fechaIngreso,correo,clave,condicion,estado,disponibilidad) values(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -78,6 +78,7 @@ public class daotrabajador {
             ps.setString(8, trabajador.getClave());
             ps.setString(9, "nuevo");
             ps.setString(10, "activo");
+            ps.setString(11, "libre");
             ps.executeUpdate();
             respuesta = "Registro Correcto...";
         } catch (SQLException e) {
@@ -111,6 +112,33 @@ public class daotrabajador {
             return null;
         }
         return lista;
+    }
+    
+    public List listarDisponibles() {
+        List<beantrabajador> listad = new ArrayList<>();
+        String sql = "select*from trabajador where estado='activo' and disponibilidad='libre'";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                beantrabajador beant = new beantrabajador();
+                beant.setIdtrabajador(rs.getInt("idtrabajador"));
+                beant.setDni(rs.getString("dni"));
+                beant.setNombre(rs.getString("nombre"));
+                beant.setApellido(rs.getString("apellido"));
+                beant.setTelefono(rs.getString("telefono"));
+                beant.setSexo(rs.getString("genero"));
+                beant.setCorreo(rs.getString("correo"));
+                beant.setIngreso(rs.getString("fechaIngreso"));
+                beant.setClave(rs.getString("clave"));
+                beant.setCondicion(rs.getString("condicion"));
+                listad.add(beant);
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return listad;
     }
 
     public String actualizar(beantrabajador trabajador) {
@@ -162,6 +190,19 @@ public class daotrabajador {
             ps.executeUpdate();
             out = "Correcto...";
         } catch (SQLException e) {
+            out = "Error" + e.getMessage();
+        }
+        return out;
+    }
+    
+    public String actualizarDisponibilidad(String dis, int idtrabajador){
+        String out;
+        String sql ="update trabajador set disponibilidad='"+dis+"' where idtrabajador="+idtrabajador;
+        try{
+            ps = cn.getConnection().prepareStatement(sql);
+            ps.executeUpdate();
+            out = "Correcto...";
+        }catch(SQLException e){
             out = "Error" + e.getMessage();
         }
         return out;

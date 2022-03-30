@@ -11,7 +11,7 @@
         <title>Garzasoft/ProjectDesarrollo/Nuevo</title>
     </head>
     <body>
-        <div class="container mt-4">
+        <div class="container mt-4 mb-4">
             <div class="d-inline h4 ma-1 pl-2">Agregue los requerimientos del proyecto</div>
             <hr class="mt-4" style="background: #1f618d" />
             <!--datos de los requerimientos-->
@@ -103,10 +103,12 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer" style="background-color: white;">
-                <div class="row float-right" >
-                    <div class="form-group mr-2">
-                        <a href="controladordesarrollo?accion=listaDesarrollo" class="btn btn-primary" style="width: 200px">Guardar</a>
+            <div class="card-footer" style="background-color: white; height: 80px">
+                <div class="row m-2 float-right">
+                    <div class="form-group ">
+                        <form action="controladordesarrollo?accion=listaDesarrollo">
+                            <button type="submit" class="btn btn-primary" style="width:200px;">Guardar</button>
+                        </form>
                     </div>
                 </div>
             </div>

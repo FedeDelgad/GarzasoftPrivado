@@ -53,6 +53,7 @@
                                                         </div>
                                                         <form  action="controladorproyecto?accion=actualizar" method="post">
                                                             <div class="modal-body">
+                                                                <input type="hidden" name="tipo" value="${lista.getTipo()}"> 
                                                                 <input type="hidden" name="idproyecto" value="${lista.getIdproyecto()}">
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-12">
@@ -118,7 +119,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="controladorproyecto?accion=eliminar&idproyecto=${lista.getIdproyecto()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="controladorproyecto?accion=eliminar&idproyecto=${lista.getIdproyecto()}&tipo=${lista.getTipo()}" class="btn btn-danger text-white ml-1 "style="font-size: 17px"><i class="fas fa-trash-alt"></i></a>
                                             <a href="controladorRequerimiento?accion=checkList&iddesarrollo=${lista.getIddesarrollo()}&tipo=${lista.getTipo()}" class="btn btn-info text-white ml-1 "style="font-size: 17px"><i class="fa-solid fa-list-check"></i></a>
                                         </td>
                                     </tr>

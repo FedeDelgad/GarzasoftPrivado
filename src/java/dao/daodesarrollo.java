@@ -23,7 +23,7 @@ public class daodesarrollo {
         try {
             pst = cn.getConnection().prepareStatement(sql);
             pst.executeUpdate();
-            respuesta = "Se agrego correctamente...";
+            respuesta = "true";
         } catch (SQLException e) {
             respuesta = "Error " + e.getMessage();
         }
@@ -35,7 +35,7 @@ public class daodesarrollo {
         try {
             pst = cn.getConnection().prepareStatement(sql);
             pst.executeUpdate();
-            respuesta = "Se agrego correctamente...";
+            respuesta = "true";
         } catch (SQLException e) {
             respuesta = "Error " + e.getMessage();
         }
@@ -72,13 +72,13 @@ public class daodesarrollo {
                 desarrollo.setIdproyecto(rs.getInt("idproyecto"));
                 desarrollo.setIddesarrollo(rs.getInt("iddesarrollo"));
                 desarrollo.setIdtrabajdor(rs.getInt("idtrabajador"));
-                desarrollo.setNombreproyecto(rs.getString("nombreProyecto"));
+                desarrollo.setNombreproyecto(rs.getString("nombre"));
                 desarrollo.setInicio(rs.getString("inicio"));
                 desarrollo.setFin(rs.getString("fin"));
-                desarrollo.setNombrecliente(rs.getString("clienteNombre"));
-                desarrollo.setApellidocliente(rs.getString("clienteApellido"));
-                desarrollo.setNombretrabajador(rs.getString("trabajadorNombre"));
-                desarrollo.setApellidotrabajador(rs.getString("trabajadorApellido"));
+                desarrollo.setNombrecliente(rs.getString("nombreCliente"));
+                desarrollo.setApellidocliente(rs.getString("apellidoCliente"));
+                desarrollo.setNombretrabajador(rs.getString("nombreTrabajador"));
+                desarrollo.setApellidotrabajador(rs.getString("apellidoTrabajador"));
                 desarrollo.setEstadoproyecto(rs.getString("estado"));
                 desarrollo.setTipo(rs.getString("tipo"));
                 listade.add(desarrollo);
