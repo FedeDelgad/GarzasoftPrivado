@@ -59,4 +59,8 @@ public class logicproyecto {
         return proyecto.eliminar(id);
     }
 
+    public String cambiarestado(String estado, int id){
+        daoproyecto proye = new daoproyecto();
+        return proye.cambiarEstado(estado, id);
+    }
 }

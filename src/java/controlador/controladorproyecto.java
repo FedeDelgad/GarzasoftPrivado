@@ -57,6 +57,12 @@ public class controladorproyecto extends HttpServlet {
             case "listarID":
                 listarID(request, response);
                 break;
+            case "ProyectoDesdeTrabajador":
+                ProyectoDesdeTrabajador(request, response);
+                break;
+            case "cambiarEstado":
+                cambioestado(request, response);
+                break;
         }
     }
 
@@ -110,10 +116,12 @@ public class controladorproyecto extends HttpServlet {
         String inicio = lista.get(0).getInicio();
         String fin = lista.get(0).getFin();
         int iddesarrollo = lista.get(0).getIdDesarrollo();
+        int idproyecto = lista.get(0).getIdProyecto();
         if (iddesarrollo != 0) {
             request.setAttribute("nombreproyecto", nombreproyecto);
             request.setAttribute("inicio", inicio);
             request.setAttribute("fin", fin);
+            request.setAttribute("idproyecto", idproyecto);
             String tipo = lista.get(0).getTipo();
             if (tipo.equals("nuevo")) {
                 List<beanrequerimiento> requerimientos = logicre.listarRequerimiento(iddesarrollo);
@@ -121,22 +129,61 @@ public class controladorproyecto extends HttpServlet {
                 int requerimientosRealizados = 0;
                 int requerimientosFaltantes = 0;
                 for (int i = 0; i < requerimientos.size(); i++) {
-                    if ("pendiente".equals(requerimientos.get(i).getEstado())) {
+                    if ("PENDIENTE".equals(requerimientos.get(i).getEstado()) || "EN PROCESO".equals(requerimientos.get(i).getEstado())) {
                         requerimientosFaltantes = requerimientosFaltantes + 1;
-                    } else if ("Realizado".equals(requerimientos.get(i).getEstado())) {
+                    } else if ("REALIZADO".equals(requerimientos.get(i).getEstado())) {
                         requerimientosRealizados = requerimientosRealizados + 1;
                     }
                 }
                 request.setAttribute("realizados", requerimientosRealizados);
                 request.setAttribute("faltantes", requerimientosFaltantes);
                 request.setAttribute("totalre", totalre);
-
+                
                 request.setAttribute("requerimientos", requerimientos);
             } else if (tipo.equals("perfectivo")) {
                 List<beanrequerimiento> funcionalidad = logicre.listarFuncionalidad(iddesarrollo);
                 request.setAttribute("requerimientos", funcionalidad);
             }
             request.getRequestDispatcher("VistaInicioTrabajador.jsp").forward(request, response);
+        }
+        request.getRequestDispatcher("logeo.jsp").forward(request, response);
+
+    }
+
+    public void ProyectoDesdeTrabajador(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String dni = request.getParameter("dni");
+        List<beanproyecto> lista = logicproyecto.listarPorTrabajador(dni);
+        String nombreproyecto = lista.get(0).getNombre();
+        String inicio = lista.get(0).getInicio();
+        String fin = lista.get(0).getFin();
+        String dtcliente = lista.get(0).getNombreCliente() + " " + lista.get(0).getApellidoCliente();
+        String estado = lista.get(0).getEstado();
+        int iddesarrollo = lista.get(0).getIdDesarrollo();
+        int idproyecto = lista.get(0).getIdProyecto();
+        if (iddesarrollo != 0) {
+            request.setAttribute("nombreproyecto", nombreproyecto);
+            request.setAttribute("inicio", inicio);
+            request.setAttribute("fin", fin);
+            request.setAttribute("cliente", dtcliente);
+            request.setAttribute("estado", estado);
+            request.setAttribute("idproyecto", idproyecto);
+            String tipo = lista.get(0).getTipo();
+            if (tipo.equals("nuevo")) {
+                List<beanrequerimiento> requerimientos = logicre.listarRequerimiento(iddesarrollo);
+                int requerimientosFaltantes = 0;
+                for (int i = 0; i < requerimientos.size(); i++) {
+                    if ("PENDIENTE".equals(requerimientos.get(i).getEstado())) {
+                        requerimientosFaltantes = requerimientosFaltantes + 1;
+                    }
+                }
+                request.setAttribute("faltantes", requerimientosFaltantes);
+                request.setAttribute("requerimientos", requerimientos);
+                
+            } else if (tipo.equals("perfectivo")) {
+                List<beanrequerimiento> funcionalidad = logicre.listarFuncionalidad(iddesarrollo);
+                request.setAttribute("requerimientos", funcionalidad);
+            }
+            request.getRequestDispatcher("VistaProyectoTrabajador.jsp").forward(request, response);
         }
         request.getRequestDispatcher("logeo.jsp").forward(request, response);
 
@@ -211,6 +258,24 @@ public class controladorproyecto extends HttpServlet {
             request.getRequestDispatcher("controladorsoporte?accion=listar").forward(request, response);
         }
 
+    }
+
+    public void cambioestado(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        int idproyecto = Integer.parseInt(request.getParameter("idproyecto"));
+        int refaltantes = Integer.parseInt(request.getParameter("faltantes"));
+        String estadopro = request.getParameter("estado");
+        String dni = request.getParameter("dni2");
+        if (refaltantes == 0) {
+            logicproyecto.cambiarestado(estadopro, idproyecto);
+            request.setAttribute("dni", dni);
+            request.getRequestDispatcher("controladorproyecto?accion=ProyectoPorTrabajador&dni"+dni).forward(request, response);
+        }else if(refaltantes > 0){
+            String respuesta = "Debe completar todos los requerimientos para poder actualizar el proyecto como terminado...";
+            request.setAttribute("mensaje", respuesta);
+            request.setAttribute("dni", dni);
+            request.getRequestDispatcher("controladorproyecto?accion=ProyectoDesdeTrabajador&dni"+dni).forward(request, response);
+        }
     }
 
     @Override

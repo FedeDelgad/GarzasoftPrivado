@@ -142,4 +142,16 @@ public class daorequerimiento {
         }
         return respuesta;
     }
+    
+    public String cambiarEstado(String estado, int idrequerimiento){
+        String sql = "update requerimientonuevo set situacion='"+estado+"' where idrequerimiento="+idrequerimiento;
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            pst.executeUpdate();
+            respuesta = "true";
+        } catch (SQLException e) {
+            respuesta = "error";
+        }
+        return respuesta; 
+    }
 }

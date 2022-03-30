@@ -112,8 +112,10 @@
     <script type="text/javascript">
         function Color() {
             var estadoColor = document.getElementById('estado');
-            if (estadoColor.value === 'Realizado') {
-                estadoColor.style.backgroundColor = '#06e100';
+            if (estadoColor.value === 'REALIZADO') {
+                estadoColor.style.backgroundColor = '#44DF0A';
+            }else if(estadoColor.value === 'REALIZADO'){
+                estadoColor.style.backgroundColor = '#F1C40F';
             }
         }
 

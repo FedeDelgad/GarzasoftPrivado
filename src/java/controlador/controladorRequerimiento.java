@@ -55,6 +55,9 @@ public class controladorRequerimiento extends HttpServlet {
             case "eliminarFuncionalidad":
                 eliminarFuncionalidad(request, response);
                 break;
+            case "cambiarEstado":
+                cambiarEstado(request, response);
+                break;
         }
     }
 
@@ -194,6 +197,18 @@ public class controladorRequerimiento extends HttpServlet {
         int idre = Integer.parseInt(request.getParameter("idfun"));
         logicre.eliminarFuncionalidad(idre);
         request.getRequestDispatcher("controladorRequerimiento?accion=listarFuncionalidad").forward(request, response);
+    }
+    
+    public void cambiarEstado(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        int idreq = Integer.parseInt(request.getParameter("idre"));
+        String estado = request.getParameter("estado");
+        String dni = request.getParameter("dni");
+        String respuesta = logicre.cambiarestado(estado, idreq);
+        if(respuesta.equals("true")){
+            request.setAttribute("dni", dni);
+            request.getRequestDispatcher("controladorproyecto?accion=ProyectoDesdeTrabajador&dni"+dni).forward(request, response);
+        }
+        
     }
 
     @Override

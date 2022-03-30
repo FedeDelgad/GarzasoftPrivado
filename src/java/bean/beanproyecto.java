@@ -8,7 +8,9 @@ public class beanproyecto {
     private int idDesarrollo;
     private int idSoporte;
     private String nombreCliente;
+    private String apellidoCliente;
     private String nombreTrabajador;
+    private String apellidoTrabajador;
     private String nombre;
     private String inicio;
     private String fin;
@@ -69,6 +71,22 @@ public class beanproyecto {
 
     public void setNombreTrabajador(String nombreTrabajador) {
         this.nombreTrabajador = nombreTrabajador;
+    }
+
+    public String getApellidoCliente() {
+        return apellidoCliente;
+    }
+
+    public void setApellidoCliente(String apellidoCliente) {
+        this.apellidoCliente = apellidoCliente;
+    }
+
+    public String getApellidoTrabajador() {
+        return apellidoTrabajador;
+    }
+
+    public void setApellidoTrabajador(String apellidoTrabajador) {
+        this.apellidoTrabajador = apellidoTrabajador;
     }
 
     public String getNombre() {

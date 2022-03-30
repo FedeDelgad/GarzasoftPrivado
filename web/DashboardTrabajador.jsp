@@ -29,7 +29,7 @@
                         <a href="controladortrabajador?accion=perfil&idtrabajador=${trabajador.getIdtrabajador()}" target="myFrame"><i class="las la-user"></i><span>Perfil</span></a> 
                     </div>
                     <div>
-                        <a href="controladortrabajador?accion=proyecto" target="myFrame"><i class="las la-file-alt" ></i><span>Proyecto</span></a> 
+                        <a href="controladorproyecto?accion=ProyectoDesdeTrabajador&dni=${trabajador.getDni()}" target="myFrame"><i class="las la-file-alt" ></i><span>Proyecto</span></a> 
                     </div>
                     <div>
                         <a href="controladorLogin?accion=cerrar"><i class="las la-door-open"></i><span>Salir</span> </a> 

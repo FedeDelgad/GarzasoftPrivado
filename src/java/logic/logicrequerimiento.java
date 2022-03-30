@@ -58,4 +58,9 @@ public class logicrequerimiento {
         daorequerimiento daore = new daorequerimiento();
         return daore.eliminarFuncionalidad(id);
     }
+    
+    public String cambiarestado(String estado, int id){
+        daorequerimiento daoreq = new daorequerimiento();
+        return daoreq.cambiarEstado(estado, id);
+    }
 }

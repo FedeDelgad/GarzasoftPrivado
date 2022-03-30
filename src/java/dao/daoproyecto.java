@@ -112,6 +112,8 @@ public class daoproyecto {
                 proyecto2.setIdProyecto(rs.getInt("idproyecto"));
                 proyecto2.setIdDesarrollo(rs.getInt("iddesarrollo"));
                 proyecto2.setIdCliente(rs.getInt("idcliente"));
+                proyecto2.setNombreCliente(rs.getString("nombreCliente"));
+                proyecto2.setApellidoCliente(rs.getString("apellido"));
                 proyecto2.setNombre(rs.getString("nombre"));
                 proyecto2.setInicio(rs.getString("inicio"));
                 proyecto2.setFin(rs.getString("fin"));
@@ -178,6 +180,18 @@ public class daoproyecto {
             respuesta = "Error" + e.getMessage();
         }
         return respuesta;
+    }
+    
+    public String cambiarEstado(String estado, int idpro){
+        String sql = "update proyecto set estado='"+estado+"' where idproyecto="+idpro;
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            pst.executeUpdate();
+            respuesta = "true";
+        } catch (SQLException e) {
+            respuesta = "error";
+        }
+        return respuesta; 
     }
 
 }
