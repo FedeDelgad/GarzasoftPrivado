@@ -44,7 +44,7 @@
                                             <button class="card  text-white bg-danger p-1 text-center" style="width: 7rem; font-weight:600; border: none"><span class="text-center ml-2">${lista.getEstado()}</span></button>
                                         </td>
                                         <td class="m-0 p-2 ">
-                                            <a class="btn btn-primary m-0 p-0 text-white" style="width: 7rem"><i class="las la-eye" style="font-size:30px"></i></a>
+                                            <a href="controladorproyecto?accion=detallecliente&idproyecto=${lista.getIdProyecto()}" class="btn btn-primary m-0 p-0 text-white" style="width: 7rem"><i class="las la-eye" style="font-size:30px"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

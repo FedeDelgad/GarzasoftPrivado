@@ -78,6 +78,32 @@ public class daoproyecto {
         }
         return lista;
     }
+    
+    public List listarID(int id){
+        String sql ="select*from proyectodesarrolloporid where idproyecto="+id;
+        List<beanproyecto> listaid = new ArrayList<>();
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanproyecto pronuevo = new beanproyecto();
+                pronuevo.setIdProyecto(rs.getInt("idproyecto"));
+                pronuevo.setNombre(rs.getString("nombre"));
+                pronuevo.setInicio(rs.getString("inicio"));
+                pronuevo.setFin(rs.getString("fin"));
+                pronuevo.setEstado(rs.getString("estado"));
+                pronuevo.setIdTrabajador(rs.getInt("idtrabajador"));
+                pronuevo.setNombreTrabajador(rs.getString("nombretrabajador"));
+                pronuevo.setApellidoTrabajador(rs.getString("apellidotrabajador"));
+                pronuevo.setIdDesarrollo(rs.getInt("iddesarrollo"));
+                pronuevo.setTipo(rs.getString("tipo"));
+                listaid.add(pronuevo);
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return listaid;
+    }
 
     public List listarCliente(int id) {
         List<beanproyecto> listaprocli = new ArrayList<>();

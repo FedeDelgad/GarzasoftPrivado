@@ -66,6 +66,9 @@ public class controladorproyecto extends HttpServlet {
             case "cliente":
                 cliente(request, response);
                 break;
+            case "detallecliente":
+                detallecliente(request, response);
+                break;
         }
     }
 
@@ -401,6 +404,39 @@ public class controladorproyecto extends HttpServlet {
             }*/
         }
 
+    }
+
+    public void detallecliente(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        int idproyecto = Integer.parseInt(request.getParameter("idproyecto"));
+        List<beanproyecto> listade = logicproyecto.listarID(idproyecto);
+        String nombreproyecto = listade.get(0).getNombre();
+        String inicio = listade.get(0).getInicio();
+        String fin = listade.get(0).getFin();
+        String trabajadordatos = listade.get(0).getNombreTrabajador() + " " + listade.get(0).getApellidoTrabajador();
+        String estado = listade.get(0).getEstado();
+        String tipo = listade.get(0).getTipo();
+        int iddesarrollo = listade.get(0).getIdDesarrollo();
+        int cantidad;
+        if (iddesarrollo != 0) {
+            if (tipo.equals("nuevo")) {
+                List<beanrequerimiento> listare = logicre.listarRequerimiento(iddesarrollo);
+                cantidad = listare.size();
+                request.setAttribute("cantidad", cantidad);
+                request.setAttribute("listadetalle", listare);
+            } else if (tipo.equals("perfectivo")) {
+                List<beanrequerimiento> listafun = logicre.listarFuncionalidad(iddesarrollo);
+                cantidad = listafun.size();
+                request.setAttribute("cantidad", cantidad);
+                request.setAttribute("listadetalle", listafun);
+
+            }
+            request.setAttribute("nombreproyecto", nombreproyecto);
+            request.setAttribute("inicio", inicio);
+            request.setAttribute("fin", fin);
+            request.setAttribute("trabajador", trabajadordatos);
+            request.setAttribute("estado", estado);
+            request.getRequestDispatcher("VistaDetalleCliente.jsp").forward(request, response);
+        }
     }
 
     @Override

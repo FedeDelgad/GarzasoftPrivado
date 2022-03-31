@@ -68,4 +68,9 @@ public class logicproyecto {
         daoproyecto proye = new daoproyecto();
         return proye.cambiarEstado(estado, id);
     }
+    
+    public List listarID(int idpro){
+        daoproyecto proye = new daoproyecto();
+        return proye.listarID(idpro);
+    }
 }

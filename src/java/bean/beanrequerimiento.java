@@ -16,6 +16,7 @@ public class beanrequerimiento {
     private int iddesarrollo;
     private String nombre;
     private String estado;
+    private int contador;
 
     public int getIdrequerimiento() {
         return idrequerimiento;
@@ -55,6 +56,14 @@ public class beanrequerimiento {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
     }
     
     
