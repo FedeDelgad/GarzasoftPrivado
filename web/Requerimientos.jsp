@@ -106,7 +106,7 @@
             <div class="card-footer" style="background-color: white; height: 80px">
                 <div class="row m-2 float-right">
                     <div class="form-group ">
-                        <form action="controladordesarrollo?accion=listaDesarrollo">
+                        <form action="controladordesarrollo?accion=listaDesarrollo" method="post">
                             <button type="submit" class="btn btn-primary" style="width:200px;">Guardar</button>
                         </form>
                     </div>

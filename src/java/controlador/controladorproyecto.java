@@ -63,6 +63,8 @@ public class controladorproyecto extends HttpServlet {
             case "cambiarEstado":
                 cambioestado(request, response);
                 break;
+            case "cambiosoporte":
+                cambioestadoSoporte(request, response);
             case "cliente":
                 cliente(request, response);
                 break;
@@ -118,10 +120,12 @@ public class controladorproyecto extends HttpServlet {
     public void listarPorTrabajador(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String dni = request.getParameter("dni");
         List<beanproyecto> lista = logicproyecto.listarPorTrabajador(dni);
+        List<beanproyecto> soporte = logicproyecto.listarPorTrabajadorSoporte(dni);
         int cant = lista.size();
-        if (cant == 0) {
+        int cantsoporte = soporte.size();
+        if (cant == 0 && cantsoporte == 0) {
             request.getRequestDispatcher("VistaProyectoVacio.jsp").forward(request, response);
-        } else {
+        } else if (cantsoporte == 0) {
 
             String nombreproyecto = lista.get(0).getNombre();
             String inicio = lista.get(0).getInicio();
@@ -173,6 +177,22 @@ public class controladorproyecto extends HttpServlet {
                 }
 
             }
+        } else if (cant == 0) {
+            int idproyecto = soporte.get(0).getIdProyecto();
+            String nombreproyecto = soporte.get(0).getNombre();
+            String inicio = soporte.get(0).getInicio();
+            String fin = soporte.get(0).getFin();
+            String clientedatos = soporte.get(0).getNombreCliente() + " " + soporte.get(0).getApellidoCliente();
+            String estadosoporte = soporte.get(0).getEstado();
+            String actividad = soporte.get(0).getActividad();
+            request.setAttribute("idproyecto", idproyecto);
+            request.setAttribute("nombreproyecto", nombreproyecto);
+            request.setAttribute("inicio", inicio);
+            request.setAttribute("fin", fin);
+            request.setAttribute("cliente", clientedatos);
+            request.setAttribute("actividad", actividad);
+            request.setAttribute("estado", estadosoporte);
+            request.getRequestDispatcher("TrabajadorSoporte.jsp").forward(request, response);
         }
 
     }
@@ -180,9 +200,12 @@ public class controladorproyecto extends HttpServlet {
     public void ProyectoDesdeTrabajador(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String dni = request.getParameter("dni");
         List<beanproyecto> lista = logicproyecto.listarPorTrabajador(dni);
-        if (lista.isEmpty()) {
+        List<beanproyecto> soporte = logicproyecto.listarPorTrabajadorSoporte(dni);
+        int cant = lista.size();
+        int cantsoporte = soporte.size();
+        if (cant == 0 && cantsoporte == 0) {
             request.getRequestDispatcher("VistaProyectoVacio.jsp").forward(request, response);
-        } else {
+        } else if (cantsoporte == 0) {
 
             String nombreproyecto = lista.get(0).getNombre();
             String inicio = lista.get(0).getInicio();
@@ -224,6 +247,22 @@ public class controladorproyecto extends HttpServlet {
                 }
 
             }
+        } else if (cant == 0) {
+            int idproyecto = soporte.get(0).getIdProyecto();
+            String nombreproyecto = soporte.get(0).getNombre();
+            String inicio = soporte.get(0).getInicio();
+            String fin = soporte.get(0).getFin();
+            String clientedatos = soporte.get(0).getNombreCliente() + " " + soporte.get(0).getApellidoCliente();
+            String estadosoporte = soporte.get(0).getEstado();
+            String actividad = soporte.get(0).getActividad();
+            request.setAttribute("idproyecto", idproyecto);
+            request.setAttribute("nombreproyecto", nombreproyecto);
+            request.setAttribute("inicio", inicio);
+            request.setAttribute("fin", fin);
+            request.setAttribute("cliente", clientedatos);
+            request.setAttribute("actividad", actividad);
+            request.setAttribute("estado", estadosoporte);
+            request.getRequestDispatcher("TrabajadorSoporte.jsp").forward(request, response);
         }
 
     }
@@ -316,6 +355,20 @@ public class controladorproyecto extends HttpServlet {
         } else if (refaltantes > 0) {
             request.getRequestDispatcher("controladorproyecto?accion=ProyectoDesdeTrabajador&dni=" + dni).forward(request, response);
         }
+    }
+
+    public void cambioestadoSoporte(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        int idproyecto = Integer.parseInt(request.getParameter("idproyecto"));
+        String estadopro = request.getParameter("estado");
+        String dni = request.getParameter("dni2");
+        int idtrabajador = Integer.parseInt(request.getParameter("idtrabajador"));
+        String res = logicproyecto.cambiarestado(estadopro, idproyecto);
+        if (res.equals("true")) {
+            logictra.actualizarDisponibilidad("libre", idtrabajador);
+            request.getRequestDispatcher("controladorproyecto?accion=trabajador&dni=" + dni).forward(request, response);
+        }
+
     }
 
     public void cliente(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

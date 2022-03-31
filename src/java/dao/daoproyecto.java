@@ -154,6 +154,34 @@ public class daoproyecto {
         return listatra;
     }
     
+    public List listarPorTrabajadorSoporte(String dni){
+        List<beanproyecto> listatra = new ArrayList<>();
+        String sql="select*from listaportrabajadorsoporte where estado='pendiente' and dni='"+dni+"'";
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanproyecto proyecto2 = new beanproyecto();
+                proyecto2.setIdTrabajador(rs.getInt("idtrabajador"));
+                proyecto2.setIdProyecto(rs.getInt("idproyecto"));
+                proyecto2.setIdSoporte(rs.getInt("idsoporte"));
+                proyecto2.setIdCliente(rs.getInt("idcliente"));
+                proyecto2.setNombreCliente(rs.getString("nombrecliente"));
+                proyecto2.setApellidoCliente(rs.getString("apellido"));
+                proyecto2.setNombre(rs.getString("nombre"));
+                proyecto2.setInicio(rs.getString("inicio"));
+                proyecto2.setFin(rs.getString("fin"));
+                proyecto2.setEstado(rs.getString("estado"));
+                proyecto2.setTipo(rs.getString("tipo"));
+                proyecto2.setActividad(rs.getString("actividad"));
+                listatra.add(proyecto2);
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return listatra;
+    }
+    
     public List listarPorCliente(String dni){
         List<beanproyecto> listatra = new ArrayList<>();
         String sql="select*from listaporcliente where dni='"+dni+"'";
@@ -182,6 +210,7 @@ public class daoproyecto {
         return listatra;
     }
     
+    /*
     public List listarPorTrabajadorSoporte(String dni){
         List<beanproyecto> listatrasoporte = new ArrayList<>();
         String sql="select*from listaportrabajadorsoporte where eliminadoLogico='activo' and dni='"+dni+"'";
@@ -204,7 +233,7 @@ public class daoproyecto {
             return null;
         }
         return listatrasoporte;
-    }
+    }*/
 
     public String actualizar(beanproyecto proyecto) {
         String sql = "update proyecto set idtrabajador=?,nombre=?,inicio=?,fin=?,estado=? where idproyecto=?";

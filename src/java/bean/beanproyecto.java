@@ -16,6 +16,7 @@ public class beanproyecto {
     private String fin;
     private String estado;
     private String tipo;
+    private String actividad;
 
     public int getIdProyecto() {
         return idProyecto;
@@ -129,4 +130,13 @@ public class beanproyecto {
         this.tipo = tipo;
     }
 
+    public String getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
+    }
+
+    
 }
