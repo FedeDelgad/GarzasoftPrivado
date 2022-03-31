@@ -30,7 +30,7 @@
                         <a href="controladorcliente?accion=perfil&idcliente=${cliente.getIdcliente()}" target="myFrame"><i class="las la-user"></i><span>Perfil</span></a> 
                     </div>
                     <div>
-                        <a href="controladorcliente?accion=proyecto" target="myFrame"><i class="las la-file-alt"></i><span>Proyecto</span></a> 
+                        <a href="controladorproyecto?accion=cliente&dni=${cliente.getDnicli()}" target="myFrame"><i class="las la-file-alt"></i><span>Proyecto</span></a> 
                     </div>
                     <div>
                         <a href="controladorLogin?accion=cerrar"><i class="las la-door-open"></i><span>Salir</span> </a> 
