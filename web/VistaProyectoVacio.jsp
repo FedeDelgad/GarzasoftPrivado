@@ -15,38 +15,14 @@
             <div  class="cards" >
                 <div class="card " style="width:51rem;">
                     <div class="card-body pl-4 pr-4">
-                        <h5 class="ml-2 mr-2 t-1"> <i class="las la-folder-open"></i> Nombre del Proyecto:</h5>
                         <div class=" d-flex">
-                            <h3 class="mb-0 p-1 ml-1">${nombreproyecto}</h3>
-                            <div class="card  p-1 mb-1 text-white bg-danger ml-auto text-center" style="width: 7rem; font-weight:600; border: none">${estadopro}</div>  
+                            <h3 class="mb-0 p-1 ml-1">No tiene ningun proyecto asignado</h3>
                         </div>
                     </div>
                 </div>
                 <div class="card over" style="width:51rem">
                     <div class="card-body ">
-                        <h5 class="card-title">Requerimientos</h5>
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr >
-                                    <th  scope="col">NOMBRE</th>
-                                    <th scope="col">INICIO</th>
-                                    <th scope="col">FIN</th>
-                                    <th class="" scope="col">ESTADO</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tbl-1" style="">
-                                <c:forEach var="lista" items="${requerimientos}">
-                                    <tr>
-                                        <td>${lista.getNombre()}</td>
-                                        <td>${inicio}</td>
-                                        <td>${fin}</td>
-                                        <td class="m-0 p-1">
-                                            <input id="estado" type="text" value="${lista.getEstado()}" class="text-white text-center btn" style="width: 120px; border: none; input:hover{border: none}; background-color: #ed0025" readonly>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
+                        <img src="imagenes/disponible.jpg" style="width:100%; height: 346px; border-radius: 10px"/>
                     </div>
                 </div> 
             </div>
@@ -106,16 +82,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript">
-        function Color() {
-            var estadoColor = document.getElementById('estado');
-            if (estadoColor.value === 'REALIZADO') {
-                estadoColor.style.backgroundColor = '#44DF0A';
-            }else if(estadoColor.value === 'REALIZADO'){
-                estadoColor.style.backgroundColor = '#F1C40F';
-            }
-        }
-
-    </script>
+    
 </html>
+

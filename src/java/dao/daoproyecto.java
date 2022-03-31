@@ -43,7 +43,7 @@ public class daoproyecto {
             pst.setString(3, nuevo.getNombre());
             pst.setString(4, nuevo.getInicio());
             pst.setString(5, nuevo.getFin());
-            pst.setString(6, "pendiente");
+            pst.setString(6, "PENDIENTE");
             pst.setString(7, "activo");
             pst.executeUpdate();
             respuesta = "true";
@@ -103,17 +103,46 @@ public class daoproyecto {
     
     public List listarPorTrabajador(String dni){
         List<beanproyecto> listatra = new ArrayList<>();
-        String sql="select*from listaportrabajador where eliminadoLogico='activo' and dni='"+dni+"'";
+        String sql="select*from listaportrabajador where estado='pendiente' and dni='"+dni+"'";
         try {
             pst = cn.getConnection().prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanproyecto proyecto2 = new beanproyecto();
+                proyecto2.setIdTrabajador(rs.getInt("idtrabajador"));
                 proyecto2.setIdProyecto(rs.getInt("idproyecto"));
                 proyecto2.setIdDesarrollo(rs.getInt("iddesarrollo"));
                 proyecto2.setIdCliente(rs.getInt("idcliente"));
                 proyecto2.setNombreCliente(rs.getString("nombreCliente"));
                 proyecto2.setApellidoCliente(rs.getString("apellido"));
+                proyecto2.setNombre(rs.getString("nombre"));
+                proyecto2.setInicio(rs.getString("inicio"));
+                proyecto2.setFin(rs.getString("fin"));
+                proyecto2.setEstado(rs.getString("estado"));
+                proyecto2.setTipo(rs.getString("tipo"));
+                listatra.add(proyecto2);
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return listatra;
+    }
+    
+    public List listarPorCliente(String dni){
+        List<beanproyecto> listatra = new ArrayList<>();
+        String sql="select*from listaporcliente where dni='"+dni+"'";
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanproyecto proyecto2 = new beanproyecto();
+                proyecto2.setIdTrabajador(rs.getInt("idtrabajador"));
+                proyecto2.setIdProyecto(rs.getInt("idproyecto"));
+                proyecto2.setIdDesarrollo(rs.getInt("iddesarrollo"));
+                proyecto2.setIdCliente(rs.getInt("idcliente"));
+                proyecto2.setNombreTrabajador(rs.getString("nombreTrabajador"));
+                proyecto2.setApellidoTrabajador(rs.getString("apellido"));
+                
                 proyecto2.setNombre(rs.getString("nombre"));
                 proyecto2.setInicio(rs.getString("inicio"));
                 proyecto2.setFin(rs.getString("fin"));

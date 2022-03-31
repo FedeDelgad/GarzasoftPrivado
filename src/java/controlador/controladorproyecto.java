@@ -63,6 +63,9 @@ public class controladorproyecto extends HttpServlet {
             case "cambiarEstado":
                 cambioestado(request, response);
                 break;
+            case "cliente":
+                cliente(request, response);
+                break;
         }
     }
 
@@ -112,80 +115,113 @@ public class controladorproyecto extends HttpServlet {
     public void listarPorTrabajador(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String dni = request.getParameter("dni");
         List<beanproyecto> lista = logicproyecto.listarPorTrabajador(dni);
-        String nombreproyecto = lista.get(0).getNombre();
-        String inicio = lista.get(0).getInicio();
-        String fin = lista.get(0).getFin();
-        int iddesarrollo = lista.get(0).getIdDesarrollo();
-        int idproyecto = lista.get(0).getIdProyecto();
-        if (iddesarrollo != 0) {
-            request.setAttribute("nombreproyecto", nombreproyecto);
-            request.setAttribute("inicio", inicio);
-            request.setAttribute("fin", fin);
-            request.setAttribute("idproyecto", idproyecto);
-            String tipo = lista.get(0).getTipo();
-            if (tipo.equals("nuevo")) {
-                List<beanrequerimiento> requerimientos = logicre.listarRequerimiento(iddesarrollo);
-                int totalre = requerimientos.size();
-                int requerimientosRealizados = 0;
-                int requerimientosFaltantes = 0;
-                for (int i = 0; i < requerimientos.size(); i++) {
-                    if ("PENDIENTE".equals(requerimientos.get(i).getEstado()) || "EN PROCESO".equals(requerimientos.get(i).getEstado())) {
-                        requerimientosFaltantes = requerimientosFaltantes + 1;
-                    } else if ("REALIZADO".equals(requerimientos.get(i).getEstado())) {
-                        requerimientosRealizados = requerimientosRealizados + 1;
+        int cant = lista.size();
+        if (cant == 0) {
+            request.getRequestDispatcher("VistaProyectoVacio.jsp").forward(request, response);
+        } else {
+
+            String nombreproyecto = lista.get(0).getNombre();
+            String inicio = lista.get(0).getInicio();
+            String fin = lista.get(0).getFin();
+            int iddesarrollo = lista.get(0).getIdDesarrollo();
+            int idproyecto = lista.get(0).getIdProyecto();
+            String estado = lista.get(0).getEstado();
+            if (iddesarrollo != 0) {
+                request.setAttribute("nombreproyecto", nombreproyecto);
+                request.setAttribute("inicio", inicio);
+                request.setAttribute("fin", fin);
+                request.setAttribute("idproyecto", idproyecto);
+                request.setAttribute("estadopro", estado);
+                String tipo = lista.get(0).getTipo();
+                if (tipo.equals("nuevo")) {
+                    List<beanrequerimiento> requerimientos = logicre.listarRequerimiento(iddesarrollo);
+                    int totalre = requerimientos.size();
+                    int requerimientosRealizados = 0;
+                    int requerimientosFaltantes = 0;
+                    for (int i = 0; i < requerimientos.size(); i++) {
+                        if ("PENDIENTE".equals(requerimientos.get(i).getEstado()) || "EN PROCESO".equals(requerimientos.get(i).getEstado())) {
+                            requerimientosFaltantes = requerimientosFaltantes + 1;
+                        } else if ("REALIZADO".equals(requerimientos.get(i).getEstado())) {
+                            requerimientosRealizados = requerimientosRealizados + 1;
+                        }
                     }
+                    request.setAttribute("realizados", requerimientosRealizados);
+                    request.setAttribute("faltantes", requerimientosFaltantes);
+                    request.setAttribute("totalre", totalre);
+                    request.setAttribute("requerimientos", requerimientos);
+                    request.getRequestDispatcher("VistaInicioTrabajador.jsp").forward(request, response);
+                } else if (tipo.equals("perfectivo")) {
+                    List<beanrequerimiento> funci = logicre.listarFuncionalidad(iddesarrollo);
+                    int totalre = funci.size();
+                    int funre = 0;
+                    int funfalta = 0;
+                    for (int i = 0; i < funci.size(); i++) {
+                        if ("PENDIENTE".equals(funci.get(i).getEstado()) || "EN PROCESO".equals(funci.get(i).getEstado())) {
+                            funfalta = funfalta + 1;
+                        } else if ("REALIZADO".equals(funci.get(i).getEstado())) {
+                            funre = funre + 1;
+                        }
+                    }
+                    request.setAttribute("realizados", funre);
+                    request.setAttribute("faltantes", funfalta);
+                    request.setAttribute("totalre", totalre);
+                    request.setAttribute("requerimientos", funci);
+                    request.getRequestDispatcher("VistaInicioTrabajador.jsp").forward(request, response);
                 }
-                request.setAttribute("realizados", requerimientosRealizados);
-                request.setAttribute("faltantes", requerimientosFaltantes);
-                request.setAttribute("totalre", totalre);
-                
-                request.setAttribute("requerimientos", requerimientos);
-            } else if (tipo.equals("perfectivo")) {
-                List<beanrequerimiento> funcionalidad = logicre.listarFuncionalidad(iddesarrollo);
-                request.setAttribute("requerimientos", funcionalidad);
+
             }
-            request.getRequestDispatcher("VistaInicioTrabajador.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("logeo.jsp").forward(request, response);
 
     }
 
     public void ProyectoDesdeTrabajador(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String dni = request.getParameter("dni");
         List<beanproyecto> lista = logicproyecto.listarPorTrabajador(dni);
-        String nombreproyecto = lista.get(0).getNombre();
-        String inicio = lista.get(0).getInicio();
-        String fin = lista.get(0).getFin();
-        String dtcliente = lista.get(0).getNombreCliente() + " " + lista.get(0).getApellidoCliente();
-        String estado = lista.get(0).getEstado();
-        int iddesarrollo = lista.get(0).getIdDesarrollo();
-        int idproyecto = lista.get(0).getIdProyecto();
-        if (iddesarrollo != 0) {
-            request.setAttribute("nombreproyecto", nombreproyecto);
-            request.setAttribute("inicio", inicio);
-            request.setAttribute("fin", fin);
-            request.setAttribute("cliente", dtcliente);
-            request.setAttribute("estado", estado);
-            request.setAttribute("idproyecto", idproyecto);
-            String tipo = lista.get(0).getTipo();
-            if (tipo.equals("nuevo")) {
-                List<beanrequerimiento> requerimientos = logicre.listarRequerimiento(iddesarrollo);
-                int requerimientosFaltantes = 0;
-                for (int i = 0; i < requerimientos.size(); i++) {
-                    if ("PENDIENTE".equals(requerimientos.get(i).getEstado())) {
-                        requerimientosFaltantes = requerimientosFaltantes + 1;
+        if (lista.isEmpty()) {
+            request.getRequestDispatcher("VistaProyectoVacio.jsp").forward(request, response);
+        } else {
+
+            String nombreproyecto = lista.get(0).getNombre();
+            String inicio = lista.get(0).getInicio();
+            String fin = lista.get(0).getFin();
+            String dtcliente = lista.get(0).getNombreCliente() + " " + lista.get(0).getApellidoCliente();
+            String estado = lista.get(0).getEstado();
+            int iddesarrollo = lista.get(0).getIdDesarrollo();
+            int idproyecto = lista.get(0).getIdProyecto();
+            if (iddesarrollo != 0) {
+                request.setAttribute("nombreproyecto", nombreproyecto);
+                request.setAttribute("inicio", inicio);
+                request.setAttribute("fin", fin);
+                request.setAttribute("cliente", dtcliente);
+                request.setAttribute("estadopro", estado);
+                request.setAttribute("idproyecto", idproyecto);
+                String tipo = lista.get(0).getTipo();
+                if (tipo.equals("nuevo")) {
+                    List<beanrequerimiento> requerimientos = logicre.listarRequerimiento(iddesarrollo);
+                    int requerimientosFaltantes = 0;
+                    for (int i = 0; i < requerimientos.size(); i++) {
+                        if ("PENDIENTE".equals(requerimientos.get(i).getEstado())) {
+                            requerimientosFaltantes = requerimientosFaltantes + 1;
+                        }
                     }
+                    request.setAttribute("faltantes", requerimientosFaltantes);
+                    request.setAttribute("requerimientos", requerimientos);
+                    request.getRequestDispatcher("VistaProyectoTrabajador.jsp").forward(request, response);
+                } else if (tipo.equals("perfectivo")) {
+                    List<beanrequerimiento> funci = logicre.listarFuncionalidad(iddesarrollo);
+                    int funfalta = 0;
+                    for (int i = 0; i < funci.size(); i++) {
+                        if ("PENDIENTE".equals(funci.get(i).getEstado()) || "EN PROCESO".equals(funci.get(i).getEstado())) {
+                            funfalta = funfalta + 1;
+                        }
+                    }
+                    request.setAttribute("faltantes", funfalta);
+                    request.setAttribute("funcionalidad", funci);
+                    request.getRequestDispatcher("ProTrabajadorFuncionalidad.jsp").forward(request, response);
                 }
-                request.setAttribute("faltantes", requerimientosFaltantes);
-                request.setAttribute("requerimientos", requerimientos);
-                
-            } else if (tipo.equals("perfectivo")) {
-                List<beanrequerimiento> funcionalidad = logicre.listarFuncionalidad(iddesarrollo);
-                request.setAttribute("requerimientos", funcionalidad);
+
             }
-            request.getRequestDispatcher("VistaProyectoTrabajador.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("logeo.jsp").forward(request, response);
 
     }
 
@@ -266,16 +302,105 @@ public class controladorproyecto extends HttpServlet {
         int refaltantes = Integer.parseInt(request.getParameter("faltantes"));
         String estadopro = request.getParameter("estado");
         String dni = request.getParameter("dni2");
+        int idtrabajador = Integer.parseInt(request.getParameter("idtrabajador"));
         if (refaltantes == 0) {
-            logicproyecto.cambiarestado(estadopro, idproyecto);
-            request.setAttribute("dni", dni);
-            request.getRequestDispatcher("controladorproyecto?accion=ProyectoPorTrabajador&dni"+dni).forward(request, response);
-        }else if(refaltantes > 0){
-            String respuesta = "Debe completar todos los requerimientos para poder actualizar el proyecto como terminado...";
-            request.setAttribute("mensaje", respuesta);
-            request.setAttribute("dni", dni);
-            request.getRequestDispatcher("controladorproyecto?accion=ProyectoDesdeTrabajador&dni"+dni).forward(request, response);
+            String res = logicproyecto.cambiarestado(estadopro, idproyecto);
+            if (res.equals("true")) {
+                logictra.actualizarDisponibilidad("libre", idtrabajador);
+                request.getRequestDispatcher("controladorproyecto?accion=trabajador&dni=" + dni).forward(request, response);
+            }
+
+        } else if (refaltantes > 0) {
+            request.getRequestDispatcher("controladorproyecto?accion=ProyectoDesdeTrabajador&dni=" + dni).forward(request, response);
         }
+    }
+
+    public void cliente(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String dni = request.getParameter("dni");
+        List<beanproyecto> lista = logicproyecto.listarPorCliente(dni);
+        int cant = lista.size();
+        if (cant == 0) {
+            request.getRequestDispatcher("VistaProyectoVacio.jsp").forward(request, response);
+        } else {
+            String estado;
+            String estadoactual = null;
+            String nombreproactual = null;
+            int idproyecto = 0;
+            String nombretrabajador = null;
+            String apellidotrabajador = null;
+            String correotra;
+            String telefonotra;
+            for (int i = 0; i < lista.size(); i++) {
+                estado = lista.get(i).getEstado();
+                if (estado.equals("PENDIENTE")) {
+                    nombreproactual = lista.get(i).getNombre();
+                    idproyecto = lista.get(i).getIdProyecto();
+                    nombretrabajador = lista.get(i).getNombreTrabajador();
+                    apellidotrabajador = lista.get(i).getApellidoTrabajador();
+                    estadoactual = lista.get(i).getEstado();
+                }
+                request.setAttribute("nombreproyecto", nombreproactual);
+                request.setAttribute("idproyecto", idproyecto);
+                request.setAttribute("nombretrabajador", nombretrabajador);
+                request.setAttribute("apellidotrabajador", apellidotrabajador);
+                request.setAttribute("estado", estadoactual);
+                request.setAttribute("listaproyectos", lista);
+                request.getRequestDispatcher("VistaInicioCliente.jsp").forward(request, response);
+            }
+
+            /*
+            String nombreproyecto = lista.get(0).getNombre();
+            String inicio = lista.get(0).getInicio();
+            String fin = lista.get(0).getFin();
+            int iddesarrollo = lista.get(0).getIdDesarrollo();
+            int idproyecto = lista.get(0).getIdProyecto();
+            String estado = lista.get(0).getEstado();
+            if (iddesarrollo != 0) {
+                request.setAttribute("nombreproyecto", nombreproyecto);
+                request.setAttribute("inicio", inicio);
+                request.setAttribute("fin", fin);
+                request.setAttribute("idproyecto", idproyecto);
+                request.setAttribute("estadopro", estado);
+                String tipo = lista.get(0).getTipo();
+                if (tipo.equals("nuevo")) {
+                    List<beanrequerimiento> requerimientos = logicre.listarRequerimiento(iddesarrollo);
+                    int totalre = requerimientos.size();
+                    int requerimientosRealizados = 0;
+                    int requerimientosFaltantes = 0;
+                    for (int i = 0; i < requerimientos.size(); i++) {
+                        if ("PENDIENTE".equals(requerimientos.get(i).getEstado()) || "EN PROCESO".equals(requerimientos.get(i).getEstado())) {
+                            requerimientosFaltantes = requerimientosFaltantes + 1;
+                        } else if ("REALIZADO".equals(requerimientos.get(i).getEstado())) {
+                            requerimientosRealizados = requerimientosRealizados + 1;
+                        }
+                    }
+                    request.setAttribute("realizados", requerimientosRealizados);
+                    request.setAttribute("faltantes", requerimientosFaltantes);
+                    request.setAttribute("totalre", totalre);
+                    request.setAttribute("requerimientos", requerimientos);
+                    request.getRequestDispatcher("VistaInicioTrabajador.jsp").forward(request, response);
+                } else if (tipo.equals("perfectivo")) {
+                    List<beanrequerimiento> funci = logicre.listarFuncionalidad(iddesarrollo);
+                    int totalre = funci.size();
+                    int funre = 0;
+                    int funfalta = 0;
+                    for (int i = 0; i < funci.size(); i++) {
+                        if ("PENDIENTE".equals(funci.get(i).getEstado()) || "EN PROCESO".equals(funci.get(i).getEstado())) {
+                            funfalta = funfalta + 1;
+                        } else if ("REALIZADO".equals(funci.get(i).getEstado())) {
+                            funre = funre + 1;
+                        }
+                    }
+                    request.setAttribute("realizados", funre);
+                    request.setAttribute("faltantes", funfalta);
+                    request.setAttribute("totalre", totalre);
+                    request.setAttribute("requerimientos", funci);
+                    request.getRequestDispatcher("VistaInicioTrabajador.jsp").forward(request, response);
+                }
+
+            }*/
+        }
+
     }
 
     @Override

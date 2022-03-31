@@ -58,6 +58,9 @@ public class controladorRequerimiento extends HttpServlet {
             case "cambiarEstado":
                 cambiarEstado(request, response);
                 break;
+            case "cambiarEstadoFunci":
+                cambiarEstadoFunci(request, response);
+                break;
         }
     }
 
@@ -111,7 +114,7 @@ public class controladorRequerimiento extends HttpServlet {
             List<beanrequerimiento> listare = logicre.listarRequerimiento(idpro);
             request.setAttribute("listare", listare);
             request.getRequestDispatcher("Requerimientos.jsp").forward(request, response);
-        }else if(tipodesarrollo.equals("perfectivo")){
+        } else if (tipodesarrollo.equals("perfectivo")) {
             List<beanrequerimiento> listafun = logicre.listarFuncionalidad(idpro);
             request.setAttribute("listafun", listafun);
             request.getRequestDispatcher("Funcionalidad.jsp").forward(request, response);
@@ -198,17 +201,31 @@ public class controladorRequerimiento extends HttpServlet {
         logicre.eliminarFuncionalidad(idre);
         request.getRequestDispatcher("controladorRequerimiento?accion=listarFuncionalidad").forward(request, response);
     }
-    
+
     public void cambiarEstado(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        int idreq = Integer.parseInt(request.getParameter("idre"));
+
         String estado = request.getParameter("estado");
         String dni = request.getParameter("dni");
+        int idreq = Integer.parseInt(request.getParameter("idre"));
         String respuesta = logicre.cambiarestado(estado, idreq);
-        if(respuesta.equals("true")){
+        if (respuesta.equals("true")) {
             request.setAttribute("dni", dni);
-            request.getRequestDispatcher("controladorproyecto?accion=ProyectoDesdeTrabajador&dni"+dni).forward(request, response);
+            request.getRequestDispatcher("controladorproyecto?accion=ProyectoDesdeTrabajador").forward(request, response);
+        }
+    }
+
+    public void cambiarEstadoFunci(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        
+        String estado = request.getParameter("estado");
+        String dni = request.getParameter("dni");
+        int idfun = Integer.parseInt(request.getParameter("idfun"));
+        String respuesta = logicre.cambiarestadoFunci(estado, idfun);
+        if (respuesta.equals("true")) {
+            request.setAttribute("dni", dni);
+            request.getRequestDispatcher("controladorproyecto?accion=ProyectoDesdeTrabajador").forward(request, response);
         }
         
+
     }
 
     @Override

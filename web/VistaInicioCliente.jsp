@@ -14,9 +14,9 @@
             <div  class="cards" >
                 <div class="card " style="width:51rem;">
                     <div class="card-body pl-4 pr-4">
-                        <h5 class="ml-2 mr-2 t-1"><i class="las la-folder-open"></i> Nombre del Proyecto:</h5>
+                        <h5 class="ml-2 mr-2 t-1"><i class="las la-folder-open"></i> Nombre del Proyecto Actual:</h5>
                         <div class=" d-flex">
-                            <h3 class="ml-3">SISTEMAS DE VENTAS</h3>
+                            <h3 class="ml-3">${nombreproyecto}</h3>
                             <div class="card  p-1 mb-1 text-white bg-danger ml-auto text-center" style="width: 7rem; font-weight:600; border: none">PENDIENTE</div>  
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                                 </tr>
                             </thead>
                             <tbody class="table">
-                                <c:forEach var="lista" items="${listainicio}">
+                                <c:forEach var="lista" items="${listaproyectos}">
                                     <tr>
                                         <td>${lista.getNombre()}</td>
                                         <td>${lista.getInicio()}</td>
@@ -44,7 +44,7 @@
                                             <button class="card  text-white bg-danger p-1 text-center" style="width: 7rem; font-weight:600; border: none"><span class="text-center ml-2">${lista.getEstado()}</span></button>
                                         </td>
                                         <td class="m-0 p-2 ">
-                                            <button type="button" class="btn btn-primary m-0 p-0 pl-3 pr-3 pb-1 pt-1 ml-4" style="font-size: 22px"><i class="las la-eye"></i></button>
+                                            <a class="btn btn-primary m-0 p-0 text-white" style="width: 7rem"><i class="las la-eye" style="font-size:30px"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -54,24 +54,14 @@
                 </div> 
             </div>
             <div>
-                <div class="card  text-white" style="width: 17rem;background: cadetblue">
-                    <div class="card-body  d-flex " >
-                        <div class="pr-3 ml-2 mt-1">
-                            <h2>4</h2>
-                            <span>Requerimientos</span>
-                        </div>
-                        <div class="tr-2 p-0">
-                            <span class="las la-clipboard-list" ></span>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="card" style="width: 17rem; height: 350px">
                     <div class="card-body bg-warning  " >
                         <div class=" text-center">
                             <h5 class="card-title text-white mt-2">TRABAJADOR A CARGO</h5>
                             <img  class=" bg-white mt-2 rounded-circle" src="imagenes/icon2.png" width="90px" height="90px"/>
-                            <h5 class="text-white mt-3">@Nombre trabajador</h5>
-                            <h5 class="text-white">@Apellido trabajador</h5>
+                            <h5 class="text-white mt-3">${nombretrabajador}</h5>
+                            <h5 class="text-white">${apellidotrabajador}</h5>
                         </div>
                         <div class="pl-5 pr-5">
                             <div class="mt-3 text-white"><i class="fa-solid fa-mobile-screen-button"></i>  :  951074151</div>

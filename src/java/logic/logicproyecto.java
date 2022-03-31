@@ -49,6 +49,11 @@ public class logicproyecto {
         return pro.listarPorTrabajador(dni);
     }
     
+    public List listarPorCliente(String dni){
+        daoproyecto daopp = new daoproyecto();
+        return daopp.listarPorCliente(dni);
+    }
+    
     public List listarPorTrabajadorSoporte(String dni){
         daoproyecto pross = new daoproyecto();
         return pross.listarPorTrabajadorSoporte(dni);

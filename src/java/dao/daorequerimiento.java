@@ -24,7 +24,7 @@ public class daorequerimiento {
             pst = cn.getConnection().prepareStatement(sql);
             pst.setInt(1, reque.getIddesarrollo());
             pst.setString(2, reque.getNombre());
-            pst.setString(3, "pendiente");
+            pst.setString(3, "PENDIENTE");
             pst.executeUpdate();
             respuesta = "Se agregro correctamente...";
         } catch (SQLException e) {
@@ -39,7 +39,7 @@ public class daorequerimiento {
             pst = cn.getConnection().prepareStatement(sql);
             pst.setInt(1, reque.getIddesarrollo());
             pst.setString(2, reque.getNombre());
-            pst.setString(3, "pendiente");
+            pst.setString(3, "PENDIENTE");
             pst.executeUpdate();
             respuesta = "Se agregro correctamente...";
         } catch (SQLException e) {
@@ -145,6 +145,18 @@ public class daorequerimiento {
     
     public String cambiarEstado(String estado, int idrequerimiento){
         String sql = "update requerimientonuevo set situacion='"+estado+"' where idrequerimiento="+idrequerimiento;
+        try {
+            pst = cn.getConnection().prepareStatement(sql);
+            pst.executeUpdate();
+            respuesta = "true";
+        } catch (SQLException e) {
+            respuesta = "error";
+        }
+        return respuesta; 
+    }
+    
+    public String cambiarEstadoFunci(String estado, int idfunci){
+        String sql = "update funcionalidadperfectivo set situacion='"+estado+"' where idfuncionalidad="+idfunci;
         try {
             pst = cn.getConnection().prepareStatement(sql);
             pst.executeUpdate();

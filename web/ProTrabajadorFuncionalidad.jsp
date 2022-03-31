@@ -66,7 +66,7 @@
 
                     <div class="card-body">
 
-                        <h1 class=" d-inline h4 ma-1 pl-2">Lista de requerimientos del proyecto</h1>
+                        <h1 class=" d-inline h4 ma-1 pl-2">Lista de funcionalidades del proyecto</h1>
                         <div class="row m-2" id="tablaRequerimiento">
                             <table class="table">
                                 <thead class="thead-dark">
@@ -78,17 +78,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="lista" items="${requerimientos}">
+                                    <c:forEach var="lista" items="${funcionalidad}">
 
                                         <tr>
-                                            <td style="width:100px; text-align: center">${lista.getIdrequerimiento()}</td>
+                                            <td style="width:100px; text-align: center">${lista.getIdfuncionalidad()}</td>
                                             <td>${lista.getNombre()}</td>
                                             <td>
                                                 <input id="estado" type="text" value="${lista.getEstado()}" class="text-white text-center btn" style="width: 120px; border: none; input:hover{border: none}; background-color: #ed0025" readonly>
                                             </td>
                                             <td style="width:300px; text-align: center">
-                                                <form action="controladorRequerimiento?accion=cambiarEstado" method="post">
-                                                    <input type="hidden" name="idre" value="${lista.getIdrequerimiento()}">
+                                                <form action="controladorRequerimiento?accion=cambiarEstadoFunci" method="post">
+                                                    <input type="hidden" name="idfun" value="${lista.getIdfuncionalidad()}">
                                                     <input type="hidden" name="dni" value="${trabajador.getDni()}">
                                                     <div class="d-flex">
                                                         <select name="estado" class="form-control">
@@ -99,13 +99,9 @@
                                                         <button type="submit" class="btn btn-primary ml-1" >Guardar</button>
                                                     </div>
                                                 </form>
-
                                             </td>
-
                                         </tr>
-
                                     </c:forEach>
-
                                 </tbody>
                             </table>
                         </div>
@@ -128,6 +124,33 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/datatables.min.js" type="text/javascript"></script>
     <script src="js/DataTable.js" type="text/javascript"></script>
-    
+    <script >
+                                            function validacion() {
+                                                var faltare = document.getElementById("refaltantes").value;
+                                                if (faltare > 0) {
+                                                    var mensaje = document.getElementById("mensaje").value;
+                                                    if (mensaje) {
+                                                        Swal.fire({
+                                                            icon: 'success',
+                                                            title: msj,
+                                                            showConfirmButton: true,
+                                                            timer: 2000,
+                                                            width: '30%'
+                                                        });
+                                                    }
+                                                }
+                                            }
+
+                                            var msj = document.getElementById("mensaje").value;
+                                            if (msj) {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: msj,
+                                                    showConfirmButton: false,
+                                                    timer: 2000,
+                                                    width: '30%'
+                                                });
+                                            }
+    </script>
 </html>
 

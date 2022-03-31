@@ -23,7 +23,7 @@ public class controladorcliente extends HttpServlet {
             case "perfil":
                 int idcliente = Integer.parseInt(request.getParameter("idcliente"));
                 request.setAttribute("uncliente", lcli.cliente(idcliente));
-                request.getRequestDispatcher("cli-perfil.jsp").forward(request, response);
+                request.getRequestDispatcher("PerfilCliente.jsp").forward(request, response);
                 break;
             case "actualizarClave":
                 String claveantigua = request.getParameter("claveantigua");

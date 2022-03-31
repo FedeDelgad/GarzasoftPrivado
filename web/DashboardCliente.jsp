@@ -24,7 +24,7 @@
                 </section>
                 <section class="s-menu">
                     <div>
-                        <a href="controladorcliente?accion=inicio" target="myFrame"><i class="las la-home"></i> <span>Inicio</span></a> 
+                        <a href="controladorproyecto?accion=cliente&dni=${cliente.getDnicli()}" target="myFrame"><i class="las la-home"></i> <span>Inicio</span></a> 
                     </div>
                     <div>
                         <a href="controladorcliente?accion=perfil&idcliente=${cliente.getIdcliente()}" target="myFrame"><i class="las la-user"></i><span>Perfil</span></a> 
@@ -57,7 +57,7 @@
                     </nav>
                 </div>
                 <div style="height: 555px">
-                    <iframe src="controladorproyecto?accion=listarporlcliente&idcliente=${cliente.getIdcliente()}" name="myFrame" style="height: 100%; width: 100%; border:none; margin-bottom: 15px"></iframe>
+                    <iframe src="controladorproyecto?accion=cliente&dni=${cliente.getDnicli()}" name="myFrame" style="height: 100%; width: 100%; border:none; margin-bottom: 15px"></iframe>
                 </div>
             </section>
         </div> 
